@@ -8,14 +8,16 @@ public class Player : MonoBehaviour {
 	public int maxHealth = 6;
 	public float flashTime = 1f;
 	public float force = 400f;
-	public float knockBackTime = 0.13f;
+	public float knockBackTime = 0.3f;
 	private Animator anim;
 	Rigidbody rb;
 	public bool invincible = false;
 	public bool movement = true;
+	ChangeHealth changeHealthScript;
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
+		changeHealthScript = GameObject.Find ("HeartManager").GetComponent<ChangeHealth> ();
 	}
 	
 	// Update is called once per frame
@@ -28,12 +30,15 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision){
+
 		StartCoroutine (KnockBack (collision));
+		OnHit (collision);
 
 	}
 	public void OnHit(Collision collision){
 		if (!invincible) {
 			currentHealth -= 1;
+			changeHealthScript.change (currentHealth);
 			StartCoroutine (Flash ());
 			if (currentHealth == 0)
 				Die ();
