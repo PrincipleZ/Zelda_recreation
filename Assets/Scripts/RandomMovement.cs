@@ -6,6 +6,7 @@ public class RandomMovement : MonoBehaviour {
 
 
     public float movement_speed = 4;
+    public float movement_bias = .1f;
 
     int NESW;
     Vector3 endPos;
@@ -17,6 +18,7 @@ public class RandomMovement : MonoBehaviour {
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        NESW = Random.Range(0, 4);
     }
 
     // Update is called once per frame
@@ -25,7 +27,12 @@ public class RandomMovement : MonoBehaviour {
         if(doneMoving)
         {
             transform.position = new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y), Mathf.Round(transform.position.z));
-            NESW = Random.Range(0,4);
+
+            if (Random.Range(0f, 1f) > movement_bias)
+            {
+                NESW = Random.Range(0, 4);
+            }
+            
             if(NESW == 0)
             {
                 walkDirection = new Vector3(0, 1f, 0);
@@ -43,10 +50,9 @@ public class RandomMovement : MonoBehaviour {
                 walkDirection = new Vector3(-1f, 0, 0);
             }
             endPos = transform.position + walkDirection;
+            
             doneMoving = false;
         }
-
-        
 
         if (NESW == 0 || NESW == 1)
         {
@@ -75,9 +81,13 @@ public class RandomMovement : MonoBehaviour {
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        doneMoving = true;
+        if (other.GetComponent<Collector>() == null)
+        {
+            doneMoving = true;
+            Debug.Log("here");
+        }
     }
 
 }

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - rupee
+  - sword
   layers:
   - Default
   - TransparentFX
