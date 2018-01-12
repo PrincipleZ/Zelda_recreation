@@ -6,7 +6,9 @@ public class ArrowKeyMovement : MonoBehaviour
 {
 
     public float movement_speed = 4;
+	public float link_y_offset  = 0.05f;
 
+	Vector2 last_input;
     Rigidbody rb;
 
     // Use this for initialization
@@ -18,8 +20,11 @@ public class ArrowKeyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 current_input = GetInput();
+		Vector2 current_input = GetInput();
+
+		grid_adjust (current_input);
         rb.velocity = movement_speed * current_input;
+		last_input = current_input;
     }
 
     Vector2 GetInput()
@@ -34,5 +39,17 @@ public class ArrowKeyMovement : MonoBehaviour
 
         return new Vector2(horizontal_input, vertical_input);
     }
+
+	// Set the value of not changing axis to nearst 0.5. Need to add transition animation
+	void grid_adjust(Vector2 current_input){
+		Vector2 prevPos = transform.position;
+		if (Mathf.Abs(current_input.x) > 0f){
+			float newY = Mathf.Round (prevPos.y * 2) / 2f + link_y_offset;
+			transform.position = new Vector2 (prevPos.x, newY);
+		} else if (Mathf.Abs(current_input.y) > 0f){
+			float newX = Mathf.Round (prevPos.x * 2) / 2f;
+			transform.position = new Vector2 (newX, prevPos.y);
+		}
+	}
 }
 
