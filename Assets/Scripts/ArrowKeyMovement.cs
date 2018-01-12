@@ -7,24 +7,25 @@ public class ArrowKeyMovement : MonoBehaviour
 
     public float movement_speed = 4;
 	public float link_y_offset  = 0.05f;
+	Player playerScript;
 
-	Vector2 last_input;
     Rigidbody rb;
 
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+		playerScript = GameObject.FindWithTag ("Player").GetComponent<Player> ();
     }
 
     // Update is called once per frame
     void Update()
     {
 		Vector2 current_input = GetInput();
-
-		grid_adjust (current_input);
-        rb.velocity = movement_speed * current_input;
-		last_input = current_input;
+		if (playerScript.movement) {
+			grid_adjust (current_input);
+			rb.velocity = movement_speed * current_input;
+		}
     }
 
     Vector2 GetInput()
