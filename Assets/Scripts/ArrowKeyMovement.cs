@@ -22,7 +22,7 @@ public class ArrowKeyMovement : MonoBehaviour
     void Update()
     {
 		Vector2 current_input = GetInput();
-		if (playerScript.movement) {
+		if (playerScript.movement && !playerScript.dead) {
 			grid_adjust (current_input);
 			rb.velocity = movement_speed * current_input;
 		}

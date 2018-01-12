@@ -13,11 +13,13 @@ public class Player : MonoBehaviour {
 	Rigidbody rb;
 	public bool invincible = false;
 	public bool movement = true;
+	public bool dead = false;
 	ChangeHealth changeHealthScript;
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
 		changeHealthScript = GameObject.Find ("HeartManager").GetComponent<ChangeHealth> ();
+		anim = GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -30,20 +32,22 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision){
-
-		StartCoroutine (KnockBack (collision));
 		OnHit (collision);
-
 	}
 	public void OnHit(Collision collision){
-		if (!invincible) {
+		if (!invincible && !dead) {
 			currentHealth -= 1;
 			changeHealthScript.change (currentHealth);
-			StartCoroutine (Flash ());
-			if (currentHealth == 0)
+			if (currentHealth == 0) {
+				movement = false;
 				Die ();
-			else
+			}
+			else{
+				Debug.Log (currentHealth);
+				StartCoroutine (Flash ());
 				StartCoroutine (KnockBack (collision));
+			}
+
 		}
 	}
 
@@ -63,5 +67,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void Die(){
+		dead = true;
+		anim.SetBool ("Dead", true);
 	}
 }
