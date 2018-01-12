@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/Scenes/LAB_Stalfos.unity
-  isLoaded: 1
-  isActive: 1
