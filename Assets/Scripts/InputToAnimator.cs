@@ -26,7 +26,7 @@ public class InputToAnimator : MonoBehaviour {
             animator.SetBool("is_stabbing", swordScript.isSwingingSword);
 			animator.SetBool ("invincible", playerScript.invincible);
 			clips = animator.GetCurrentAnimatorClipInfo (0);
-			if (Input.GetAxisRaw ("Horizontal") == 0 && Input.GetAxisRaw ("Vertical") == 0 && !playerScript.invincible && clips.Length == 1 && clips[0].clip.name.StartsWith("run") ) {
+			if (Input.GetAxisRaw ("Horizontal") == 0 && Input.GetAxisRaw ("Vertical") == 0 && !playerScript.invincible && clips.Length == 1 && clips[0].clip.name.StartsWith("run") && !swordScript.isSwingingSword) {
 				animator.speed = 0.0f;
 			} else {
 				animator.speed = 1.0f;

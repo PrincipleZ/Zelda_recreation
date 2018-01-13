@@ -15,10 +15,11 @@ public class SwordDirection : MonoBehaviour {
     bool canSwing = true;
     bool magicSwordActive = false;
     GameObject activeSword;
-    
+    Animator animScript;
 
     private void Awake()
     {
+        animScript = GetComponent<Animator>();
         directionFacingNESW = startingDirectionNESW;
         swordCollider.enabled = false;
         swordCollider.transform.localPosition = new Vector3(.025f, -0.5f, 0);
@@ -32,27 +33,28 @@ public class SwordDirection : MonoBehaviour {
         if (Input.GetAxisRaw("Vertical") == 1)
         {
             directionFacingNESW = 0;
-            swordCollider.transform.localPosition = new Vector3(-.093f, 0.53f, 0);
+            swordCollider.transform.localPosition = new Vector3(-.097f, 0.919f, 0);
             swordCollider.transform.localScale = new Vector3(.25f, .69f, 1);
         } else if (Input.GetAxisRaw("Vertical") == -1)
         {
             directionFacingNESW = 2;
-            swordCollider.transform.localPosition = new Vector3(.025f, -0.5f, 0);
+            swordCollider.transform.localPosition = new Vector3(.032f, -0.89f, 0);
             swordCollider.transform.localScale = new Vector3(.25f, .69f, 1);
         } else if (Input.GetAxisRaw("Horizontal") == 1)
         {
             directionFacingNESW = 1;
-            swordCollider.transform.localPosition = new Vector3(.5f, -0.05f, 0);
+            swordCollider.transform.localPosition = new Vector3(.85f, -0.05f, 0);
             swordCollider.transform.localScale = new Vector3(.75f, .2f, 1);
         } else if (Input.GetAxisRaw("Horizontal") == -1)
         {
             directionFacingNESW = 3;
-            swordCollider.transform.localPosition = new Vector3(-.5f, -0.05f, 0);
+            swordCollider.transform.localPosition = new Vector3(-.871f, -0.058f, 0);
             swordCollider.transform.localScale = new Vector3(.75f, .2f, 1);
         }
 
         if (Input.GetKeyDown(KeyCode.X))
         {
+            animScript.speed = 1.0f;
             //add sword animation
             if (canSwing)
             {
