@@ -10,6 +10,7 @@ public class SwordDirection : MonoBehaviour {
     public float hitboxDuration = .1f;
     public float magicSwordSpeed = 10;
     public int directionFacingNESW;
+    public bool isSwingingSword = false;
 
     bool canSwing = true;
     bool magicSwordActive = false;
@@ -62,9 +63,11 @@ public class SwordDirection : MonoBehaviour {
 
     IEnumerator HitTime(float duration)
     {
+        isSwingingSword = true;
         canSwing = false;
         swordCollider.enabled = true;
         yield return new WaitForSeconds(duration);
+        isSwingingSword = false;
         canSwing = true;
         swordCollider.enabled = false;
 
