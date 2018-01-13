@@ -7,17 +7,21 @@ public class Player : MonoBehaviour {
 	public int currentHealth = 6;
 	public int maxHealth = 6;
 	public float flashTime = 1f;
-	public float force = 400f;
+	public float force = 750f;
 	public float knockBackTime = 0.3f;
 	private Animator anim;
 	Rigidbody rb;
 	public bool invincible = false;
 	public bool movement = true;
+	public bool dead = false;
 	ChangeHealth changeHealthScript;
+	RoomSwitch cameraScript;
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
 		changeHealthScript = GameObject.Find ("HeartManager").GetComponent<ChangeHealth> ();
+		anim = GetComponent<Animator> ();
+		cameraScript = GameObject.FindWithTag ("MainCamera").GetComponent<RoomSwitch> ();
 	}
 	
 	// Update is called once per frame
@@ -30,21 +34,61 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision){
-
-		StartCoroutine (KnockBack (collision));
 		OnHit (collision);
-
 	}
+
+	void OnTriggerEnter(Collider collider){
+		if (collider.gameObject.CompareTag("entrance") && !cameraScript.switching) {
+			Vector3 dir = Vector3.zero;
+			switch (collider.gameObject.name){
+			// switch to right
+			case "Tile_R_EN":
+				dir = new Vector3 (1, 0, 0);
+				break;
+			case "Tile_L_EN":
+				dir = new Vector3 (-1, 0, 0);			
+				break;
+			case "Tile_UPEN":
+				dir = new Vector3 (0, 1, 0);			
+				break;
+			case "Tile_DNEN":
+				dir = new Vector3 (0, -1, 0);			
+				break;
+
+			}
+			cameraScript.switchControl (dir);
+			StartCoroutine (waitForCamera(dir));
+
+		}
+	}
+		
 	public void OnHit(Collision collision){
-		if (!invincible) {
+		if (!invincible && !dead) {
 			currentHealth -= 1;
 			changeHealthScript.change (currentHealth);
-			StartCoroutine (Flash ());
-			if (currentHealth == 0)
+			if (currentHealth == 0) {
+				movement = false;
 				Die ();
-			else
+			}
+			else{
+				Debug.Log (currentHealth);
+				StartCoroutine (Flash ());
 				StartCoroutine (KnockBack (collision));
+			}
+
 		}
+	}
+	IEnumerator waitForCamera(Vector3 direction){
+		Vector3 start = transform.position;
+		movement = false;
+		for (float t = 0f; t < cameraScript.cameraSwitchTime; t += Time.deltaTime){
+			transform.position = Vector3.Lerp (start, start + direction*2, t/cameraScript.cameraSwitchTime);
+			yield return null;
+		}
+		Debug.Log (transform.position);
+	
+
+		movement = true;
 	}
 
 	IEnumerator Flash(){
@@ -63,5 +107,9 @@ public class Player : MonoBehaviour {
 	}
 
 	void Die(){
+		dead = true;
+		rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY;
+		anim.SetBool ("Dead", true);
+		anim.speed = 1;
 	}
 }

@@ -10,7 +10,7 @@ public class ChangeHealth : MonoBehaviour {
 	public Sprite empty_heart;
 	public GameObject heartPrefab;
 
-	private Vector3 heartPositionOffset = new Vector3(40f, 0, 0);
+	private Vector3 heartPositionOffset = new Vector3(30f, 0, 0);
 	private GameObject[] hearts;
 	Player playerScript;
 
