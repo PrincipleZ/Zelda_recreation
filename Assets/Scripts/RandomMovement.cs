@@ -86,7 +86,6 @@ public class RandomMovement : MonoBehaviour {
         if (other.GetComponent<Collector>() == null)
         {
             doneMoving = true;
-            Debug.Log("here");
         }
     }
 
