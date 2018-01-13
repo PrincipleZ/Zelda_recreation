@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 54938307355263656}
   - component: {fileID: 114220209815949316}
   - component: {fileID: 65611679144384426}
+  - component: {fileID: 114135204490608190}
+  - component: {fileID: 114267361990966116}
   m_Layer: 0
   m_Name: Stalfos
   m_TagString: Untagged
@@ -37,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1262990475931652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 37, y: 8, z: 0}
+  m_LocalPosition: {x: 55, y: 7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,7 +58,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!65 &65611679144384426
 BoxCollider:
@@ -65,11 +67,23 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1262990475931652}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Size: {x: 0.95, y: 0.95, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114135204490608190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1262990475931652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa8d688b1720c22479891ffb76ac3d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 2
 --- !u!114 &114220209815949316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -81,8 +95,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5fa107998731c3449f157620356c9ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement_speed: 1
-  link_y_offset: 0.05
+  movement_speed: 1.5
+  movement_bias: 0.8
+--- !u!114 &114267361990966116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1262990475931652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6a630044f96cf4a866661701b2c3f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 1
 --- !u!212 &212462461966581260
 SpriteRenderer:
   m_ObjectHideFlags: 1
