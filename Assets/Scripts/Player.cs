@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
 	public int currentHealth = 6;
 	public int maxHealth = 6;
 	public float flashTime = 1f;
-	public float force = 400f;
+	public float force = 750f;
 	public float knockBackTime = 0.3f;
 	private Animator anim;
 	Rigidbody rb;
@@ -68,6 +68,8 @@ public class Player : MonoBehaviour {
 
 	void Die(){
 		dead = true;
+		rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY;
 		anim.SetBool ("Dead", true);
+		anim.speed = 1;
 	}
 }

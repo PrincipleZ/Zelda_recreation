@@ -17,19 +17,19 @@ public class InputToAnimator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!playerScript.dead) {
 			
+		if(!playerScript.dead){
 			animator.SetFloat ("horizontal_input", Input.GetAxisRaw ("Horizontal"));
 			animator.SetFloat ("vertical_input", Input.GetAxisRaw ("Vertical"));
 			animator.SetBool ("invincible", playerScript.invincible);
 			clips = animator.GetCurrentAnimatorClipInfo (0);
-			if (Input.GetAxisRaw ("Horizontal") == 0 && Input.GetAxisRaw ("Vertical") == 0 && !playerScript.invincible && clips.Length > 0 && clips [0].clip.name.StartsWith ("run")) {
+			if (Input.GetAxisRaw ("Horizontal") == 0 && Input.GetAxisRaw ("Vertical") == 0 && !playerScript.invincible && clips.Length == 1 && clips[0].clip.name.StartsWith("run") ) {
 				animator.speed = 0.0f;
 			} else {
 				animator.speed = 1.0f;
 			}
 		}
-	}
+}
 }
 
 
