@@ -45,8 +45,8 @@ public class ArrowKeyMovement : MonoBehaviour
 	void grid_adjust(Vector2 current_input){
 		Vector2 prevPos = transform.position;
 		if (Mathf.Abs(current_input.x) > 0f){
-			float newY = Mathf.Round (prevPos.y * 2) / 2f + link_y_offset;
-			transform.position = new Vector2 (prevPos.x, prevPos.y + (newY - prevPos.y)/2);
+			float newY = Mathf.Round (prevPos.y * 2) / 2f;
+			transform.position = new Vector2 (prevPos.x, prevPos.y + (newY - prevPos.y)/2 + link_y_offset);
 		} else if (Mathf.Abs(current_input.y) > 0f){
 			float newX = Mathf.Round (prevPos.x * 2) / 2f;
 			transform.position = new Vector2 (prevPos.x + (newX - prevPos.x)/2, prevPos.y);

@@ -15,11 +15,13 @@ public class Player : MonoBehaviour {
 	public bool movement = true;
 	public bool dead = false;
 	ChangeHealth changeHealthScript;
+	RoomSwitch cameraScript;
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
 		changeHealthScript = GameObject.Find ("HeartManager").GetComponent<ChangeHealth> ();
 		anim = GetComponent<Animator> ();
+		cameraScript = GameObject.FindWithTag ("MainCamera").GetComponent<RoomSwitch> ();
 	}
 	
 	// Update is called once per frame
@@ -34,6 +36,32 @@ public class Player : MonoBehaviour {
 	void OnCollisionEnter(Collision collision){
 		OnHit (collision);
 	}
+
+	void OnTriggerEnter(Collider collider){
+		if (collider.gameObject.CompareTag("entrance") && !cameraScript.switching) {
+			Vector3 dir = Vector3.zero;
+			switch (collider.gameObject.name){
+			// switch to right
+			case "Tile_R_EN":
+				dir = new Vector3 (1, 0, 0);
+				break;
+			case "Tile_L_EN":
+				dir = new Vector3 (-1, 0, 0);			
+				break;
+			case "Tile_UPEN":
+				dir = new Vector3 (0, 1, 0);			
+				break;
+			case "Tile_DNEN":
+				dir = new Vector3 (0, -1, 0);			
+				break;
+
+			}
+			cameraScript.switchControl (dir);
+			StartCoroutine (waitForCamera(dir));
+
+		}
+	}
+		
 	public void OnHit(Collision collision){
 		if (!invincible && !dead) {
 			currentHealth -= 1;
@@ -49,6 +77,18 @@ public class Player : MonoBehaviour {
 			}
 
 		}
+	}
+	IEnumerator waitForCamera(Vector3 direction){
+		Vector3 start = transform.position;
+		movement = false;
+		for (float t = 0f; t < cameraScript.cameraSwitchTime; t += Time.deltaTime){
+			transform.position = Vector3.Lerp (start, start + direction*2, t/cameraScript.cameraSwitchTime);
+			yield return null;
+		}
+		Debug.Log (transform.position);
+	
+
+		movement = true;
 	}
 
 	IEnumerator Flash(){
