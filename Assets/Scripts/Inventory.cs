@@ -5,7 +5,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour {
 
     public int rupee_count = 0;
-	public int key_count = 0;
+	public float key_count = 1;
 
     public void AddRupees(int num_rupees)
     {
@@ -21,7 +21,7 @@ public class Inventory : MonoBehaviour {
         return rupee_count;
     }
 
-	public int GetKeys(){
+	public float GetKeys(){
 		return key_count;
 	}
 }

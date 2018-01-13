@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4151046541178282}
   - component: {fileID: 212583755697218928}
+  - component: {fileID: 65269640932088756}
+  - component: {fileID: 114527403438684702}
   m_Layer: 0
   m_Name: Tile_K_RT
   m_TagString: Untagged
@@ -40,6 +42,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65269640932088756
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1467932568721704}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114527403438684702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1467932568721704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe82cca177e8e44c6b0d565cbb42e124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entrancePrefab: {fileID: 1094357055505764, guid: e0ad617018b1446a5863b61aef0d831a,
+    type: 2}
+  s: {fileID: 21300096, guid: 29c32f38977a34d9095688f2158c2a00, type: 3}
 --- !u!212 &212583755697218928
 SpriteRenderer:
   m_ObjectHideFlags: 1

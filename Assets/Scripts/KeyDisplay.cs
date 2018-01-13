@@ -16,6 +16,6 @@ public class KeyDisplay : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (inventory != null && text_component != null)
-			text_component.text = "X" + inventory.GetKeys().ToString();
+			text_component.text = "X" + Mathf.FloorToInt(inventory.GetKeys()).ToString();
 	}
 }

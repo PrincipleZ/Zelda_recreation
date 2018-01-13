@@ -5,9 +5,10 @@ using UnityEngine;
 public class Locker : MonoBehaviour {
 	public GameObject entrancePrefab;
 	public Sprite s;
+	Inventory inventory;
 	// Use this for initialization
 	void Start () {
-		
+		inventory = GameObject.Find ("Player").GetComponent<Inventory> ();
 	}
 	
 	// Update is called once per frame
@@ -17,10 +18,16 @@ public class Locker : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision){
 		if (collision.gameObject.name == "Player"){
-			Debug.Log ("here");
-			GameObject temp = Instantiate (entrancePrefab, transform.position, Quaternion.identity);
-			temp.GetComponent<SpriteRenderer> ().sprite = s;
-			gameObject.SetActive(false);
+			if (inventory.key_count > 0) {
+				string objectName = gameObject.name;
+				if (objectName == "Tile_K_UPR" || objectName == "Tile_K_UPL")
+					inventory.key_count -= 0.5f;
+				else
+					inventory.key_count -= 1f;
+				GameObject temp = Instantiate (entrancePrefab, transform.position, Quaternion.identity);
+				temp.GetComponent<SpriteRenderer> ().sprite = s;
+				gameObject.SetActive (false);
+			}
 		}
 	}
 }
