@@ -8,7 +8,12 @@ TagManager:
   - entrance
   - arrow
   - sword
-  - Enemy
+  - wall
+  - obstacle
+  - heartR
+  - rupeeB
+  - magicSword
+  - key
   layers:
   - Default
   - TransparentFX

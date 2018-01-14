@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
 	public int currentHealth = 6;
 	public int maxHealth = 6;
 	public float flashTime = 1f;
-	public float force = 50f;
+	public float force = 750f;
 	public float knockBackTime = 0.3f;
 	private Animator anim;
 	Rigidbody rb;
@@ -35,12 +35,13 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision){
-		
+        if (collision.gameObject.GetComponent<EnemyDamage>())
+        {
+            OnHit(collision);
+        }
 	}
 
 	void OnTriggerEnter(Collider collider){
-		if (collider.gameObject.CompareTag("Enemy"))
-			OnHit (collider);
 		if (collider.gameObject.CompareTag("entrance") && !cameraScript.switching) {
 			Vector3 dir = Vector3.zero;
 			switch (collider.gameObject.name){
@@ -65,7 +66,7 @@ public class Player : MonoBehaviour {
 		}
 	}
 		
-	public void OnHit(Collider collider){
+	public void OnHit(Collision collision){
 		if (!invincible && !dead) {
 			currentHealth -= 1;
 			changeHealthScript.change (currentHealth);
@@ -76,11 +77,21 @@ public class Player : MonoBehaviour {
 			else{
 				Debug.Log (currentHealth);
 				StartCoroutine (Flash ());
-				StartCoroutine (KnockBack (collider));
+				StartCoroutine (KnockBack (collision));
 			}
 
 		}
 	}
+
+    public void heal(int healAmount)
+    {
+        currentHealth += healAmount;
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
+
+        changeHealthScript.change(currentHealth);
+    }
+
 	IEnumerator waitForCamera(Vector3 direction){
 		Vector3 start = transform.position;
 		movement = false;
@@ -101,13 +112,10 @@ public class Player : MonoBehaviour {
 		invincible = false;
 	}
 
-	IEnumerator KnockBack(Collider collider){
+	IEnumerator KnockBack(Collision collision){
 		movement = false;
-		Vector3 knockBackDir = (transform.position - collider.ClosestPointOnBounds(transform.position)).normalized;
-		if (knockBackDir == Vector3.zero)
-			knockBackDir = new Vector3 (0, -1, 0);
-		rb.AddForce(force * knockBackDir);
-		Debug.Log (force * knockBackDir);
+		rb.AddForce(force * collision.contacts [0].normal);
+		Debug.Log (force * collision.contacts [0].normal);
 		yield return new WaitForSeconds (knockBackTime);
 		movement = true;
 	}
