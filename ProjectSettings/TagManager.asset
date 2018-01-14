@@ -6,6 +6,10 @@ TagManager:
   tags:
   - rupee
   - entrance
+  - arrow
+  - sword
+  - wall
+  - obstacle
   layers:
   - Default
   - TransparentFX

@@ -34,7 +34,10 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision){
-		OnHit (collision);
+        if (collision.gameObject.GetComponent<EnemyDamage>())
+        {
+            OnHit(collision);
+        }
 	}
 
 	void OnTriggerEnter(Collider collider){

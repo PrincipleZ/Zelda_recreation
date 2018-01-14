@@ -56,7 +56,7 @@ public class SwordDirection : MonoBehaviour {
         {
             animScript.speed = 1.0f;
             //add sword animation
-            if (canSwing)
+            if (canSwing && !this.GetComponent<Bow>().isShooting)
             {
                 StartCoroutine(HitTime(hitboxDuration));
             }

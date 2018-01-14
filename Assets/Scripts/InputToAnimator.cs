@@ -7,6 +7,7 @@ public class InputToAnimator : MonoBehaviour {
     Animator animator;
 	Player playerScript;
     SwordDirection swordScript;
+    Bow bowScript;
 	Animation animation;
 	AnimatorClipInfo[] clips;
 	// Use this for initialization
@@ -14,6 +15,7 @@ public class InputToAnimator : MonoBehaviour {
         animator = GetComponent<Animator>();
 		playerScript = GetComponent<Player> ();
         swordScript = GetComponent<SwordDirection>();
+        bowScript = GetComponent<Bow>();
 	}
 	
 	// Update is called once per frame
@@ -25,6 +27,7 @@ public class InputToAnimator : MonoBehaviour {
             animator.SetInteger("direction_NESW", swordScript.directionFacingNESW);
             animator.SetBool("is_stabbing", swordScript.isSwingingSword);
 			animator.SetBool ("invincible", playerScript.invincible);
+            animator.SetBool("is_shooting", bowScript.isShooting);
 			clips = animator.GetCurrentAnimatorClipInfo (0);
 			if (Input.GetAxisRaw ("Horizontal") == 0 && Input.GetAxisRaw ("Vertical") == 0 && !playerScript.invincible && clips.Length == 1 && clips[0].clip.name.StartsWith("run") && !swordScript.isSwingingSword) {
 				animator.speed = 0.0f;

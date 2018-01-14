@@ -9,6 +9,7 @@ public class RandomMovement : MonoBehaviour {
     public float movement_bias = .1f;
 
     int NESW;
+    int lastDirection = 5;
     Vector3 endPos;
     Vector3 walkDirection;
     bool doneMoving = true;
@@ -81,11 +82,32 @@ public class RandomMovement : MonoBehaviour {
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.GetComponent<Collector>() == null)
+
+        
+        if (collision.gameObject.GetComponent<EnemyHealth>())
+        {
+            Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
+            Debug.Log("pls");
+        }
+        else
         {
             doneMoving = true;
+            lastDirection = NESW;
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<EnemyHealth>())
+        {
+            Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
+        }
+        else
+        {
+            doneMoving = true;
+            lastDirection = NESW;
         }
     }
 
