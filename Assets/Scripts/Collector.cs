@@ -50,5 +50,14 @@ public class Collector : MonoBehaviour {
 
             AudioSource.PlayClipAtPoint(heartR_collection_sound_clip, Camera.main.transform.position);
         }
+
+        if (object_collided_with.tag == "key")
+        {
+            if (inventory != null)
+                inventory.AddKeys(1);
+            Destroy(object_collided_with);
+
+            AudioSource.PlayClipAtPoint(heartR_collection_sound_clip, Camera.main.transform.position);
+        }
     }
 }

@@ -20,9 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4394359638902864}
   - component: {fileID: 212905668405142370}
+  - component: {fileID: 65574554530015354}
   m_Layer: 0
   m_Name: heartRestore
-  m_TagString: Untagged
+  m_TagString: heartR
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,12 +35,24 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1406588284729982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.63, y: 7.11, z: 0}
+  m_LocalPosition: {x: 39, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65574554530015354
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406588284729982}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4375, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &212905668405142370
 SpriteRenderer:
   m_ObjectHideFlags: 1
