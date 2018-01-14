@@ -11,7 +11,7 @@ public class MagicSwordDestruction : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<EnemyHealth>())
+        if (other.gameObject.tag == "wall" || other.gameObject.tag == "entrance" || other.gameObject.tag == "enemy")
         {
             Destroy(this.gameObject);
         }

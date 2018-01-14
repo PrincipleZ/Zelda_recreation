@@ -6,6 +6,14 @@ TagManager:
   tags:
   - rupee
   - entrance
+  - arrow
+  - sword
+  - wall
+  - obstacle
+  - heartR
+  - rupeeB
+  - magicSword
+  - key
   layers:
   - Default
   - TransparentFX

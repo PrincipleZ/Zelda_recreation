@@ -34,7 +34,10 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision){
-		OnHit (collision);
+        if (collision.gameObject.GetComponent<EnemyDamage>())
+        {
+            OnHit(collision);
+        }
 	}
 
 	void OnTriggerEnter(Collider collider){
@@ -78,6 +81,16 @@ public class Player : MonoBehaviour {
 
 		}
 	}
+
+    public void heal(int healAmount)
+    {
+        currentHealth += healAmount;
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
+
+        changeHealthScript.change(currentHealth);
+    }
+
 	IEnumerator waitForCamera(Vector3 direction){
 		Vector3 start = transform.position;
 		movement = false;
