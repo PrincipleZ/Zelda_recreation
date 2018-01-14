@@ -8,15 +8,26 @@ public class Bow : MonoBehaviour {
     public float arrowSpeed = 10f;
     public float reloadTime = 1f;
     public bool isShooting = false;
+    public bool canShoot = true;
     
     int NESWdirection;
 
     // Update is called once per frame
     void Update () {
+
+        if (GameObject.Find("Arrow(Clone)") == null)
+        {
+            canShoot = true;
+        }
+        else
+        {
+            canShoot = false;
+        }
+
         NESWdirection = this.GetComponent<SwordDirection>().directionFacingNESW;
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            if(GetComponent<Inventory>().GetRupees() > 0 && !isShooting && !this.GetComponent<SwordDirection>().isSwingingSword)
+            if(GetComponent<Inventory>().GetRupees() > 0 && !this.GetComponent<ArrowKeyMovement>().isDoingAction && canShoot)
             {
                 StartCoroutine(Shooting(reloadTime));
             }
@@ -27,8 +38,10 @@ public class Bow : MonoBehaviour {
     IEnumerator Shooting(float delay)
     {
         isShooting = true;
+        GetComponent<ArrowKeyMovement>().isDoingAction = true;
         GetComponent<Inventory>().AddRupees(-1);
         GameObject currentArrow = Instantiate(arrow);
+        Debug.Log(GetComponent<ArrowKeyMovement>().isDoingAction);
 
         if (NESWdirection == 0)
         {
@@ -55,5 +68,6 @@ public class Bow : MonoBehaviour {
         }
         yield return new WaitForSeconds(delay);
         isShooting = false;
+        GetComponent<ArrowKeyMovement>().isDoingAction = false;
     }
 }

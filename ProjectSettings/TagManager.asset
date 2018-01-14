@@ -10,6 +10,9 @@ TagManager:
   - sword
   - wall
   - obstacle
+  - heartR
+  - rupeeB
+  - magicSword
   layers:
   - Default
   - TransparentFX

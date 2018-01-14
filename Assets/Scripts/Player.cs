@@ -81,6 +81,16 @@ public class Player : MonoBehaviour {
 
 		}
 	}
+
+    public void heal(int healAmount)
+    {
+        currentHealth += healAmount;
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
+
+        changeHealthScript.change(currentHealth);
+    }
+
 	IEnumerator waitForCamera(Vector3 direction){
 		Vector3 start = transform.position;
 		movement = false;

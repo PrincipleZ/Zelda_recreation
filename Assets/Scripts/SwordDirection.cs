@@ -29,6 +29,15 @@ public class SwordDirection : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
+        if (GameObject.Find("Sword(Clone)") == null)
+        {
+            magicSwordActive = false;
+        }
+        else
+        {
+            magicSwordActive = true;
+        }
+
         //Which direction is Link facing
         if (Input.GetAxisRaw("Vertical") == 1)
         {
@@ -68,10 +77,12 @@ public class SwordDirection : MonoBehaviour {
         isSwingingSword = true;
         canSwing = false;
         swordCollider.enabled = true;
+        GetComponent<ArrowKeyMovement>().isDoingAction = true;
         yield return new WaitForSeconds(duration);
         isSwingingSword = false;
         canSwing = true;
         swordCollider.enabled = false;
+        GetComponent<ArrowKeyMovement>().isDoingAction = false;
 
         //after
         if (GetComponent<Player>().currentHealth == GetComponent<Player>().maxHealth)

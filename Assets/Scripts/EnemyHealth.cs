@@ -43,6 +43,11 @@ public class EnemyHealth : MonoBehaviour {
             damageTaken = true;
             damageAmount = 2;
         }
+        else if (other_go.tag == "magicSword")
+        {
+            damageTaken = true;
+            damageAmount = 1;
+        }
     }
 
     IEnumerator DamageColor()

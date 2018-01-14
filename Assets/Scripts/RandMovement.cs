@@ -59,24 +59,20 @@ public class RandMovement : MonoBehaviour
             if (isHorizontal && direction == 1f && east.GetComponent<AvailableSquare>().isAvailable)
             {
                 validDestination = true;
-                Debug.Log("e");
             }
                 
             else if (isHorizontal && direction == -1f && west.GetComponent<AvailableSquare>().isAvailable)
             {
-                Debug.Log("w");
                 validDestination = true;
             }
                 
             else if (!isHorizontal && direction == 1f && north.GetComponent<AvailableSquare>().isAvailable)
             {
-                Debug.Log("n");
                 validDestination = true;
             }
                 
             else if (!isHorizontal && direction == -1f && south.GetComponent<AvailableSquare>().isAvailable)
             {
-                Debug.Log("s");
                 validDestination = true;
             }
                     

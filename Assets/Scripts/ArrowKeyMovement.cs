@@ -7,6 +7,7 @@ public class ArrowKeyMovement : MonoBehaviour
 
     public float movement_speed = 4;
 	public float link_y_offset  = 0.05f;
+    public bool isDoingAction = false;
 	Player playerScript;
 
     Rigidbody rb;
@@ -30,6 +31,11 @@ public class ArrowKeyMovement : MonoBehaviour
 
     Vector2 GetInput()
     {
+
+        if (isDoingAction)
+        {
+            return new Vector2(0, 0);
+        }
         float horizontal_input = Input.GetAxisRaw("Horizontal");
         float vertical_input = Input.GetAxisRaw("Vertical");
 
