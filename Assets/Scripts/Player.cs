@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
 	public int currentHealth = 6;
 	public int maxHealth = 6;
 	public float flashTime = 1f;
-	public float force = 750f;
+	public float force = 50f;
 	public float knockBackTime = 0.3f;
 	private Animator anim;
 	Rigidbody rb;
@@ -19,6 +19,7 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
+		currentHealth = maxHealth;
 		changeHealthScript = GameObject.Find ("HeartManager").GetComponent<ChangeHealth> ();
 		anim = GetComponent<Animator> ();
 		cameraScript = GameObject.FindWithTag ("MainCamera").GetComponent<RoomSwitch> ();
@@ -34,10 +35,12 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision){
-		OnHit (collision);
+		
 	}
 
 	void OnTriggerEnter(Collider collider){
+		if (collider.gameObject.CompareTag("Enemy"))
+			OnHit (collider);
 		if (collider.gameObject.CompareTag("entrance") && !cameraScript.switching) {
 			Vector3 dir = Vector3.zero;
 			switch (collider.gameObject.name){
@@ -62,7 +65,7 @@ public class Player : MonoBehaviour {
 		}
 	}
 		
-	public void OnHit(Collision collision){
+	public void OnHit(Collider collider){
 		if (!invincible && !dead) {
 			currentHealth -= 1;
 			changeHealthScript.change (currentHealth);
@@ -73,7 +76,7 @@ public class Player : MonoBehaviour {
 			else{
 				Debug.Log (currentHealth);
 				StartCoroutine (Flash ());
-				StartCoroutine (KnockBack (collision));
+				StartCoroutine (KnockBack (collider));
 			}
 
 		}
@@ -98,10 +101,13 @@ public class Player : MonoBehaviour {
 		invincible = false;
 	}
 
-	IEnumerator KnockBack(Collision collision){
+	IEnumerator KnockBack(Collider collider){
 		movement = false;
-		rb.AddForce(force * collision.contacts [0].normal);
-		Debug.Log (force * collision.contacts [0].normal);
+		Vector3 knockBackDir = (transform.position - collider.ClosestPointOnBounds(transform.position)).normalized;
+		if (knockBackDir == Vector3.zero)
+			knockBackDir = new Vector3 (0, -1, 0);
+		rb.AddForce(force * knockBackDir);
+		Debug.Log (force * knockBackDir);
 		yield return new WaitForSeconds (knockBackTime);
 		movement = true;
 	}

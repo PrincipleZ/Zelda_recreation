@@ -6,6 +6,9 @@ TagManager:
   tags:
   - rupee
   - entrance
+  - arrow
+  - sword
+  - Enemy
   layers:
   - Default
   - TransparentFX
