@@ -7,7 +7,7 @@ public class RandMovement : MonoBehaviour
     bool isHorizontal;
     float direction;
     bool doneMoving = true;
-    Vector3 path;
+    public Vector3 path;
     public Vector3 destination;
     bool validDestination = false;
 

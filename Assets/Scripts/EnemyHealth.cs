@@ -13,6 +13,7 @@ public class EnemyHealth : MonoBehaviour {
     bool invincible = false;
     int damageAmount;
 	Rigidbody rb;
+    bool isHoriz;
 
 
     private void Start()
@@ -73,37 +74,62 @@ public class EnemyHealth : MonoBehaviour {
 		Vector3 knockBackDir = (transform.position - collider.ClosestPointOnBounds(transform.position)).normalized;
 		//Normalize to only grid knockback
 		Debug.Log(knockBackDir);
-
-        if (Mathf.Abs(knockBackDir.x) > Mathf.Abs(knockBackDir.y))
+        if(Mathf.Abs(knockBackDir.x) > Mathf.Abs(knockBackDir.y))
         {
-            knockBackDir.y = 0;
-            if (knockBackDir.x < 0)
-            {
-                knockBackDir.x = -1;
-            }
-            else
-            {
-                knockBackDir.x = 1;
-            }
+            isHoriz = true;
         }
         else
         {
-            knockBackDir.x = 0;
-            if (knockBackDir.y < 0)
+            isHoriz = false;
+        }
+
+        if (GetComponent<RandMovement>().path.x != 0)
+        {
+            if (isHoriz)
             {
-                knockBackDir.y = -1;
+                knockBackDir.y = 0;
+                if (knockBackDir.x < 0)
+                {
+                    knockBackDir.x = -1;
+                }
+                else
+                {
+                    knockBackDir.x = 1;
+                }
             }
             else
             {
-                knockBackDir.y = 1;
+                knockBackDir = Vector2.zero;
+            }
+
+        }
+        else
+        {
+            if (!isHoriz)
+            {
+                knockBackDir.x = 0;
+                if (knockBackDir.y < 0)
+                {
+                    knockBackDir.y = -1;
+                }
+                else
+                {
+                    knockBackDir.y = 1;
+                }
+            }
+            else
+            {
+                knockBackDir = Vector2.zero;
             }
         }
+        if(knockBackDir != Vector3.zero)
+        {
+            rb.velocity = Vector3.zero;
+            rb.AddForce(force * knockBackDir);
 
-        if (knockBackDir == Vector3.zero)
-			knockBackDir = new Vector3 (0, -1, 0);
-		rb.velocity = Vector3.zero;
-		rb.AddForce(force * knockBackDir);
-		yield return new WaitForSeconds (knockBackTime);
+            yield return new WaitForSeconds(knockBackTime);
+        }
+
 		movement = true;
 	}
 }
