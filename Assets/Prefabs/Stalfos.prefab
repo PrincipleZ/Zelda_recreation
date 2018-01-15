@@ -42,6 +42,8 @@ GameObject:
   - component: {fileID: 114135204490608190}
   - component: {fileID: 114267361990966116}
   - component: {fileID: 114240824450662546}
+  - component: {fileID: 95595413365045700}
+  - component: {fileID: 114731630337611732}
   m_Layer: 0
   m_Name: Stalfos
   m_TagString: enemy
@@ -244,6 +246,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.79, y: 0.26, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &95595413365045700
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1262990475931652}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7a6435b2a8c8f4943ab7baf5da9e1606, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114128876200826390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -269,6 +288,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 2
   currentHealth: 0
+  force: 500
+  movement: 1
+  knockBackTime: 0.3
 --- !u!114 &114240824450662546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -322,6 +344,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAvailable: 1
+--- !u!114 &114731630337611732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1262990475931652}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64cf18845cc34a3688814f92a673ae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114763323602146966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -368,7 +401,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300062, guid: 17c68b848a73d7441a9d57685a8aa8dc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 82e234193c3c94d6e9045f64b4976a9e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

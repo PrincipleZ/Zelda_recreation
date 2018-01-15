@@ -17,28 +17,31 @@ public class RandMovement : MonoBehaviour
     public GameObject west;
     public float movementSpeed;
 
+	EnemyHealth enemyHealthScript;
     Rigidbody rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+		enemyHealthScript = GetComponent<EnemyHealth> ();
     }
 
     private void Update()
     {
-        if (Vector3.Magnitude(new Vector3(Mathf.Abs(transform.position.x - destination.x), Mathf.Abs(transform.position.y - destination.y), 0)) > 1f)
-            doneMoving = true;
+		if (enemyHealthScript.movement) {
+			if (Vector3.Magnitude (new Vector3 (Mathf.Abs (transform.position.x - destination.x), Mathf.Abs (transform.position.y - destination.y), 0)) > 1f)
+				doneMoving = true;
 
-        if (doneMoving)
-        {
-            validDestination = false;
-            doneMoving = false;
-            transform.position = new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y), 0);
-            ChooseNextDestination();
-        }
+			if (doneMoving) {
+				validDestination = false;
+				doneMoving = false;
+				transform.position = new Vector3 (Mathf.Round (transform.position.x), Mathf.Round (transform.position.y), 0);
+				ChooseNextDestination ();
+			}
             
 
-        MoveToDestination();
+			MoveToDestination ();
+		}
 
     }
 

@@ -6,7 +6,7 @@ public class ArrowKeyMovement : MonoBehaviour
 {
 
     public float movement_speed = 4;
-	public float link_y_offset  = 0.05f;
+	public float link_y_offset  = 0f;
     public bool isDoingAction = false;
 	Player playerScript;
 

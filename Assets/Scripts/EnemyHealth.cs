@@ -55,6 +55,7 @@ public class EnemyHealth : MonoBehaviour {
         {
             damageTaken = true;
             damageAmount = 1;
+			StartCoroutine(KnockBack(other));
         }
     }
 
@@ -71,7 +72,7 @@ public class EnemyHealth : MonoBehaviour {
 		movement = false;
 		Vector3 knockBackDir = (transform.position - collider.ClosestPointOnBounds(transform.position)).normalized;
 		//Normalize to only grid knockback
-
+		Debug.Log(knockBackDir);
 
 		if (Mathf.Abs(knockBackDir.x) > Mathf.Abs (knockBackDir.y)) {
 			knockBackDir.y = 0;
@@ -80,7 +81,6 @@ public class EnemyHealth : MonoBehaviour {
 			knockBackDir.y = 1;
 			knockBackDir.x = 0;
 		}
-		Debug.Log (knockBackDir);
 		if (knockBackDir == Vector3.zero)
 			knockBackDir = new Vector3 (0, -1, 0);
 		rb.velocity = Vector3.zero;
