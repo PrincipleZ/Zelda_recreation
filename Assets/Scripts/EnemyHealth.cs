@@ -74,14 +74,32 @@ public class EnemyHealth : MonoBehaviour {
 		//Normalize to only grid knockback
 		Debug.Log(knockBackDir);
 
-		if (Mathf.Abs(knockBackDir.x) > Mathf.Abs (knockBackDir.y)) {
-			knockBackDir.y = 0;
-			knockBackDir.x = 1;
-		} else{
-			knockBackDir.y = 1;
-			knockBackDir.x = 0;
-		}
-		if (knockBackDir == Vector3.zero)
+        if (Mathf.Abs(knockBackDir.x) > Mathf.Abs(knockBackDir.y))
+        {
+            knockBackDir.y = 0;
+            if (knockBackDir.x < 0)
+            {
+                knockBackDir.x = -1;
+            }
+            else
+            {
+                knockBackDir.x = 1;
+            }
+        }
+        else
+        {
+            knockBackDir.x = 0;
+            if (knockBackDir.y < 0)
+            {
+                knockBackDir.y = -1;
+            }
+            else
+            {
+                knockBackDir.y = 1;
+            }
+        }
+
+        if (knockBackDir == Vector3.zero)
 			knockBackDir = new Vector3 (0, -1, 0);
 		rb.velocity = Vector3.zero;
 		rb.AddForce(force * knockBackDir);

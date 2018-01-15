@@ -11,7 +11,7 @@ public class SwordDirection : MonoBehaviour {
     public float magicSwordSpeed = 10;
     public int directionFacingNESW;
     public bool isSwingingSword = false;
-    public bool swordHitEnemy = false;
+    public bool swordHitEnemy;
 
     bool canSwing = true;
     bool magicSwordActive = false;
@@ -25,6 +25,7 @@ public class SwordDirection : MonoBehaviour {
         swordCollider.enabled = false;
         swordCollider.transform.localPosition = new Vector3(.025f, -0.5f, 0);
         swordCollider.transform.localScale = new Vector3(.25f, .69f, 1);
+        swordHitEnemy = false;
     }
 
     // Update is called once per frame

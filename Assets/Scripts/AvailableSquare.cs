@@ -5,10 +5,11 @@ using UnityEngine;
 public class AvailableSquare : MonoBehaviour {
 
     public bool isAvailable = true;
+    public bool directionHit = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "wall" || other.tag == "obstacle" || other.tag == "entrance")
+        if(other.tag == "wall" || other.tag == "obstacle" || other.tag == "door(wall)")
         {
             isAvailable = false;
         }
@@ -16,7 +17,7 @@ public class AvailableSquare : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "wall" || other.tag == "obstacle" || other.tag == "entrance")
+        if (other.tag == "wall" || other.tag == "obstacle" || other.tag == "door(wall)")
         {
             isAvailable = false;
         }
@@ -24,7 +25,7 @@ public class AvailableSquare : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "wall" || other.tag == "obstacle" || other.tag == "entrance")
+        if (other.tag == "wall" || other.tag == "obstacle" || other.tag == "door(wall)")
         {
             isAvailable = true;
         }

@@ -11,6 +11,8 @@ public class HitConfirmed : MonoBehaviour {
         if(other.tag == "enemy")
         {
             player.GetComponent<SwordDirection>().swordHitEnemy = true;
+            Debug.Log("confirmed");
         }
     }
+
 }
