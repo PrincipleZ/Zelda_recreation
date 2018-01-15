@@ -14,6 +14,8 @@ TagManager:
   - rupeeB
   - magicSword
   - key
+  - enemy
+  - door(wall)
   layers:
   - Default
   - TransparentFX
