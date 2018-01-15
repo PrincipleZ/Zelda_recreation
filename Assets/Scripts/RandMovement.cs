@@ -28,21 +28,32 @@ public class RandMovement : MonoBehaviour
 
     private void Update()
     {
-		if (enemyHealthScript.movement) {
-			if (Vector3.Magnitude (new Vector3 (Mathf.Abs (transform.position.x - destination.x), Mathf.Abs (transform.position.y - destination.y), 0)) > 1f)
-				doneMoving = true;
+        if (enemyHealthScript.movement)
+        {
+            if (Vector3.Magnitude(new Vector3(Mathf.Abs(transform.position.x - destination.x), Mathf.Abs(transform.position.y - destination.y), 0)) > 1f)
+                doneMoving = true;
 
-			if (doneMoving) {
-				validDestination = false;
-				doneMoving = false;
-				transform.position = new Vector3 (Mathf.Round (transform.position.x), Mathf.Round (transform.position.y), 0);
-				ChooseNextDestination ();
-			}
-            
+            if((path == Vector3.up && !north.GetComponent<AvailableSquare>().isAvailable) || (path == Vector3.down && !south.GetComponent<AvailableSquare>().isAvailable) || 
+                (path == Vector3.right && !east.GetComponent<AvailableSquare>().isAvailable) || (path == Vector3.left && !west.GetComponent<AvailableSquare>().isAvailable))
+            {
+                doneMoving = true;
+            }
 
-			MoveToDestination ();
-		}
+            if (doneMoving)
+            {
+                validDestination = false;
+                doneMoving = false;
+                transform.position = new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y), 0);
+                ChooseNextDestination();
+            }
 
+            if(rb.velocity == Vector3.zero)
+            {
+                doneMoving = true;
+            }
+
+            MoveToDestination();
+        }
     }
 
     void ChooseNextDestination()

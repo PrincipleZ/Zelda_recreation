@@ -11,6 +11,7 @@ public class SwordDirection : MonoBehaviour {
     public float magicSwordSpeed = 10;
     public int directionFacingNESW;
     public bool isSwingingSword = false;
+    public bool swordHitEnemy = false;
 
     bool canSwing = true;
     bool magicSwordActive = false;
@@ -87,7 +88,7 @@ public class SwordDirection : MonoBehaviour {
         //after
         if (GetComponent<Player>().currentHealth == GetComponent<Player>().maxHealth)
         {
-            if (!magicSwordActive)
+            if (!magicSwordActive && !swordHitEnemy)
             {
                 activeSword = Instantiate(magicSwordPrefab);
 
@@ -115,5 +116,6 @@ public class SwordDirection : MonoBehaviour {
                 }
             }
         }
+        swordHitEnemy = false;
     }
 }

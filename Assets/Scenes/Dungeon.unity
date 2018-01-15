@@ -202,6 +202,21 @@ Prefab:
       propertyPath: m_Name
       value: Stalfos (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 54938307355263656, guid: a0f5b29a25928a146b87f45142bc231a,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114135204490608190, guid: a0f5b29a25928a146b87f45142bc231a,
+        type: 2}
+      propertyPath: maxHealth
+      value: 999
+      objectReference: {fileID: 0}
+    - target: {fileID: 114135204490608190, guid: a0f5b29a25928a146b87f45142bc231a,
+        type: 2}
+      propertyPath: currentHealth
+      value: 999
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0f5b29a25928a146b87f45142bc231a, type: 2}
   m_IsPrefabParent: 0

@@ -17,6 +17,7 @@ public class MagicSwordDestruction : MonoBehaviour {
         }
     }
 
+
     IEnumerator AutoKill()
     {
         yield return new WaitForSeconds(1.5f);
