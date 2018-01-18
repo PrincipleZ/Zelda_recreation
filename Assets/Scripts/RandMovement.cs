@@ -17,18 +17,18 @@ public class RandMovement : MonoBehaviour
     public GameObject west;
     public float movementSpeed;
 
-	EnemyHealth enemyHealthScript;
+	GetHurt hurtScript;
     Rigidbody rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-		enemyHealthScript = GetComponent<EnemyHealth> ();
+		hurtScript = GetComponent<GetHurt> ();
     }
 
     private void Update()
     {
-        if (enemyHealthScript.movement)
+		if (hurtScript.movement)
         {
             if (Vector3.Magnitude(new Vector3(Mathf.Abs(transform.position.x - destination.x), Mathf.Abs(transform.position.y - destination.y), 0)) > 1f)
                 doneMoving = true;
