@@ -34,25 +34,25 @@ public class BladeTrapMovement : MonoBehaviour
 
         if (!attacking && !returning)
         {
-            if (up && Physics.Raycast(transform.position, transform.up, 6f, playerLayer))
+            if (up && Physics.SphereCast(new Ray(transform.position, transform.up), .5f, 6f, playerLayer))
             {
                 destination = startingPos + new Vector3(0, vertDistance, 0);
                 direction = Vector3.up * attackSpeed;
                 attacking = true;
             }
-            else if (right && Physics.Raycast(transform.position, transform.right, 11f, playerLayer))
+            else if (right && Physics.SphereCast(new Ray(transform.position, transform.right), .5f, 11f, playerLayer))
             {
                 destination = startingPos + new Vector3(horizDistance, 0, 0);
                 direction = Vector3.right * attackSpeed;
                 attacking = true;
             }
-            else if (down && Physics.Raycast(transform.position, -transform.up, 6f, playerLayer))
+            else if (down && Physics.SphereCast(new Ray(transform.position, -transform.up), .5f, 6f, playerLayer))
             {
                 destination = startingPos - new Vector3(0, vertDistance, 0);
                 direction = Vector3.down * attackSpeed;
                 attacking = true;
             }
-            else if (left && Physics.Raycast(transform.position, -transform.right, 11f, playerLayer))
+            else if (left && Physics.SphereCast(new Ray(transform.position, -transform.right), .5f, 11f, playerLayer))
             {
                 destination = startingPos - new Vector3(horizDistance, 0, 0);
                 direction = Vector3.left * attackSpeed;
