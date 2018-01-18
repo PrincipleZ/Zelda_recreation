@@ -44,6 +44,8 @@ GameObject:
   - component: {fileID: 114240824450662546}
   - component: {fileID: 95595413365045700}
   - component: {fileID: 114731630337611732}
+  - component: {fileID: 114848490207164566}
+  - component: {fileID: 114232266598783772}
   m_Layer: 0
   m_Name: Stalfos
   m_TagString: enemy
@@ -148,7 +150,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1262990475931652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 50, y: 8, z: 0}
+  m_LocalPosition: {x: 58, y: 3, z: 0}
   m_LocalScale: {x: 0.99, y: 0.99, z: 1}
   m_Children:
   - {fileID: 4972078697260968}
@@ -289,9 +291,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 2
   currentHealth: 0
-  force: 500
+--- !u!114 &114232266598783772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1262990475931652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc821c79d06e040b4afd29c00b14345e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTaken: 0
+  damageAmount: 0
   movement: 1
   knockBackTime: 0.3
+  force: 300
 --- !u!114 &114240824450662546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -303,6 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f2818c4bd733844392bb2ca335a14f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: {x: 0, y: 0, z: 0}
   destination: {x: 0, y: 0, z: 0}
   north: {fileID: 1932767631697082}
   south: {fileID: 1051085778997518}
@@ -371,6 +387,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAvailable: 1
   directionHit: 0
+--- !u!114 &114848490207164566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1262990475931652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820d7aac84cda43759c66197d8b6aabe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212462461966581260
 SpriteRenderer:
   m_ObjectHideFlags: 1
