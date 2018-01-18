@@ -2063,6 +2063,11 @@ Prefab:
       propertyPath: heartR_collection_sound_clip
       value: 
       objectReference: {fileID: 8300000, guid: 6a0e2392f02ccf941b980f944f95b48c, type: 3}
+    - target: {fileID: 114337976932585786, guid: 42582c2f0c733c243afe195aa0562a8c,
+        type: 2}
+      propertyPath: link_y_offset
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 42582c2f0c733c243afe195aa0562a8c, type: 2}
   m_IsPrefabParent: 0
