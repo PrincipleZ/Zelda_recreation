@@ -1232,7 +1232,7 @@ Prefab:
       objectReference: {fileID: 594650429}
     - target: {fileID: 1304766244304074, guid: a2f0de0af41adf6479a704c18d0b3c1d, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2f0de0af41adf6479a704c18d0b3c1d, type: 2}
@@ -8195,6 +8195,286 @@ Prefab:
     - target: {fileID: 1460503007957172, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1919067318946100, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1701412001061378, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1212865895415108, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121001043708130, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1096119907870128, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1510794799320092, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1932330314634474, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1150415513275308, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522120339322096, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741013506778964, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072204961050272, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712780977487266, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165833320068448, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915164522171180, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420790358655854, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859533792629754, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040940349951552, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730843506758652, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396582630593816, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483750878869460, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1340845354381302, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1773006472441934, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1043942374742856, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483128415177700, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656566647551188, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277279265521998, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828077994537252, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274930054979572, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743456478985546, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593005979214836, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976983607752016, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1820922250374866, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089702662306096, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521820268079622, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884786263875736, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1798571990167386, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326711468556490, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1816723027605574, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483918422753124, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078414082725034, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974669421657116, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1777561713231834, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855847108869362, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411885436043364, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032703504019000, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285541572031010, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146894383174296, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717208864035718, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300739414023098, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743683980354324, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1537731022112772, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884510234819172, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918285311856872, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628596470181076, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695374944879490, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1212635005850816, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1231929626182566, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1348562121709068, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1247562650729644, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1502520244730744, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833171955377676, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1761113034625762, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048022570389360, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1622409950266946, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1406028506532326, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949219420484148, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1047767989512584, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500028765272156, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1513300219623620, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1294057921138628, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
+      propertyPath: m_TagString
+      value: obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: deb1a308737fcb64ab35dc7f64a161f6, type: 2}
