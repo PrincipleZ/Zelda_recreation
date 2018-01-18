@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4694191829002586}
   - component: {fileID: 65152564684467406}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DoorBlocker
   m_TagString: door(wall)
   m_Icon: {fileID: 0}
