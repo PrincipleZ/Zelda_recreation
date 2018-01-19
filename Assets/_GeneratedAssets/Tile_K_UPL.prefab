@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe82cca177e8e44c6b0d565cbb42e124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entrancePrefab: {fileID: 1163141134059950, guid: b68822a90023048a185f14c44d15df5a,
+  entrancePrefab: {fileID: 1719152953782238, guid: b68822a90023048a185f14c44d15df5a,
     type: 2}
   s: {fileID: 21300184, guid: 29c32f38977a34d9095688f2158c2a00, type: 3}
 --- !u!212 &212824216295821928
