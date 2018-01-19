@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4694191829002586}
   - component: {fileID: 65152564684467406}
+  - component: {fileID: 114997134561289820}
   m_Layer: 8
   m_Name: DoorBlocker
   m_TagString: door(wall)
@@ -47,8 +48,19 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385645256161514}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114997134561289820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385645256161514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a163416cc54618940b696d99318a03a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
