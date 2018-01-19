@@ -4,37 +4,35 @@ using UnityEngine;
 
 public class RandMovement : MonoBehaviour
 {
-    bool isHorizontal;
-    float direction;
     bool doneMoving = true;
     public Vector3 path;
     public Vector3 destination;
     bool validDestination = false;
 
-    public GameObject north;
-    public GameObject south;
-    public GameObject east;
-    public GameObject west;
+    Vector3[] candidates = { Vector3.up, Vector3.right, Vector3.down, Vector3.left };
+    public LayerMask terrain_layer;
+
     public float movementSpeed;
 
-	GetHurt hurtScript;
+    GetHurt hurtScript;
     Rigidbody rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-		hurtScript = GetComponent<GetHurt> ();
+        hurtScript = GetComponent<GetHurt>();
     }
 
     private void Update()
     {
-		if (hurtScript.movement)
+
+        if (hurtScript.movement)
         {
             if (Vector3.Magnitude(new Vector3(Mathf.Abs(transform.position.x - destination.x), Mathf.Abs(transform.position.y - destination.y), 0)) > 1f)
                 doneMoving = true;
 
-            if((path == Vector3.up && !north.GetComponent<AvailableSquare>().isAvailable) || (path == Vector3.down && !south.GetComponent<AvailableSquare>().isAvailable) || 
-                (path == Vector3.right && !east.GetComponent<AvailableSquare>().isAvailable) || (path == Vector3.left && !west.GetComponent<AvailableSquare>().isAvailable))
+            if ((path == Vector3.up && Physics.Raycast(transform.position, transform.up, 0.6f, terrain_layer)) || (path == Vector3.down && Physics.Raycast(transform.position, -transform.up, 0.6f, terrain_layer)) ||
+                (path == Vector3.right && Physics.Raycast(transform.position, transform.right, 0.6f, terrain_layer)) || (path == Vector3.left && Physics.Raycast(transform.position, -transform.right, 0.6f, terrain_layer)))
             {
                 doneMoving = true;
             }
@@ -47,7 +45,7 @@ public class RandMovement : MonoBehaviour
                 ChooseNextDestination();
             }
 
-            if(rb.velocity == Vector3.zero)
+            if (rb.velocity == Vector3.zero)
             {
                 doneMoving = true;
             }
@@ -60,45 +58,30 @@ public class RandMovement : MonoBehaviour
     {
         while (!validDestination)
         {
-            if (Random.value < .5f)
-                isHorizontal = true;
-            else
-                isHorizontal = false;
 
-            if (Random.value < .5f)
-                direction = 1f;
-            else
-                direction = -1f;
+            path = candidates[Random.Range(0, 4)];
 
-            if (isHorizontal && direction == 1f && east.GetComponent<AvailableSquare>().isAvailable)
+            if (path == Vector3.right && !Physics.Raycast(transform.position, transform.right, 0.6f, terrain_layer))
             {
                 validDestination = true;
             }
-                
-            else if (isHorizontal && direction == -1f && west.GetComponent<AvailableSquare>().isAvailable)
+
+            else if (path == Vector3.up && !Physics.Raycast(transform.position, transform.up, 0.6f, terrain_layer))
             {
                 validDestination = true;
             }
-                
-            else if (!isHorizontal && direction == 1f && north.GetComponent<AvailableSquare>().isAvailable)
+
+            else if (path == Vector3.down && !Physics.Raycast(transform.position, -transform.up, 0.6f, terrain_layer))
             {
                 validDestination = true;
             }
-                
-            else if (!isHorizontal && direction == -1f && south.GetComponent<AvailableSquare>().isAvailable)
+
+            else if (path == Vector3.left && !Physics.Raycast(transform.position, -transform.right, 0.6f, terrain_layer))
             {
                 validDestination = true;
             }
-                    
+
         }
-        
-
-        if (isHorizontal)
-            path = new Vector3(1f, 0, 0);
-        else
-            path = new Vector3(0, 1f, 0);
-
-        path *= direction;
 
         destination = new Vector3(Mathf.Round(transform.position.x + path.x), Mathf.Round(transform.position.y + path.y), 0);
 
@@ -108,42 +91,37 @@ public class RandMovement : MonoBehaviour
     void MoveToDestination()
     {
         rb.velocity = path * movementSpeed;
-        if (direction == 1)
+
+        if (path == Vector3.right)
         {
-            if (isHorizontal)
+            if (transform.position.x + (rb.velocity.x * Time.deltaTime) >= destination.x)
             {
-                if(transform.position.x + (rb.velocity.x * Time.deltaTime) >= destination.x)
-                {
-                    transform.position = destination;
-                    doneMoving = true;
-                }
+                transform.position = destination;
+                doneMoving = true;
             }
-            else
+        }
+        else if (path == Vector3.up)
+        {
+            if (transform.position.y + (rb.velocity.y * Time.deltaTime) >= destination.y)
             {
-                if (transform.position.y + (rb.velocity.y * Time.deltaTime) >= destination.y)
-                {
-                    transform.position = destination;
-                    doneMoving = true;
-                }
+                transform.position = destination;
+                doneMoving = true;
+            }
+        }
+        else if (path == Vector3.left)
+        {
+            if (transform.position.x + (rb.velocity.x * Time.deltaTime) <= destination.x)
+            {
+                transform.position = destination;
+                doneMoving = true;
             }
         }
         else
         {
-            if (isHorizontal)
+            if (transform.position.y + (rb.velocity.y * Time.deltaTime) <= destination.y)
             {
-                if (transform.position.x + (rb.velocity.x * Time.deltaTime) <= destination.x)
-                {
-                    transform.position = destination;
-                    doneMoving = true;
-                }
-            }
-            else
-            {
-                if (transform.position.y + (rb.velocity.y * Time.deltaTime) <= destination.y)
-                {
-                    transform.position = destination;
-                    doneMoving = true;
-                }
+                transform.position = destination;
+                doneMoving = true;
             }
         }
     }
@@ -163,7 +141,7 @@ public class RandMovement : MonoBehaviour
     IEnumerator TempIgnore(Collision collision)
     {
         Physics.IgnoreCollision(this.GetComponent<Collider>(), collision.collider, true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(collision.gameObject.GetComponent<Player>().flashTime);
         Physics.IgnoreCollision(this.GetComponent<Collider>(), collision.collider, false);
     }
 }
