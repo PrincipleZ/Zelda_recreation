@@ -19,7 +19,7 @@ public class KesseMovement : MonoBehaviour {
     bool inCollision;
     float flightTime;
     float timeInCurrentFlight = 0f;
-    float acceleration = 0;
+    public float acceleration = 0;
     bool isDecelerating = false;
     bool inFlight = false;
     bool waiting = false;
