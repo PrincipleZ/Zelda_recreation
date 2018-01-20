@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4394359638902864}
   - component: {fileID: 212905668405142370}
   - component: {fileID: 65574554530015354}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: heartRestore
   m_TagString: heartR
   m_Icon: {fileID: 0}

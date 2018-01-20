@@ -63,7 +63,7 @@ public class SwordDirection : MonoBehaviour {
             swordCollider.transform.localScale = new Vector3(.75f, .2f, 1);
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetButtonDown("Fire1"))
         {
             animScript.speed = 1.0f;
             //add sword animation
