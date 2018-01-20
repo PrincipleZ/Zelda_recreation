@@ -128,7 +128,7 @@ public class GelMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<EnemyHealth>())
+        if (collision.gameObject.tag == "enemy")
         {
             Physics.IgnoreCollision(this.GetComponent<Collider>(), collision.collider);
         }
