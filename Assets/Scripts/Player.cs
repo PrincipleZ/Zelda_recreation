@@ -16,6 +16,10 @@ public class Player : MonoBehaviour {
 	public bool dead = false;
 	ChangeHealth changeHealthScript;
 	RoomSwitch cameraScript;
+
+	public GameObject boomerPrefab;
+	SwordDirection swordScript;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
@@ -23,11 +27,32 @@ public class Player : MonoBehaviour {
 		changeHealthScript = GameObject.Find ("HeartManager").GetComponent<ChangeHealth> ();
 		anim = GetComponent<Animator> ();
 		cameraScript = GameObject.FindWithTag ("MainCamera").GetComponent<RoomSwitch> ();
+		swordScript = GetComponent<SwordDirection> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+		if (Input.GetButtonDown("Fire2")){
+			Vector3 dir = Vector3.zero;
+			switch (swordScript.directionFacingNESW){
+			case 0:
+				dir = new Vector3 (0, 1, 0);
+				break;
+			case 1:
+				dir = new Vector3 (1, 0, 0);
+				break;
+			case 2:
+				dir = new Vector3 (0, -1, 0);
+				break;
+			case 3:
+				dir = new Vector3 (-1, 0, 0);
+				break;
+			}
+			GameObject boomer = (GameObject)Instantiate (boomerPrefab, transform.position + dir, Quaternion.identity);
+			Debug.Log (boomer.transform.position);
+			boomer.GetComponent<boomerang> ().shoot (dir, transform);
+		}
 	}
 
 	void FixedUpdate(){
