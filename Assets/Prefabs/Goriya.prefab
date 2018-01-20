@@ -24,7 +24,8 @@ GameObject:
   - component: {fileID: 65967361528540520}
   - component: {fileID: 114646849919240558}
   - component: {fileID: 114388396744422994}
-  - component: {fileID: 95849337428321326}
+  - component: {fileID: 95739347945960178}
+  - component: {fileID: 114242050577499188}
   m_Layer: 10
   m_Name: Goriya
   m_TagString: Untagged
@@ -39,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1566892366736598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 43, y: 59.1, z: 0}
+  m_LocalPosition: {x: 43, y: 60.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,7 +73,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8125, y: 0.9, z: 0.2}
   m_Center: {x: 0, y: -0.1, z: 0}
---- !u!95 &95849337428321326
+--- !u!95 &95739347945960178
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -89,6 +90,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114242050577499188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566892366736598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9cb19e14d5bbb54c8ad447df0fab0e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114388396744422994
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,7 +169,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300124, guid: cb5b17e771c9e429ea8236de84f046ee, type: 3}
+  m_Sprite: {fileID: 21300132, guid: 358cd41674676c74dafd096a7c5685d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
