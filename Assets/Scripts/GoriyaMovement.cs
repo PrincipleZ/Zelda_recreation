@@ -142,11 +142,7 @@ public class GoriyaMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<EnemyHealth>())
-        {
-            Physics.IgnoreCollision(this.GetComponent<Collider>(), collision.collider);
-        }
-        else if (collision.gameObject.GetComponent<Player>())
+        if (collision.gameObject.GetComponent<Player>())
         {
             StartCoroutine(TempIgnore(collision));
         }

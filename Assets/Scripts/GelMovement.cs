@@ -126,11 +126,7 @@ public class GelMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<GelMovement>())
-        {
-            Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
-        }
-        else if (collision.gameObject.GetComponent<Player>())
+        if (collision.gameObject.GetComponent<Player>())
         {
             StartCoroutine(TempIgnore(collision));
         }

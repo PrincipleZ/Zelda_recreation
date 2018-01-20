@@ -24,7 +24,8 @@ GameObject:
   - component: {fileID: 65967361528540520}
   - component: {fileID: 114646849919240558}
   - component: {fileID: 114388396744422994}
-  m_Layer: 0
+  - component: {fileID: 95849337428321326}
+  m_Layer: 10
   m_Name: Goriya
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,6 +72,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8125, y: 0.9, z: 0.2}
   m_Center: {x: 0, y: -0.1, z: 0}
+--- !u!95 &95849337428321326
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566892366736598}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7bcb0dd7cb26b9f4c91d3f525aef0915, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114388396744422994
 MonoBehaviour:
   m_ObjectHideFlags: 1
