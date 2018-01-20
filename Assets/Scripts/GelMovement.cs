@@ -30,7 +30,6 @@ public class GelMovement : MonoBehaviour
 
         if (doneMoving)
         {
-            Debug.Log("this");
             validDestination = false;
             doneMoving = false;
             transform.position = new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y), 0);
@@ -77,7 +76,6 @@ public class GelMovement : MonoBehaviour
 
         if (Random.Range(0f, 1f) < pauseProbability)
         {
-            Debug.Log("pausing");
             timeToMove = false;
             StartCoroutine(PauseTimer(Random.Range(pauseMin, pauseMax)));
         }
@@ -128,9 +126,9 @@ public class GelMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "enemy")
+        if (collision.gameObject.GetComponent<GelMovement>())
         {
-            Physics.IgnoreCollision(this.GetComponent<Collider>(), collision.collider);
+            Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
         }
         else if (collision.gameObject.GetComponent<Player>())
         {
