@@ -36,21 +36,7 @@ public class GetHurt : MonoBehaviour {
 			damageAmount = 1;
 			StartCoroutine(KnockBack(other));
 		}
-		else if (other_go.tag == "boomerang"){
-			if (GetComponent<EnemyHealth>().maxHealth == 1){
-				damageTaken = true;
-				damageAmount = 1;
-			} else{
-				StartCoroutine (Stun());
-			}
-		}
 	}
-	IEnumerator Stun(){
-		movement = false;
-		yield return new WaitForSeconds (2f);
-		movement = true;
-	}
-
 	IEnumerator KnockBack(Collider collider){
 		movement = false;
 		Vector3 knockBackDir = (transform.position - collider.ClosestPointOnBounds(transform.position)).normalized;

@@ -43,6 +43,7 @@ public class InputToAnimator : MonoBehaviour {
 				animator.SetLayerWeight (1, 0);
 			}
 			if (!animator.GetBool("is_moving") && !playerScript.invincible && clips.Length == 1 && clips[0].clip.name.StartsWith("run") && !swordScript.isSwingingSword) {
+				Debug.Log (playerScript.invincible);
 				animator.speed = 0.0f;
 			} else {
 				animator.speed = 1.0f;
