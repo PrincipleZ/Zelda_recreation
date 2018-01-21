@@ -10,6 +10,7 @@ public class GoriyaMovement : MonoBehaviour
     public Vector3 path;
     public Vector3 destination;
     public float boomerangFrequency = .005f;
+	public GameObject boomerPrefab;
 
     bool validDestination = false;
     bool throwing;
@@ -150,7 +151,10 @@ public class GoriyaMovement : MonoBehaviour
 
     IEnumerator ThrowBoomerang()
     {
-        yield return new WaitForSeconds(1f);
+		GameObject boomer = (GameObject)Instantiate (boomerPrefab, transform.position + path, Quaternion.identity);
+		Debug.Log (boomer.transform.position);
+		boomer.GetComponent<boomerang> ().shoot (path, transform);
+		yield return new WaitForSeconds(1f);
         throwing = false;
     }
 

@@ -135,6 +135,8 @@ MonoBehaviour:
   path: {x: 0, y: 0, z: 0}
   destination: {x: 0, y: 0, z: 0}
   boomerangFrequency: 0.005
+  boomerPrefab: {fileID: 1506644227932580, guid: ad49290c0082e441c86925d1eb5aba21,
+    type: 2}
 --- !u!212 &212360947167140550
 SpriteRenderer:
   m_ObjectHideFlags: 1

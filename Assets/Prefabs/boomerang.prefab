@@ -24,9 +24,10 @@ GameObject:
   - component: {fileID: 114246855162679440}
   - component: {fileID: 54059376336125482}
   - component: {fileID: 95806390422635134}
+  - component: {fileID: 114914116290043206}
   m_Layer: 11
   m_Name: boomerang
-  m_TagString: Untagged
+  m_TagString: boomerang
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +101,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 6
-  backSpeed: 4
+  backSpeed: 7
+--- !u!114 &114914116290043206
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1506644227932580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820d7aac84cda43759c66197d8b6aabe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212468778050914078
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -16,6 +16,7 @@ TagManager:
   - key
   - enemy
   - door(wall)
+  - boomerang
   layers:
   - Default
   - TransparentFX
@@ -30,8 +31,6 @@ TagManager:
   - obst
   - boomerang
   - enemy
-  - 
-  - 
   - 
   - 
   - 

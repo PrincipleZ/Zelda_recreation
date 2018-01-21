@@ -56,7 +56,7 @@ public class boomerang : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-//		Debug.Log (other.gameObject);
+		Debug.Log (other.gameObject);
 		if (other.gameObject.tag != "enemy"){
 			//play hit wall effect
 			if (!back){

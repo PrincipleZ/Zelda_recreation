@@ -146,8 +146,9 @@ public class Player : MonoBehaviour {
 	}
 
 	IEnumerator ShootBoomer(){
+		rb.velocity = Vector3.zero;
 		movement = false;
-		yield return new WaitForSeconds (0.5f);
+		yield return new WaitForSeconds (0.2f);
 		movement = true;
 
 	}
