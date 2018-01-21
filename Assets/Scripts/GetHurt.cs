@@ -28,6 +28,7 @@ public class GetHurt : MonoBehaviour {
 			damageTaken = true;
 			damageAmount = 2;
 			StartCoroutine(KnockBack(other));
+            Debug.Log("hitit");
 
 		}
 		else if (other_go.tag == "magicSword")

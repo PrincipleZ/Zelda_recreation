@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4681208070634008}
   - component: {fileID: 212118510440804872}
   - component: {fileID: 65113702181198994}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tile_OBST
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
