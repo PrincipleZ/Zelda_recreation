@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 54414612231341454}
   - component: {fileID: 114698078273869310}
   - component: {fileID: 95233468235010888}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Gel
   m_TagString: enemy
   m_Icon: {fileID: 0}
