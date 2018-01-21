@@ -69,7 +69,7 @@ public class BoomerEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != "enemy")
+        if (other.gameObject.tag == "player" || other.gameObject.tag == "wall" || other.gameObject.tag == "door(wall)")
         {
             //play hit wall effect
             if (!back)
@@ -80,11 +80,7 @@ public class BoomerEnemy : MonoBehaviour
         }
         else
         {
-            if (!back)
-            {
-                back = true;
-                rb.velocity = Vector3.zero;
-            }
+            Physics.IgnoreCollision(other, GetComponent<Collider>());
         }
     }
 }

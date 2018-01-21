@@ -57,17 +57,24 @@ public class boomerang : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		Debug.Log (other.gameObject);
-		if (other.gameObject.tag != "enemy"){
+		if (other.gameObject.tag == "wall" || other.gameObject.tag == "door(wall)")
+        {
 			//play hit wall effect
 			if (!back){
 				back = true;
 				rb.velocity = Vector3.zero;
 			}
-		} else{
+		}
+        else if (other.gameObject.tag != "enemy")
+        {
+            Physics.IgnoreCollision(other, GetComponent<Collider>());
+        }
+        else {
 			if (!back){
 				back = true;
 				rb.velocity = Vector3.zero;
 			}
 		}
+
 	}
 }
