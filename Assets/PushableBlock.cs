@@ -6,12 +6,14 @@ public class PushableBlock : MonoBehaviour {
 
     public bool beenPushed = false;
     public float totalTimeToPush;
+    public bool doneMoving = false;
+    public float timePushing;
 
     bool inContact = false;
-    public float timePushing;
     int pushingNESW;
     int finalNESW;
     float timeInMove = 0;
+    
 	
 	// Update is called once per frame
 	void Update () {
@@ -35,6 +37,10 @@ public class PushableBlock : MonoBehaviour {
             {
                 MoveBlock();
                 timeInMove += Time.deltaTime;
+            }
+            else
+            {
+                doneMoving = true;
             }
         }
 	}
