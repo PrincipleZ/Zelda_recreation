@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212635867703192048}
   - component: {fileID: 65488100661453890}
   - component: {fileID: 114086912544818874}
+  - component: {fileID: 114836265936992686}
   m_Layer: 0
   m_Name: BladeTrap
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1918776078852888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29, y: 63.15, z: 0}
+  m_LocalPosition: {x: 18, y: 63.125, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -71,11 +72,23 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   up: 0
-  down: 0
-  right: 0
+  down: 1
+  right: 1
   left: 0
   vertDistance: 2.75
   horizDistance: 5.4
+--- !u!114 &114836265936992686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1918776078852888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6a630044f96cf4a866661701b2c3f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 2
 --- !u!212 &212635867703192048
 SpriteRenderer:
   m_ObjectHideFlags: 1

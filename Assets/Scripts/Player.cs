@@ -93,7 +93,7 @@ public class Player : MonoBehaviour {
 		
 	public void OnHit(Collision collision){
 		if (!invincible && !dead) {
-			currentHealth -= 1;
+			currentHealth -= collision.gameObject.GetComponent<EnemyDamage>().damageAmount;
 			changeHealthScript.change (currentHealth);
 			if (currentHealth == 0) {
 				movement = false;

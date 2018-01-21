@@ -47,8 +47,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4715531971210128}
   - component: {fileID: 65867564881825908}
-  - component: {fileID: 54628079623078902}
   - component: {fileID: 114046587123084764}
+  - component: {fileID: 54147970641182286}
+  - component: {fileID: 114934798501899166}
   m_Layer: 0
   m_Name: SwordHitbox
   m_TagString: sword
@@ -63,7 +64,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1319593579924358}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27, y: 61, z: 0}
+  m_LocalPosition: {x: 39.43, y: 7.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4715531971210128}
@@ -83,7 +84,7 @@ Transform:
   m_Father: {fileID: 4566752756718864}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &54628079623078902
+--- !u!54 &54147970641182286
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -210,6 +211,8 @@ MonoBehaviour:
   invincible: 0
   movement: 1
   dead: 0
+  boomerPrefab: {fileID: 1506644227932580, guid: ad49290c0082e441c86925d1eb5aba21,
+    type: 2}
 --- !u!114 &114239697040158064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -237,7 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement_speed: 4
-  link_y_offset: 0.1
+  link_y_offset: 0.05
   isDoingAction: 0
 --- !u!114 &114610577054497026
 MonoBehaviour:
@@ -287,6 +290,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GodModeActive: 0
+--- !u!114 &114934798501899166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1585381483243180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820d7aac84cda43759c66197d8b6aabe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212377615895223370
 SpriteRenderer:
   m_ObjectHideFlags: 1

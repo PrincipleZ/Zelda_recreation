@@ -24,6 +24,9 @@ GameObject:
   - component: {fileID: 54414612231341454}
   - component: {fileID: 114698078273869310}
   - component: {fileID: 95233468235010888}
+  - component: {fileID: 114849520620340674}
+  - component: {fileID: 114794404412928254}
+  - component: {fileID: 114555821314886402}
   m_Layer: 12
   m_Name: Gel
   m_TagString: enemy
@@ -38,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1173374500493080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38, y: 36, z: 0}
+  m_LocalPosition: {x: 42, y: 38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -88,6 +91,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114555821314886402
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1173374500493080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6a630044f96cf4a866661701b2c3f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 1
 --- !u!114 &114698078273869310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,6 +124,35 @@ MonoBehaviour:
   pauseMin: 0.4
   pauseMax: 2
   timeToMove: 1
+--- !u!114 &114794404412928254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1173374500493080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc821c79d06e040b4afd29c00b14345e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTaken: 0
+  damageAmount: 0
+  movement: 1
+  knockBackTime: 0.3
+  force: 300
+--- !u!114 &114849520620340674
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1173374500493080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa8d688b1720c22479891ffb76ac3d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+  currentHealth: 0
 --- !u!212 &212996238992399084
 SpriteRenderer:
   m_ObjectHideFlags: 1
