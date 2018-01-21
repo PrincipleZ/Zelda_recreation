@@ -27,8 +27,6 @@ public class boomerang : MonoBehaviour {
 
 
 	public void shoot(Vector3 dir, Transform pTransform){
-		Debug.Log (dir);
-		Debug.Log (pTransform);
 		direction = dir;
 		parentTransform = pTransform;
 	

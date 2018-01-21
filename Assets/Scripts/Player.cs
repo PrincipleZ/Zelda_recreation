@@ -16,10 +16,9 @@ public class Player : MonoBehaviour {
 	public bool dead = false;
 	ChangeHealth changeHealthScript;
 	RoomSwitch cameraScript;
-
 	public GameObject boomerPrefab;
 	SwordDirection swordScript;
-
+	GameObject boomer;
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
@@ -33,7 +32,8 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetButtonDown("Fire2")){
+		if (Input.GetButtonDown("Fire2") && boomer == null){
+			StartCoroutine (ShootBoomer());
 			Vector3 dir = Vector3.zero;
 			switch (swordScript.directionFacingNESW){
 			case 0:
@@ -49,7 +49,7 @@ public class Player : MonoBehaviour {
 				dir = new Vector3 (-1, 0, 0);
 				break;
 			}
-			GameObject boomer = (GameObject)Instantiate (boomerPrefab, transform.position + dir, Quaternion.identity);
+			boomer = (GameObject)Instantiate (boomerPrefab, transform.position + dir, Quaternion.identity);
 			Debug.Log (boomer.transform.position);
 			boomer.GetComponent<boomerang> ().shoot (dir, transform);
 		}
@@ -143,6 +143,13 @@ public class Player : MonoBehaviour {
 		Debug.Log (force * collision.contacts [0].normal);
 		yield return new WaitForSeconds (knockBackTime);
 		movement = true;
+	}
+
+	IEnumerator ShootBoomer(){
+		movement = false;
+		yield return new WaitForSeconds (0.5f);
+		movement = true;
+
 	}
 
 	void Die(){
