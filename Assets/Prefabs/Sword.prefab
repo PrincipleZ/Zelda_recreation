@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e706fa52520afdb4092f70ad68c681d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magicSwordSound: {fileID: 8300000, guid: 98f82a4841d5bac4795615d5ed7e4411, type: 3}
 --- !u!212 &212282518122843598
 SpriteRenderer:
   m_ObjectHideFlags: 1

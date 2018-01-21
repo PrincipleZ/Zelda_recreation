@@ -23,8 +23,6 @@ GameObject:
   - component: {fileID: 65698557705264162}
   - component: {fileID: 114324728837920720}
   - component: {fileID: 54231550425554526}
-  - component: {fileID: 114280461349248854}
-  - component: {fileID: 114019432328051628}
   - component: {fileID: 114723571204903492}
   - component: {fileID: 114352454427206714}
   - component: {fileID: 114157351687530744}
@@ -94,17 +92,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114019432328051628
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1178434162905954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 790e05ce9d3270e46bec2a6ad820d5f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114157351687530744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,22 +103,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc821c79d06e040b4afd29c00b14345e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hurtSound: {fileID: 8300000, guid: 83aa10a7b9dbf5649bf3d9e07e796dcc, type: 3}
   damageTaken: 0
   damageAmount: 0
   movement: 1
   knockBackTime: 0.3
   force: 300
---- !u!114 &114280461349248854
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1178434162905954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 790e05ce9d3270e46bec2a6ad820d5f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114324728837920720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -163,6 +140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1
   currentHealth: 0
+  deathSoundClip: {fileID: 8300000, guid: fdbcabb21e6dac0478efa8eeefda2778, type: 3}
+  hurtSound: {fileID: 8300000, guid: 83aa10a7b9dbf5649bf3d9e07e796dcc, type: 3}
 --- !u!114 &114434146478722044
 MonoBehaviour:
   m_ObjectHideFlags: 1

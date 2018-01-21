@@ -8,6 +8,7 @@ public class PushableBlock : MonoBehaviour {
     public float totalTimeToPush;
     public bool doneMoving = false;
     public float timePushing;
+    public AudioClip secretSoundClip;
 
     bool inContact = false;
     int pushingNESW;
@@ -40,6 +41,9 @@ public class PushableBlock : MonoBehaviour {
             }
             else
             {
+                if(!doneMoving)
+                    AudioSource.PlayClipAtPoint(secretSoundClip, Camera.main.transform.position);
+
                 doneMoving = true;
             }
         }

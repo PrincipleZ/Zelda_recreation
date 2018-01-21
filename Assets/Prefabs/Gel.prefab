@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc821c79d06e040b4afd29c00b14345e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hurtSound: {fileID: 8300000, guid: 83aa10a7b9dbf5649bf3d9e07e796dcc, type: 3}
   damageTaken: 0
   damageAmount: 0
   movement: 1
@@ -153,6 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1
   currentHealth: 0
+  deathSoundClip: {fileID: 8300000, guid: fdbcabb21e6dac0478efa8eeefda2778, type: 3}
+  hurtSound: {fileID: 8300000, guid: 83aa10a7b9dbf5649bf3d9e07e796dcc, type: 3}
 --- !u!212 &212996238992399084
 SpriteRenderer:
   m_ObjectHideFlags: 1

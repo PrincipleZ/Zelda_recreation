@@ -8,6 +8,9 @@ public class EnemyHealth : MonoBehaviour {
     public int currentHealth;
 	GetHurt hurtScript;
 
+    public AudioClip deathSoundClip;
+    public AudioClip hurtSound;
+
     bool invincible = false;
     bool isHoriz;
 
@@ -27,7 +30,12 @@ public class EnemyHealth : MonoBehaviour {
 
             if(currentHealth <= 0)
             {
+                AudioSource.PlayClipAtPoint(deathSoundClip, Camera.main.transform.position);
                 Destroy(this.gameObject);
+            }
+            else
+            {
+                AudioSource.PlayClipAtPoint(hurtSound, Camera.main.transform.position);
             }
         }
 

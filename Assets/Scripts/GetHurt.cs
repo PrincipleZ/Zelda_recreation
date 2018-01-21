@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GetHurt : MonoBehaviour {
 
+    public AudioClip hurtSound;
 	public bool damageTaken;
 	public int damageAmount;
 	public bool movement = true;
@@ -30,7 +31,6 @@ public class GetHurt : MonoBehaviour {
 			damageTaken = true;
 			damageAmount = 2;
 			StartCoroutine(KnockBack(other));
-            Debug.Log("hitit");
 
 		}
 		else if (other_go.tag == "magicSword")
@@ -46,7 +46,8 @@ public class GetHurt : MonoBehaviour {
 				damageAmount = 1;
 			} else{
 				StartCoroutine (Stun());
-			}
+                AudioSource.PlayClipAtPoint(hurtSound, Camera.main.transform.position);
+            }
 		}
 	}
 	IEnumerator Stun(){

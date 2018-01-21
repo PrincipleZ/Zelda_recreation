@@ -9,49 +9,51 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1566892366736598}
+  m_RootGameObject: {fileID: 1237560637461030}
   m_IsPrefabParent: 1
---- !u!1 &1566892366736598
+--- !u!1 &1237560637461030
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4399780068132724}
-  - component: {fileID: 212360947167140550}
-  - component: {fileID: 54121254969419572}
-  - component: {fileID: 65967361528540520}
-  - component: {fileID: 114646849919240558}
-  - component: {fileID: 114388396744422994}
-  - component: {fileID: 95739347945960178}
-  - component: {fileID: 114242050577499188}
+  - component: {fileID: 4355249690170136}
+  - component: {fileID: 212685835974153504}
+  - component: {fileID: 54798746732917916}
+  - component: {fileID: 65454564852186260}
+  - component: {fileID: 114835324524722538}
+  - component: {fileID: 114429055256596564}
+  - component: {fileID: 95383811620729720}
+  - component: {fileID: 114181675956458192}
+  - component: {fileID: 114836980909589740}
+  - component: {fileID: 114866372538727558}
   m_Layer: 12
   m_Name: Goriya
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4399780068132724
+--- !u!4 &4355249690170136
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1566892366736598}
+  m_GameObject: {fileID: 1237560637461030}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 43, y: 60.1, z: 0}
+  m_LocalPosition: {x: 42, y: 59.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &54121254969419572
+--- !u!54 &54798746732917916
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1566892366736598}
+  m_GameObject: {fileID: 1237560637461030}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -61,25 +63,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 1
---- !u!65 &65967361528540520
+--- !u!65 &65454564852186260
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1566892366736598}
+  m_GameObject: {fileID: 1237560637461030}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.8125, y: 0.9, z: 0.2}
   m_Center: {x: 0, y: -0.1, z: 0}
---- !u!95 &95739347945960178
+--- !u!95 &95383811620729720
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1566892366736598}
+  m_GameObject: {fileID: 1237560637461030}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 7bcb0dd7cb26b9f4c91d3f525aef0915, type: 2}
@@ -90,39 +92,40 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114242050577499188
+--- !u!114 &114181675956458192
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1566892366736598}
+  m_GameObject: {fileID: 1237560637461030}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9cb19e14d5bbb54c8ad447df0fab0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114388396744422994
+--- !u!114 &114429055256596564
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1566892366736598}
+  m_GameObject: {fileID: 1237560637461030}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc821c79d06e040b4afd29c00b14345e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hurtSound: {fileID: 8300000, guid: 83aa10a7b9dbf5649bf3d9e07e796dcc, type: 3}
   damageTaken: 0
   damageAmount: 0
   movement: 1
   knockBackTime: 0.3
   force: 300
---- !u!114 &114646849919240558
+--- !u!114 &114835324524722538
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1566892366736598}
+  m_GameObject: {fileID: 1237560637461030}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00918da9ccdbe2148958fb23ebeb438c, type: 3}
@@ -135,14 +138,42 @@ MonoBehaviour:
   path: {x: 0, y: 0, z: 0}
   destination: {x: 0, y: 0, z: 0}
   boomerangFrequency: 0.005
-  boomerPrefab: {fileID: 1506644227932580, guid: ad49290c0082e441c86925d1eb5aba21,
+  boomerPrefab: {fileID: 1506644227932580, guid: d860083dff0c8d2488103c23dcbedf7d,
     type: 2}
---- !u!212 &212360947167140550
+  boomCanary: 0
+--- !u!114 &114836980909589740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1237560637461030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa8d688b1720c22479891ffb76ac3d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  currentHealth: 0
+  deathSoundClip: {fileID: 8300000, guid: fdbcabb21e6dac0478efa8eeefda2778, type: 3}
+  hurtSound: {fileID: 8300000, guid: 83aa10a7b9dbf5649bf3d9e07e796dcc, type: 3}
+--- !u!114 &114866372538727558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1237560637461030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6a630044f96cf4a866661701b2c3f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 1
+--- !u!212 &212685835974153504
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1566892366736598}
+  m_GameObject: {fileID: 1237560637461030}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

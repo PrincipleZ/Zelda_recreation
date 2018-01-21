@@ -11,10 +11,12 @@ public class GoriyaMovement : MonoBehaviour
     public Vector3 destination;
     public float boomerangFrequency = .005f;
 	public GameObject boomerPrefab;
+    public bool boomCanary = false;
 
     bool validDestination = false;
     bool throwing;
     bool doneMoving = true;
+    bool boomerSpawned;
 
     Vector3[] candidates = { Vector3.up, Vector3.right, Vector3.down, Vector3.left };
 
@@ -65,7 +67,11 @@ public class GoriyaMovement : MonoBehaviour
         else
         {
             rb.velocity = Vector3.zero;
-            StartCoroutine(ThrowBoomerang());
+            if (!boomerSpawned)
+            {
+                StartCoroutine(ThrowBoomerang());
+                boomerSpawned = true;
+            }
         }
     }
 
@@ -152,10 +158,14 @@ public class GoriyaMovement : MonoBehaviour
     IEnumerator ThrowBoomerang()
     {
 		GameObject boomer = (GameObject)Instantiate (boomerPrefab, transform.position + path, Quaternion.identity);
-		Debug.Log (boomer.transform.position);
-		boomer.GetComponent<boomerang> ().shoot (path, transform);
-		yield return new WaitForSeconds(1f);
+		boomer.GetComponent<BoomerEnemy> ().shoot (path, transform);
+        while (!boomer.GetComponent<BoomerEnemy>().boomerCanary)
+        {
+            yield return null;
+        }
+        boomer.GetComponent<BoomerEnemy>().deleteObject = true;
         throwing = false;
+        boomerSpawned = false;
     }
 
     IEnumerator TempIgnore(Collision collision)
