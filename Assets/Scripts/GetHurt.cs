@@ -18,6 +18,8 @@ public class GetHurt : MonoBehaviour {
 	}
 	public void OnHit(Collider other){
 		GameObject other_go = other.gameObject;
+		Debug.Log (other_go.tag);
+
 		if(other_go.tag == "sword")
 		{
 			damageTaken = true;
@@ -37,7 +39,23 @@ public class GetHurt : MonoBehaviour {
 			damageAmount = 1;
 			StartCoroutine(KnockBack(other));
 		}
+		else if (other_go.tag == "boomerang"){
+
+			if (GetComponent<EnemyHealth>().maxHealth == 1){
+				damageTaken = true;
+				damageAmount = 1;
+			} else{
+				StartCoroutine (Stun());
+			}
+		}
 	}
+	IEnumerator Stun(){
+		rb.velocity = Vector3.zero;
+		movement = false;
+		yield return new WaitForSeconds (2f);
+		movement = true;
+	}
+
 	IEnumerator KnockBack(Collider collider){
 		movement = false;
 		Vector3 knockBackDir = (transform.position - collider.ClosestPointOnBounds(transform.position)).normalized;
