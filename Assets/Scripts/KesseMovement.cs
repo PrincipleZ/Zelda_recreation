@@ -132,11 +132,7 @@ public class KesseMovement : MonoBehaviour {
         {
             Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
         }
-        else if(collision.gameObject.tag == "Player")
-        {
-            //knockback and damage
-        }
-        else
+        else if(collision.gameObject.tag != "Player")
         {
             if (!inCollision)
             {

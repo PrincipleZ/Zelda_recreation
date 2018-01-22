@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65523959855527614}
   - component: {fileID: 114592170722504976}
   - component: {fileID: 114295351590566456}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Arrow
   m_TagString: arrow
   m_Icon: {fileID: 0}
@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e706fa52520afdb4092f70ad68c681d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magicSwordSound: {fileID: 0}
 --- !u!212 &212753899773117062
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -23,11 +23,14 @@ GameObject:
   - component: {fileID: 65698557705264162}
   - component: {fileID: 114324728837920720}
   - component: {fileID: 54231550425554526}
-  - component: {fileID: 95907915132956798}
-  - component: {fileID: 114280461349248854}
+  - component: {fileID: 114723571204903492}
+  - component: {fileID: 114352454427206714}
+  - component: {fileID: 114157351687530744}
+  - component: {fileID: 95514063934942150}
+  - component: {fileID: 114434146478722044}
   m_Layer: 12
   m_Name: Kesse
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1178434162905954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.96, y: 6.08, z: 0}
+  m_LocalPosition: {x: 21.96, y: 5.0818505, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,7 +75,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.5, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &95907915132956798
+--- !u!95 &95514063934942150
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -89,7 +92,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114280461349248854
+--- !u!114 &114157351687530744
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -97,9 +100,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1178434162905954}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 790e05ce9d3270e46bec2a6ad820d5f0, type: 3}
+  m_Script: {fileID: 11500000, guid: dc821c79d06e040b4afd29c00b14345e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hurtSound: {fileID: 8300000, guid: 83aa10a7b9dbf5649bf3d9e07e796dcc, type: 3}
+  damageTaken: 0
+  damageAmount: 0
+  movement: 1
+  knockBackTime: 0.3
+  force: 300
 --- !u!114 &114324728837920720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -118,6 +127,44 @@ MonoBehaviour:
   timeToAccelerate: 2
   restTime: 1
   acceleration: 0
+--- !u!114 &114352454427206714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178434162905954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa8d688b1720c22479891ffb76ac3d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+  currentHealth: 0
+  deathSoundClip: {fileID: 8300000, guid: fdbcabb21e6dac0478efa8eeefda2778, type: 3}
+  hurtSound: {fileID: 8300000, guid: 83aa10a7b9dbf5649bf3d9e07e796dcc, type: 3}
+--- !u!114 &114434146478722044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178434162905954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790e05ce9d3270e46bec2a6ad820d5f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114723571204903492
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178434162905954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6a630044f96cf4a866661701b2c3f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 1
 --- !u!212 &212438450103377622
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -12,6 +12,7 @@ public class SwordDirection : MonoBehaviour {
     public int directionFacingNESW;
     public bool isSwingingSword = false;
     public bool swordHitEnemy;
+    public AudioClip swordSoundClip;
 
     bool canSwing = true;
     bool magicSwordActive = false;
@@ -69,6 +70,7 @@ public class SwordDirection : MonoBehaviour {
             //add sword animation
             if (canSwing && !this.GetComponent<Bow>().isShooting)
             {
+                AudioSource.PlayClipAtPoint(swordSoundClip, Camera.main.transform.position);
                 StartCoroutine(HitTime(hitboxDuration));
             }
         }
