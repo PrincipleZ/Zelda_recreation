@@ -134,6 +134,9 @@ MonoBehaviour:
   terrain_layer:
     serializedVersion: 2
     m_Bits: 256
+  obst_layer:
+    serializedVersion: 2
+    m_Bits: 1024
   movementSpeed: 3
   path: {x: 0, y: 0, z: 0}
   destination: {x: 0, y: 0, z: 0}

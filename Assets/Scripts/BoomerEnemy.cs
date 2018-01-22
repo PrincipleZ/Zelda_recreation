@@ -7,8 +7,9 @@ public class BoomerEnemy : MonoBehaviour
     public bool boomerCanary = false;
     public bool deleteObject = false;
 
+    Vector3 lastVelocity;
     bool shot;
-    bool back;
+    public bool back;
     Vector3 direction;
     Rigidbody rb;
     Animator animator;
@@ -65,22 +66,27 @@ public class BoomerEnemy : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        lastVelocity = rb.velocity;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.tag == "player" || other.gameObject.tag == "wall" || other.gameObject.tag == "door(wall)")
+        //play hit wall effect
+        if (!back)
         {
-            //play hit wall effect
-            if (!back)
-            {
-                back = true;
-                rb.velocity = Vector3.zero;
-            }
+            back = true;
+            rb.velocity = Vector3.zero;
         }
-        else
+        if(collision.gameObject.GetComponent<Player>())
         {
-            Physics.IgnoreCollision(other, GetComponent<Collider>());
+            StartCoroutine(TempIgnore(collision.gameObject));
         }
+    }
+
+    IEnumerator TempIgnore(GameObject player)
+    {
+        Physics.IgnoreCollision(GetComponent<Collider>(), player.GetComponent<Collider>(), true);
+        yield return new WaitForSeconds(player.GetComponent<Player>().flashTime);
+        Physics.IgnoreCollision(GetComponent<Collider>(), player.GetComponent<Collider>(), false);
     }
 }

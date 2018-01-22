@@ -6,6 +6,7 @@ public class GoriyaMovement : MonoBehaviour
 {
 
     public LayerMask terrain_layer;
+    public LayerMask obst_layer;
     public float movementSpeed;
     public Vector3 path;
     public Vector3 destination;
@@ -38,8 +39,10 @@ public class GoriyaMovement : MonoBehaviour
             if (Vector3.Magnitude(new Vector3(Mathf.Abs(transform.position.x - destination.x), Mathf.Abs(transform.position.y - destination.y), 0)) > 1f)
                 doneMoving = true;
 
-            if ((path == Vector3.up && Physics.Raycast(transform.position, transform.up, 0.6f, terrain_layer)) || (path == Vector3.down && Physics.Raycast(transform.position, -transform.up, 0.6f, terrain_layer)) ||
-                (path == Vector3.right && Physics.Raycast(transform.position, transform.right, 0.6f, terrain_layer)) || (path == Vector3.left && Physics.Raycast(transform.position, -transform.right, 0.6f, terrain_layer)))
+            if ((path == Vector3.up && (Physics.Raycast(transform.position, transform.up, 0.6f, terrain_layer) || Physics.Raycast(transform.position, transform.up, 0.6f, obst_layer))) || 
+                    (path == Vector3.down && (Physics.Raycast(transform.position, -transform.up, 0.6f, terrain_layer) || Physics.Raycast(transform.position, -transform.up, 0.6f, obst_layer))) ||
+                (path == Vector3.right && (Physics.Raycast(transform.position, transform.right, 0.6f, terrain_layer) || Physics.Raycast(transform.position, transform.right, 0.6f, obst_layer))) || 
+                (path == Vector3.left && (Physics.Raycast(transform.position, -transform.right, 0.6f, terrain_layer) || Physics.Raycast(transform.position, -transform.right, 0.6f, obst_layer))))
             {
                 doneMoving = true;
             }
@@ -82,22 +85,22 @@ public class GoriyaMovement : MonoBehaviour
 
             path = candidates[Random.Range(0, 4)];
 
-            if (path == Vector3.right && !Physics.Raycast(transform.position, transform.right, 0.6f, terrain_layer))
+            if (path == Vector3.right && !Physics.Raycast(transform.position, transform.right, 0.6f, terrain_layer) && !Physics.Raycast(transform.position, transform.right, 0.6f, obst_layer))
             {
                 validDestination = true;
             }
 
-            else if (path == Vector3.up && !Physics.Raycast(transform.position, transform.up, 0.6f, terrain_layer))
+            else if (path == Vector3.up && !Physics.Raycast(transform.position, transform.up, 0.6f, terrain_layer) && !Physics.Raycast(transform.position, transform.up, 0.6f, obst_layer))
             {
                 validDestination = true;
             }
 
-            else if (path == Vector3.down && !Physics.Raycast(transform.position, -transform.up, 0.6f, terrain_layer))
+            else if (path == Vector3.down && !Physics.Raycast(transform.position, -transform.up, 0.6f, terrain_layer) && !Physics.Raycast(transform.position, -transform.up, 0.6f, obst_layer))
             {
                 validDestination = true;
             }
 
-            else if (path == Vector3.left && !Physics.Raycast(transform.position, -transform.right, 0.6f, terrain_layer))
+            else if (path == Vector3.left && !Physics.Raycast(transform.position, -transform.right, 0.6f, terrain_layer) && !Physics.Raycast(transform.position, -transform.right, 0.6f, obst_layer))
             {
                 validDestination = true;
             }
@@ -162,6 +165,13 @@ public class GoriyaMovement : MonoBehaviour
         while (!boomer.GetComponent<BoomerEnemy>().boomerCanary)
         {
             yield return null;
+            if (boomer.GetComponent<BoomerEnemy>().back)
+            {
+                if(Vector3.Distance(transform.position, boomer.transform.position) < .5f)
+                {
+                    boomer.GetComponent<BoomerEnemy>().boomerCanary = true;
+                }
+            }
         }
         boomer.GetComponent<BoomerEnemy>().deleteObject = true;
         throwing = false;
