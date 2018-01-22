@@ -122,7 +122,7 @@ MonoBehaviour:
   terrain_layer:
     serializedVersion: 2
     m_Bits: 256
-  movementSpeed: 3
+  movementSpeed: 1.5
 --- !u!114 &114700197290845682
 MonoBehaviour:
   m_ObjectHideFlags: 1
