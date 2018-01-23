@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour {
 	public float key_count = 1;
     public int bomb_count = 0;
     public int max_count = 255;
+	public string offhand ="";
 
     public void AddRupees(int num_rupees)
     {
