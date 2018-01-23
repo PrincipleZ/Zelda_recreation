@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303dcd5e769084de7835303ded47a51a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boomerAudio: {fileID: 8300000, guid: 5e01eeb0b99e3fb42bce1cefdcca1ab1, type: 3}
   force: 6
   backSpeed: 7
 --- !u!114 &114914116290043206

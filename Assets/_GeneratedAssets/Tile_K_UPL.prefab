@@ -68,6 +68,7 @@ MonoBehaviour:
   entrancePrefab: {fileID: 1719152953782238, guid: b68822a90023048a185f14c44d15df5a,
     type: 2}
   s: {fileID: 21300184, guid: 29c32f38977a34d9095688f2158c2a00, type: 3}
+  unlockSound: {fileID: 8300000, guid: c53eee118cf063d43a7ff59fc7ab290d, type: 3}
 --- !u!212 &212824216295821928
 SpriteRenderer:
   m_ObjectHideFlags: 1

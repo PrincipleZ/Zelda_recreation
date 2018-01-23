@@ -5,6 +5,8 @@ using UnityEngine;
 public class bomb : MonoBehaviour {
 	bool countDownOver = false;
 	public GameObject smokePrefab;
+
+    public AudioClip explosion;
 	// Use this for initialization
 	void Start () {
 		StartCoroutine (CountDown ());
@@ -13,7 +15,8 @@ public class bomb : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (countDownOver){
-			for (int i = 0; i < 8; i++){
+            AudioSource.PlayClipAtPoint(explosion, Camera.main.transform.position);
+            for (int i = 0; i < 8; i++){
 				RaycastHit temp;
 				if (Physics.Raycast(transform.position, transform.position + (Quaternion.Euler(0, 0, i * 45)) * Vector3.up, out temp, 1f)){
 					if (temp.collider.gameObject.tag == "enemy") {

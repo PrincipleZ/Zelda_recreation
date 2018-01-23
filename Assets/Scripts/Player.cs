@@ -60,6 +60,7 @@ public class Player : MonoBehaviour {
 				boomer.GetComponent<boomerang> ().shoot (dir, transform);
 			}
 			else if (inventoryScript.offhand == "bomb"){
+                GetComponent<playerSounds>().DropBomb();
 				inventoryScript.bomb_count -= 1;
 				bomb = (GameObject)Instantiate (bombPrefab, transform.position + dir, Quaternion.identity);
 
@@ -105,6 +106,7 @@ public class Player : MonoBehaviour {
 		
 	public void OnHit(Collision collision){
 		if (!invincible && !dead) {
+            GetComponent<playerSounds>().GotHit();
 			currentHealth -= collision.gameObject.GetComponent<EnemyDamage>().damageAmount;
 			changeHealthScript.change (currentHealth);
 			if (currentHealth == 0) {
@@ -166,6 +168,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void Die(){
+        GetComponent<playerSounds>().DeathAudio();
 		dead = true;
 		rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY;
 		anim.SetBool ("Dead", true);
