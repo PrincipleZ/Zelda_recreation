@@ -93,6 +93,7 @@ public class Player : MonoBehaviour {
 		
 	public void OnHit(Collision collision){
 		if (!invincible && !dead) {
+            GetComponent<playerSounds>().GotHit();
 			currentHealth -= collision.gameObject.GetComponent<EnemyDamage>().damageAmount;
 			changeHealthScript.change (currentHealth);
 			if (currentHealth == 0) {
@@ -154,6 +155,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void Die(){
+        GetComponent<playerSounds>().DeathAudio();
 		dead = true;
 		rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY;
 		anim.SetBool ("Dead", true);

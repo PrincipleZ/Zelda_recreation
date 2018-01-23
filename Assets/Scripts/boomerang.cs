@@ -6,6 +6,8 @@ public class boomerang : MonoBehaviour {
 
 	bool shot;
 	bool back;
+    bool loopTime = true;
+    public AudioClip boomerAudio;
 	Vector3 direction;
 	Rigidbody rb;
 	Animator animator;
@@ -38,6 +40,10 @@ public class boomerang : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
+
+        if (loopTime)
+            StartCoroutine(BoomerSound());
+
 		if (shot) {
 			if (!back)
 				rb.velocity -= direction / 10;
@@ -54,6 +60,14 @@ public class boomerang : MonoBehaviour {
 			}
 		}
 	}
+
+    IEnumerator BoomerSound()
+    {
+        loopTime = false;
+        AudioSource.PlayClipAtPoint(boomerAudio, Camera.main.transform.position);
+        yield return new WaitForSeconds(.15f);
+        loopTime = true;
+    }
 
 	void OnTriggerEnter(Collider other){
 		Debug.Log (other.gameObject);

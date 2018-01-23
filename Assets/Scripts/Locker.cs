@@ -5,6 +5,7 @@ using UnityEngine;
 public class Locker : MonoBehaviour {
 	public GameObject entrancePrefab;
 	public Sprite s;
+    public AudioClip unlockSound;
 	Inventory inventory;
 	// Use this for initialization
 	void Start () {
@@ -20,7 +21,9 @@ public class Locker : MonoBehaviour {
 		if (collision.gameObject.name == "Player"){
 			if (inventory.key_count > 0) {
 				string objectName = gameObject.name;
-				if (objectName == "Tile_K_UPR" || objectName == "Tile_K_UPL")
+                if(unlockSound != null)
+                    AudioSource.PlayClipAtPoint(unlockSound, Camera.main.transform.position);
+                if (objectName == "Tile_K_UPR" || objectName == "Tile_K_UPL")
 					inventory.key_count -= 0.5f;
 				else
 					inventory.key_count -= 1f;

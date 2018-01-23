@@ -29,6 +29,7 @@ public class Bow : MonoBehaviour {
         {
             if(GetComponent<Inventory>().GetRupees() > 0 && !this.GetComponent<ArrowKeyMovement>().isDoingAction && canShoot)
             {
+                GetComponent<playerSounds>().ShotArrow();
                 StartCoroutine(Shooting(reloadTime));
             }
 

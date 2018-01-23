@@ -6,6 +6,7 @@ public class Collector : MonoBehaviour {
 
     public AudioClip rupee_collection_sound_clip;
     public AudioClip heartR_collection_sound_clip;
+    public AudioClip countingAudio;
 
     Inventory inventory;
     Player player;
@@ -31,6 +32,7 @@ public class Collector : MonoBehaviour {
             Destroy(object_collided_with);
 
             AudioSource.PlayClipAtPoint(rupee_collection_sound_clip, Camera.main.transform.position);
+            AudioSource.PlayClipAtPoint(countingAudio, Camera.main.transform.position);
         }
 
         if (object_collided_with.tag == "rupeeB")
@@ -39,6 +41,7 @@ public class Collector : MonoBehaviour {
                 inventory.AddRupees(5);
             Destroy(object_collided_with);
 
+            StartCoroutine(GetComponent<playerSounds>().MultipleCollected(5));
             AudioSource.PlayClipAtPoint(rupee_collection_sound_clip, Camera.main.transform.position);
         }
 
@@ -49,6 +52,7 @@ public class Collector : MonoBehaviour {
             Destroy(object_collided_with);
 
             AudioSource.PlayClipAtPoint(heartR_collection_sound_clip, Camera.main.transform.position);
+            AudioSource.PlayClipAtPoint(countingAudio, Camera.main.transform.position);
         }
 
         if (object_collided_with.tag == "key")
@@ -58,6 +62,7 @@ public class Collector : MonoBehaviour {
             Destroy(object_collided_with);
 
             AudioSource.PlayClipAtPoint(heartR_collection_sound_clip, Camera.main.transform.position);
+            AudioSource.PlayClipAtPoint(countingAudio, Camera.main.transform.position);
         }
     }
 }
