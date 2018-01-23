@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class MagicSwordDestruction : MonoBehaviour {
 
-    public AudioClip magicSwordSound;
+//    public AudioClip magicSwordSound;
 
     private void Awake()
     {
         StartCoroutine(AutoKill());
-        AudioSource.PlayClipAtPoint(magicSwordSound, Camera.main.transform.position);
+//        AudioSource.PlayClipAtPoint(magicSwordSound, Camera.main.transform.position);
     }
 
     private void OnTriggerEnter(Collider other)

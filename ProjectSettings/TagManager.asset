@@ -17,6 +17,7 @@ TagManager:
   - enemy
   - door(wall)
   - boomerang
+  - breakable wall
   layers:
   - Default
   - TransparentFX

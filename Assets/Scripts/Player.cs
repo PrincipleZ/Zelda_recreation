@@ -17,8 +17,11 @@ public class Player : MonoBehaviour {
 	ChangeHealth changeHealthScript;
 	RoomSwitch cameraScript;
 	public GameObject boomerPrefab;
+	public GameObject bombPrefab;
 	SwordDirection swordScript;
 	GameObject boomer;
+	GameObject bomb;
+	Inventory inventoryScript;
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
@@ -27,15 +30,15 @@ public class Player : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		cameraScript = GameObject.FindWithTag ("MainCamera").GetComponent<RoomSwitch> ();
 		swordScript = GetComponent<SwordDirection> ();
+		inventoryScript = GetComponent<Inventory> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetButtonDown("Fire2") && boomer == null){
-			StartCoroutine (ShootBoomer());
+		if (Input.GetButtonDown("Fire2")){
 			Vector3 dir = Vector3.zero;
-			switch (swordScript.directionFacingNESW){
+			switch (swordScript.directionFacingNESW) {
 			case 0:
 				dir = new Vector3 (0, 1, 0);
 				break;
@@ -49,9 +52,18 @@ public class Player : MonoBehaviour {
 				dir = new Vector3 (-1, 0, 0);
 				break;
 			}
-			boomer = (GameObject)Instantiate (boomerPrefab, transform.position + dir, Quaternion.identity);
-			Debug.Log (boomer.transform.position);
-			boomer.GetComponent<boomerang> ().shoot (dir, transform);
+			if (inventoryScript.offhand == "boomer" && boomer == null) {
+				StartCoroutine (ShootBoomer ());
+
+				boomer = (GameObject)Instantiate (boomerPrefab, transform.position + dir, Quaternion.identity);
+				Debug.Log (boomer.transform.position);
+				boomer.GetComponent<boomerang> ().shoot (dir, transform);
+			}
+			else if (inventoryScript.offhand == "bomb"){
+				inventoryScript.bomb_count -= 1;
+				bomb = (GameObject)Instantiate (bombPrefab, transform.position + dir, Quaternion.identity);
+
+			}
 		}
 	}
 
