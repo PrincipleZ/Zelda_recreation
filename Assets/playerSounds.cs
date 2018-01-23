@@ -8,6 +8,7 @@ public class playerSounds : MonoBehaviour {
     public AudioClip lowHealth;
     public AudioClip counting;
     public AudioClip shootingArrow;
+    public AudioClip placeBomb;
 
     bool nextBeep = true;
 
@@ -46,6 +47,11 @@ public class playerSounds : MonoBehaviour {
     public void DeathAudio()
     {
         AudioSource.PlayClipAtPoint(death, Camera.main.transform.position);
+    }
+
+    public void DropBomb()
+    {
+        AudioSource.PlayClipAtPoint(placeBomb, Camera.main.transform.position);
     }
 
     public IEnumerator MultipleCollected(int amount)

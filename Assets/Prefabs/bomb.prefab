@@ -67,6 +67,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokePrefab: {fileID: 1294381899586156, guid: 6f0b1a770973d49feb9c11633259c88b,
     type: 2}
+  explosion: {fileID: 8300000, guid: 4e48d6fe67780a040a3b700b0b3b0b41, type: 3}
 --- !u!212 &212696591204040228
 SpriteRenderer:
   m_ObjectHideFlags: 1

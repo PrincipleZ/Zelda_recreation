@@ -60,6 +60,7 @@ public class Player : MonoBehaviour {
 				boomer.GetComponent<boomerang> ().shoot (dir, transform);
 			}
 			else if (inventoryScript.offhand == "bomb"){
+                GetComponent<playerSounds>().DropBomb();
 				inventoryScript.bomb_count -= 1;
 				bomb = (GameObject)Instantiate (bombPrefab, transform.position + dir, Quaternion.identity);
 
