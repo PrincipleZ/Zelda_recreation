@@ -40,6 +40,12 @@ public class RoomSwitch : MonoBehaviour {
 		switching = false;
 	}
 
+	public void warpControl(bool up){
+		if (!up)
+			transform.position = new Vector3 (73.5f, 7.5f, -10f);
+		else
+			transform.position = new Vector3 (23.5f, 62.5f, -10f);
+	}
 
 
 }

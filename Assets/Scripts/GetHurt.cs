@@ -71,7 +71,7 @@ public class GetHurt : MonoBehaviour {
 			isHoriz = false;
 		}
 
-		if (GetComponent<RandMovement>().path.x != 0)
+		if (GetComponent<RandMovement>() != null && GetComponent<RandMovement>().path.x != 0)
 		{
 			if (isHoriz)
 			{

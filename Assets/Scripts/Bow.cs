@@ -9,31 +9,28 @@ public class Bow : MonoBehaviour {
     public float reloadTime = 1f;
     public bool isShooting = false;
     public bool canShoot = true;
+	public bool hasBow = false;
     
     int NESWdirection;
 
     // Update is called once per frame
     void Update () {
+		if (hasBow) {
+			if (GameObject.Find ("Arrow(Clone)") == null) {
+				canShoot = true;
+			} else {
+				canShoot = false;
+			}
 
-        if (GameObject.Find("Arrow(Clone)") == null)
-        {
-            canShoot = true;
-        }
-        else
-        {
-            canShoot = false;
-        }
+			NESWdirection = this.GetComponent<SwordDirection> ().directionFacingNESW;
+			if (Input.GetKeyDown (KeyCode.Z)) {
+				if (GetComponent<Inventory> ().GetRupees () > 0 && !this.GetComponent<ArrowKeyMovement> ().isDoingAction && canShoot) {
+					GetComponent<playerSounds> ().ShotArrow ();
+					StartCoroutine (Shooting (reloadTime));
+				}
 
-        NESWdirection = this.GetComponent<SwordDirection>().directionFacingNESW;
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            if(GetComponent<Inventory>().GetRupees() > 0 && !this.GetComponent<ArrowKeyMovement>().isDoingAction && canShoot)
-            {
-                GetComponent<playerSounds>().ShotArrow();
-                StartCoroutine(Shooting(reloadTime));
-            }
-
-        }
+			}
+		}
     }
 
     IEnumerator Shooting(float delay)

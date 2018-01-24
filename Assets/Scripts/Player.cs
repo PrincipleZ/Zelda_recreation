@@ -22,6 +22,7 @@ public class Player : MonoBehaviour {
 	GameObject boomer;
 	GameObject bomb;
 	Inventory inventoryScript;
+	Bow bowScript;
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour {
 		cameraScript = GameObject.FindWithTag ("MainCamera").GetComponent<RoomSwitch> ();
 		swordScript = GetComponent<SwordDirection> ();
 		inventoryScript = GetComponent<Inventory> ();
+		bowScript = GetComponent<Bow> ();
 	}
 	
 	// Update is called once per frame
@@ -52,14 +54,14 @@ public class Player : MonoBehaviour {
 				dir = new Vector3 (-1, 0, 0);
 				break;
 			}
-			if (inventoryScript.offhand == "boomer" && boomer == null) {
+			if (inventoryScript.offhand == "Boomer" && boomer == null) {
 				StartCoroutine (ShootBoomer ());
 
 				boomer = (GameObject)Instantiate (boomerPrefab, transform.position + dir, Quaternion.identity);
 				Debug.Log (boomer.transform.position);
 				boomer.GetComponent<boomerang> ().shoot (dir, transform);
 			}
-			else if (inventoryScript.offhand == "bomb"){
+			else if (inventoryScript.offhand == "Bomb" && bomb == null){
                 GetComponent<playerSounds>().DropBomb();
 				inventoryScript.bomb_count -= 1;
 				bomb = (GameObject)Instantiate (bombPrefab, transform.position + dir, Quaternion.identity);
@@ -80,9 +82,25 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider collider){
-		if (collider.gameObject.CompareTag("entrance") && !cameraScript.switching) {
+		GameObject temp = collider.gameObject;
+		if (temp.name == "bow"){
+			bowScript.hasBow = true;
+			Destroy (collider.gameObject);
+		}
+		else if (temp.name == "LADDER_UP" || temp.name == "LADDER_DOWN"){
+			if (temp.name == "LADDER_UP") {
+				cameraScript.warpControl (true);
+				transform.position = new Vector3 (23f, 60f, 0);
+			}
+			else{
+				cameraScript.warpControl (false);
+				transform.position = new Vector3 (69f, 9.6f, 0);
+			}
+		}
+
+		else if (temp.CompareTag("entrance") && !cameraScript.switching) {
 			Vector3 dir = Vector3.zero;
-			switch (collider.gameObject.name){
+			switch (temp.name){
 			// switch to right
 			case "Tile_R_EN":
 				dir = new Vector3 (1, 0, 0);

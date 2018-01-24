@@ -21,7 +21,7 @@ public class BoomerEnemy : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        Debug.Log(rb);
+//        Debug.Log(rb);
         animator = GetComponent<Animator>();
         shot = false;
         back = false;

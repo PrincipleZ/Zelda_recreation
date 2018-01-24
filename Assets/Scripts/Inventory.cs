@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Inventory : MonoBehaviour {
 
@@ -9,6 +11,25 @@ public class Inventory : MonoBehaviour {
     public int bomb_count = 0;
     public int max_count = 255;
 	public string offhand ="";
+	public Text offHandInfo;
+	// 0 for none, 1 for bomb, 2 for boomer
+	int itemIndex = 0;
+	string[] items = {"None", "Bomb", "Boomer"};
+	public bool hasBoomer = false;
+
+	void Update(){
+		if (Input.GetKeyDown (KeyCode.B)) {
+			itemIndex += 1;
+			string item = items [itemIndex % 3];
+			if (item.Equals ("Bomb") && bomb_count > 0)
+				offhand = "Bomb";
+			else if (item.Equals ("Boomer") && hasBoomer)
+				offhand = "Boomer";
+			else
+				offhand = "None";
+			offHandInfo.text = "B:\n" + offhand;
+		}
+	}
 
     public void AddRupees(int num_rupees)
     {
