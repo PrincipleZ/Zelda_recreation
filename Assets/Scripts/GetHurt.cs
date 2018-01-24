@@ -71,53 +71,80 @@ public class GetHurt : MonoBehaviour {
 			isHoriz = false;
 		}
 
-		if (GetComponent<RandMovement>() != null && GetComponent<RandMovement>().path.x != 0)
-		{
-			if (isHoriz)
+//		if (GetComponent<RandMovement>() != null && GetComponent<RandMovement>().path.x != 0)
+//		{
+//			if (isHoriz)
+//			{
+//				knockBackDir.y = 0;
+//				if (knockBackDir.x < 0)
+//				{
+//					knockBackDir.x = -1;
+//				}
+//				else
+//				{
+//					knockBackDir.x = 1;
+//				}
+//			}
+//			else
+//			{
+//				knockBackDir = Vector2.zero;
+//			}
+//
+//		}
+//		else
+//		{
+//			if (!isHoriz)
+//			{
+//				knockBackDir.x = 0;
+//				if (knockBackDir.y < 0)
+//				{
+//					knockBackDir.y = -1;
+//				}
+//				else
+//				{
+//					knockBackDir.y = 1;
+//				}
+//			}
+//			else
+//			{
+//				knockBackDir = Vector2.zero;
+//			}
+//		}
+//		if(knockBackDir != Vector3.zero)
+//		{
+//			rb.velocity = Vector3.zero;
+//			rb.AddForce(force * knockBackDir);
+//
+//			yield return new WaitForSeconds(knockBackTime);
+//		}
+		if (isHoriz){
+			knockBackDir.y = 0;
+			if (knockBackDir.x < 0)
 			{
-				knockBackDir.y = 0;
-				if (knockBackDir.x < 0)
-				{
-					knockBackDir.x = -1;
-				}
-				else
-				{
-					knockBackDir.x = 1;
-				}
+				knockBackDir.x = -1;
 			}
 			else
 			{
-				knockBackDir = Vector2.zero;
+				knockBackDir.x = 1;
+			}
+		} else{
+			knockBackDir.x = 0;
+			if (knockBackDir.y < 0)
+			{
+				knockBackDir.y = -1;
+			}
+			else
+			{
+				knockBackDir.y = 1;
 			}
 
+
 		}
-		else
-		{
-			if (!isHoriz)
-			{
-				knockBackDir.x = 0;
-				if (knockBackDir.y < 0)
-				{
-					knockBackDir.y = -1;
-				}
-				else
-				{
-					knockBackDir.y = 1;
-				}
-			}
-			else
-			{
-				knockBackDir = Vector2.zero;
-			}
-		}
-		if(knockBackDir != Vector3.zero)
-		{
+		if (knockBackDir != Vector3.zero){
 			rb.velocity = Vector3.zero;
-			rb.AddForce(force * knockBackDir);
-
-			yield return new WaitForSeconds(knockBackTime);
+			rb.AddForce (force * knockBackDir);
+			yield return new WaitForSeconds (knockBackTime);
 		}
-
 		movement = true;
 	}
 

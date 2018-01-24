@@ -7,6 +7,7 @@ public class HandMovement : MonoBehaviour {
 	bool moving = false;
 	float distance;
 	bool horizontal;
+	bool grabbed = false;
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
@@ -18,6 +19,11 @@ public class HandMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Debug.Log (grabbed);
+		if (grabbed){
+			player.GetComponent<Player> ().movement = false;
+			player.transform.position = transform.position;
+		}
 		if (!moving){
 			if (Vector3.Distance(transform.position, player.transform.position) < 3f){
 				Vector3 direction = transform.position - player.transform.position;
@@ -66,6 +72,12 @@ public class HandMovement : MonoBehaviour {
 		}
 		transform.position = dest;
 		moving = false;
+		if (grabbed) {
+			warpPlayer ();
+			grabbed = false;
+			Physics.IgnoreCollision(this.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
+		}
+
 		if (transform.position.y < 35f || transform.position.y > 42.3f)
 			horizontal = true;
 		else
@@ -75,14 +87,18 @@ public class HandMovement : MonoBehaviour {
 	void OnCollisionEnter(Collision other){
 		if (other.gameObject.GetComponent<Player>())
 		{
-			StartCoroutine(TempIgnore(other));
+			Physics.IgnoreCollision(this.GetComponent<Collider>(), other.collider, true);
+			if (!other.gameObject.GetComponent<Player>().invincible)
+				grabbed = true;
+			else{
+				Physics.IgnoreCollision(this.GetComponent<Collider>(), other.collider, false);
+			}
 		}
 	}
 
-	IEnumerator TempIgnore(Collision collision)
-	{
-		Physics.IgnoreCollision(this.GetComponent<Collider>(), collision.collider, true);
-		yield return new WaitForSeconds(collision.gameObject.GetComponent<Player>().flashTime);
-		Physics.IgnoreCollision(this.GetComponent<Collider>(), collision.collider, false);
+	void warpPlayer(){
+		player.transform.position = new Vector3 (39f, 6.5f, 0);
+		GameObject.FindGameObjectWithTag ("MainCamera").transform.position = new Vector3 (39.5f, 7.5f, -10);
 	}
+
 }

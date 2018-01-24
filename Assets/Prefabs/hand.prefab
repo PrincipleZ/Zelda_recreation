@@ -25,6 +25,8 @@ GameObject:
   - component: {fileID: 65795994746776338}
   - component: {fileID: 114993664981500292}
   - component: {fileID: 54323416405184158}
+  - component: {fileID: 114531530309263680}
+  - component: {fileID: 114803123790392958}
   m_Layer: 19
   m_Name: hand
   m_TagString: Untagged
@@ -39,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1693518744252636}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 65.94, y: 42.96, z: 0}
+  m_LocalPosition: {x: 63.98, y: 42.04, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -70,7 +72,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95837018145216722
 Animator:
@@ -89,6 +91,33 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114531530309263680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1693518744252636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6a630044f96cf4a866661701b2c3f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 1
+--- !u!114 &114803123790392958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1693518744252636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa8d688b1720c22479891ffb76ac3d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 2
+  currentHealth: 0
+  deathSoundClip: {fileID: 8300000, guid: fdbcabb21e6dac0478efa8eeefda2778, type: 3}
+  hurtSound: {fileID: 8300000, guid: 83aa10a7b9dbf5649bf3d9e07e796dcc, type: 3}
 --- !u!114 &114926668506730354
 MonoBehaviour:
   m_ObjectHideFlags: 1
