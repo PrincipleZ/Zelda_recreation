@@ -133,8 +133,10 @@ public class Player : MonoBehaviour {
 			}
 			else{
 				Debug.Log (currentHealth);
-				StartCoroutine (Flash ());
-				StartCoroutine (KnockBack (collision));
+				if (collision.gameObject.GetComponent<HandMovement> () == null) {
+					StartCoroutine (Flash ());
+					StartCoroutine (KnockBack (collision));
+				}
 			}
 
 		}
