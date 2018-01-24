@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114181675956458192}
   - component: {fileID: 114836980909589740}
   - component: {fileID: 114866372538727558}
+  - component: {fileID: 114914792123135404}
   m_Layer: 12
   m_Name: Goriya
   m_TagString: enemy
@@ -171,6 +172,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 1
+--- !u!114 &114914792123135404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1237560637461030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a85e900ca021cba4280144b2f72084f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heart: {fileID: 1406588284729982, guid: 88735876a1dc6e24c8e3d1374920fbd0, type: 2}
+  rupee: {fileID: 1232200374128118, guid: bf8a00c0962d98f4e8920d7a2376ce97, type: 2}
+  rupeeB: {fileID: 1984267221337102, guid: fb2515bcc7378d14f94edb1f86d72982, type: 2}
+  bombPrefab: {fileID: 1802318909288376, guid: 5725554aec6dff748bc68df01717bff0, type: 2}
 --- !u!212 &212685835974153504
 SpriteRenderer:
   m_ObjectHideFlags: 1

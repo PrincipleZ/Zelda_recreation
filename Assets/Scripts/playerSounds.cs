@@ -9,13 +9,11 @@ public class playerSounds : MonoBehaviour {
     public AudioClip counting;
     public AudioClip shootingArrow;
     public AudioClip placeBomb;
+    public AudioClip beam;
+    public AudioClip gotInvItem;
+    public AudioClip Fanfare;
 
     bool nextBeep = true;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -32,6 +30,22 @@ public class playerSounds : MonoBehaviour {
         AudioSource.PlayClipAtPoint(lowHealth, Camera.main.transform.position);
         yield return new WaitForSeconds(.3f);
         nextBeep = true;
+    }
+
+    public void GotNewWeapon()
+    {
+        AudioSource.PlayClipAtPoint(gotInvItem, Camera.main.transform.position);
+        AudioSource.PlayClipAtPoint(Fanfare, Camera.main.transform.position);
+    }
+
+    public void GotNewWeapon2()
+    {
+        AudioSource.PlayClipAtPoint(gotInvItem, Camera.main.transform.position);
+    }
+
+    public void SwordBeam()
+    {
+        AudioSource.PlayClipAtPoint(beam, Camera.main.transform.position);
     }
 
     public void GotHit()

@@ -31,6 +31,10 @@ public class EnemyHealth : MonoBehaviour {
             if(currentHealth <= 0)
             {
                 AudioSource.PlayClipAtPoint(deathSoundClip, Camera.main.transform.position);
+                if (GetComponent<DropItems>() != null)
+                    GetComponent<DropItems>().DropChance();
+                if (transform.childCount > 0)
+                    transform.DetachChildren();
                 Destroy(this.gameObject);
             }
             else

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SecretRoom : MonoBehaviour {
 	public Text message;
+    public AudioClip beep;
 	Player playerScript;
 	bool displayed = false;
 	public string text = "Join wolverinesoft";
@@ -25,7 +26,8 @@ public class SecretRoom : MonoBehaviour {
 		playerScript.movement = false;
 		for (int i = 0; i < text.Length; i++){
 			message.text += text [i];
-			yield return new WaitForSeconds (0.2f);
+            AudioSource.PlayClipAtPoint(beep, Camera.main.transform.position);
+            yield return new WaitForSeconds (0.2f);
 		}
 		playerScript.movement = true;
 	}

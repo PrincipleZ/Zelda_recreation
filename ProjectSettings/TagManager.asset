@@ -18,6 +18,8 @@ TagManager:
   - door(wall)
   - boomerang
   - breakable wall
+  - boomerWeapon
+  - bombPickup
   layers:
   - Default
   - TransparentFX
@@ -39,7 +41,7 @@ TagManager:
   - AquamentusBody
   - Blocker
   - Hand
-  - 
+  - RoomChecker
   - 
   - 
   - 

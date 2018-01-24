@@ -31,12 +31,9 @@ public class boomerang : MonoBehaviour {
 	public void shoot(Vector3 dir, Transform pTransform){
 		direction = dir;
 		parentTransform = pTransform;
-	
 
-		Debug.Log ("here");
 		rb.velocity = force * direction;
 		shot = true;
-
 	}
 
 	void FixedUpdate(){
