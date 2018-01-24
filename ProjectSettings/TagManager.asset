@@ -19,6 +19,7 @@ TagManager:
   - boomerang
   - breakable wall
   - boomerWeapon
+  - bombPickup
   layers:
   - Default
   - TransparentFX

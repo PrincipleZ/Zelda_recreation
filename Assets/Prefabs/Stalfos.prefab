@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114130297610647274}
   - component: {fileID: 95396033174041210}
   - component: {fileID: 114700197290845682}
+  - component: {fileID: 114348982029249828}
   m_Layer: 12
   m_Name: Stalfos
   m_TagString: enemy
@@ -123,6 +124,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   movementSpeed: 1.5
+--- !u!114 &114348982029249828
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857452949308832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a85e900ca021cba4280144b2f72084f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heart: {fileID: 1406588284729982, guid: 88735876a1dc6e24c8e3d1374920fbd0, type: 2}
+  rupee: {fileID: 1232200374128118, guid: bf8a00c0962d98f4e8920d7a2376ce97, type: 2}
+  rupeeB: {fileID: 1984267221337102, guid: fb2515bcc7378d14f94edb1f86d72982, type: 2}
+  bombPrefab: {fileID: 0}
 --- !u!114 &114700197290845682
 MonoBehaviour:
   m_ObjectHideFlags: 1

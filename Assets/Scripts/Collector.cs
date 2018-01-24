@@ -64,5 +64,15 @@ public class Collector : MonoBehaviour {
             AudioSource.PlayClipAtPoint(heartR_collection_sound_clip, Camera.main.transform.position);
             AudioSource.PlayClipAtPoint(countingAudio, Camera.main.transform.position);
         }
+
+        if (object_collided_with.tag == "bombPickup")
+        {
+            if (inventory != null)
+                inventory.AddBombs(4);
+            Destroy(object_collided_with);
+
+            AudioSource.PlayClipAtPoint(heartR_collection_sound_clip, Camera.main.transform.position);
+            AudioSource.PlayClipAtPoint(countingAudio, Camera.main.transform.position);
+        }
     }
 }
