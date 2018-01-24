@@ -17,20 +17,22 @@ public class Bow : MonoBehaviour {
     void Update () {
 		if (hasBow) {
 			if (GameObject.Find ("Arrow(Clone)") == null) {
-				canShoot = true;
+                canShoot = true;
+                
 			} else {
 				canShoot = false;
 			}
-
-			NESWdirection = this.GetComponent<SwordDirection> ().directionFacingNESW;
-			if (Input.GetKeyDown (KeyCode.Z)) {
-				if (GetComponent<Inventory> ().GetRupees () > 0 && !this.GetComponent<ArrowKeyMovement> ().isDoingAction && canShoot) {
-					GetComponent<playerSounds> ().ShotArrow ();
-					StartCoroutine (Shooting (reloadTime));
-				}
-
-			}
 		}
+    }
+
+    public void shootArrow()
+    {
+        NESWdirection = this.GetComponent<SwordDirection>().directionFacingNESW;
+        if (GetComponent<Inventory>().GetRupees() > 0 && !this.GetComponent<ArrowKeyMovement>().isDoingAction && canShoot)
+        {
+            GetComponent<playerSounds>().ShotArrow();
+            StartCoroutine(Shooting(reloadTime));
+        }
     }
 
     IEnumerator Shooting(float delay)

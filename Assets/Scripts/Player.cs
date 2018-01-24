@@ -23,6 +23,7 @@ public class Player : MonoBehaviour {
 	GameObject bomb;
 	Inventory inventoryScript;
 	Bow bowScript;
+    boomerang boomerScript;
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
@@ -33,6 +34,7 @@ public class Player : MonoBehaviour {
 		swordScript = GetComponent<SwordDirection> ();
 		inventoryScript = GetComponent<Inventory> ();
 		bowScript = GetComponent<Bow> ();
+        boomerScript = GetComponent<boomerang>();
 	}
 	
 	// Update is called once per frame
@@ -67,7 +69,13 @@ public class Player : MonoBehaviour {
 				bomb = (GameObject)Instantiate (bombPrefab, transform.position + dir, Quaternion.identity);
 
 			}
-		}
+            else if (inventoryScript.offhand == "Bow" && bowScript.hasBow)
+            {
+                
+                bowScript.shootArrow();
+
+            }
+        }
 	}
 
 	void FixedUpdate(){
@@ -85,7 +93,9 @@ public class Player : MonoBehaviour {
 		GameObject temp = collider.gameObject;
 		if (temp.name == "bow"){
 			bowScript.hasBow = true;
-			Destroy (collider.gameObject);
+            GetComponent<playerSounds>().GotNewWeapon();
+
+            Destroy(collider.gameObject);
 		}
 		else if (temp.name == "LADDER_UP" || temp.name == "LADDER_DOWN"){
 			if (temp.name == "LADDER_UP") {
@@ -120,6 +130,14 @@ public class Player : MonoBehaviour {
 			StartCoroutine (waitForCamera(dir));
 
 		}
+
+        else if (temp.CompareTag("boomerWeapon"))
+        {
+            inventoryScript.hasBoomer = true;
+            GetComponent<playerSounds>().GotNewWeapon2();
+
+            Destroy(collider.gameObject);
+        }
 	}
 		
 	public void OnHit(Collision collision){

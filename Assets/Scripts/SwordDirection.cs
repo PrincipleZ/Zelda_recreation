@@ -94,6 +94,7 @@ public class SwordDirection : MonoBehaviour {
             if (!magicSwordActive && !swordHitEnemy)
             {
                 activeSword = Instantiate(magicSwordPrefab);
+                GetComponent<playerSounds>().SwordBeam();
 
                 if (directionFacingNESW == 0)
                 {

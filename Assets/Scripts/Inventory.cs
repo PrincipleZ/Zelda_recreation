@@ -14,18 +14,20 @@ public class Inventory : MonoBehaviour {
 	public Text offHandInfo;
 	// 0 for none, 1 for bomb, 2 for boomer
 	int itemIndex = 0;
-	string[] items = {"None", "Bomb", "Boomer"};
+	string[] items = {"None", "Bomb", "Boomer", "Bow"};
 	public bool hasBoomer = false;
 
 	void Update(){
 		if (Input.GetKeyDown (KeyCode.B)) {
 			itemIndex += 1;
-			string item = items [itemIndex % 3];
+			string item = items [itemIndex % 4];
 			if (item.Equals ("Bomb") && bomb_count > 0)
 				offhand = "Bomb";
 			else if (item.Equals ("Boomer") && hasBoomer)
 				offhand = "Boomer";
-			else
+            else if (item.Equals("Bow") && GetComponent<Bow>().hasBow)
+                offhand = "Bow";
+            else
 				offhand = "None";
 			offHandInfo.text = "B:\n" + offhand;
 		}
