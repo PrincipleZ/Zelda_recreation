@@ -14,7 +14,11 @@ public class MagicSwordDestruction : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "wall" || other.gameObject.tag == "door(wall)" || other.gameObject.tag == "enemy")
+        if(other.gameObject.name == "AquamentusBody" && this.tag == "arrow")
+        {
+
+        }
+        else if (other.gameObject.tag == "wall" || other.gameObject.tag == "door(wall)" || other.gameObject.tag == "enemy")
         {
             Destroy(this.gameObject);
         }
