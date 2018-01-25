@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4394359638902864}
   - component: {fileID: 212905668405142370}
   - component: {fileID: 65574554530015354}
+  - component: {fileID: 95121411524092604}
   m_Layer: 10
   m_Name: heartRestore
   m_TagString: heartR
@@ -53,6 +54,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4375, y: 0.5, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &95121411524092604
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406588284729982}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b201902284a7e5a4fbec6f48a4d1a15d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!212 &212905668405142370
 SpriteRenderer:
   m_ObjectHideFlags: 1

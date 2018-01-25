@@ -56,10 +56,7 @@ public class BoomerEnemy : MonoBehaviour
             if (back)
             {
                 rb.velocity = backSpeed * (parentTransform.position - trans.position).normalized;
-                if (Vector3.Distance(trans.position, parentTransform.position) < 0.2f)
-                {
-                    boomerCanary = true;
-                }
+
             }
         }
         if (deleteObject)

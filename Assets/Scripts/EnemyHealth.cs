@@ -35,7 +35,14 @@ public class EnemyHealth : MonoBehaviour {
                     GetComponent<DropItems>().DropChance();
                 if (transform.childCount > 0)
                     transform.DetachChildren();
-                Destroy(this.gameObject);
+                if(GetComponent<GoriyaMovement>() != null)
+                {
+                    GetComponent<GoriyaMovement>().hasDied = true;
+                }
+                else
+                {
+                    Destroy(this.gameObject);
+                }
             }
             else
             {
