@@ -14,6 +14,7 @@ public class Player : MonoBehaviour {
 	public bool invincible = false;
 	public bool movement = true;
 	public bool dead = false;
+	public GameObject GameOverScreen;
 	ChangeHealth changeHealthScript;
 	RoomSwitch cameraScript;
 	public GameObject boomerPrefab;
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour {
 	Inventory inventoryScript;
 	Bow bowScript;
     boomerang boomerScript;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
@@ -219,5 +221,11 @@ public class Player : MonoBehaviour {
 		rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
 		anim.SetBool ("Dead", true);
 		anim.speed = 1;
+		StartCoroutine (showBlackScreen ());
+	}
+
+	IEnumerator showBlackScreen(){
+		yield return new WaitForSeconds (3f);
+		GameOverScreen.SetActive (true);
 	}
 }
