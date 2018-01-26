@@ -19,7 +19,6 @@ public class HandMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (grabbed);
 		if (grabbed){
 			player.GetComponent<Player> ().movement = false;
 			player.transform.position = transform.position;

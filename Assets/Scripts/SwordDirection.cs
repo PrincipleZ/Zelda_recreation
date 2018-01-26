@@ -18,6 +18,8 @@ public class SwordDirection : MonoBehaviour {
     bool magicSwordActive = false;
     GameObject activeSword;
     Animator animScript;
+	ArrowKeyMovement movementScript;
+
 
     private void Awake()
     {
@@ -27,6 +29,7 @@ public class SwordDirection : MonoBehaviour {
         swordCollider.transform.localPosition = new Vector3(.025f, -0.5f, 0);
         swordCollider.transform.localScale = new Vector3(.25f, .69f, 1);
         swordHitEnemy = false;
+		movementScript = GetComponent<ArrowKeyMovement> ();
     }
 
     // Update is called once per frame
@@ -42,22 +45,22 @@ public class SwordDirection : MonoBehaviour {
         }
 
         //Which direction is Link facing
-        if (Input.GetAxisRaw("Vertical") == 1)
+		if (movementScript.direction.y == 1)
         {
             directionFacingNESW = 0;
             swordCollider.transform.localPosition = new Vector3(-.097f, 0.919f, 0);
             swordCollider.transform.localScale = new Vector3(.25f, .69f, 1);
-        } else if (Input.GetAxisRaw("Vertical") == -1)
+		} else if (movementScript.direction.y == -1)
         {
             directionFacingNESW = 2;
             swordCollider.transform.localPosition = new Vector3(.032f, -0.89f, 0);
             swordCollider.transform.localScale = new Vector3(.25f, .69f, 1);
-        } else if (Input.GetAxisRaw("Horizontal") == 1)
+		} else if (movementScript.direction.x == 1)
         {
             directionFacingNESW = 1;
             swordCollider.transform.localPosition = new Vector3(.85f, -0.05f, 0);
             swordCollider.transform.localScale = new Vector3(.75f, .2f, 1);
-        } else if (Input.GetAxisRaw("Horizontal") == -1)
+		} else if (movementScript.direction.x == -1)
         {
             directionFacingNESW = 3;
             swordCollider.transform.localPosition = new Vector3(-.871f, -0.058f, 0);

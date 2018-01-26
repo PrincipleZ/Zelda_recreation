@@ -19,13 +19,13 @@ public class InputToAnimator : MonoBehaviour {
         bowScript = GetComponent<Bow>();
         movementScript = GetComponent<ArrowKeyMovement>();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 			
 		if(!playerScript.dead){
-			animator.SetFloat ("horizontal_input", Input.GetAxisRaw ("Horizontal"));
-			animator.SetFloat ("vertical_input", Input.GetAxisRaw ("Vertical"));
+			animator.SetFloat ("horizontal_input", movementScript.direction.x);
+			animator.SetFloat ("vertical_input", movementScript.direction.y);
             animator.SetInteger("direction_NESW", swordScript.directionFacingNESW);
             animator.SetBool("is_stabbing", swordScript.isSwingingSword);
 			animator.SetBool ("invincible", playerScript.invincible);
