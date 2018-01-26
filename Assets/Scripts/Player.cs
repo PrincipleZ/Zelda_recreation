@@ -14,7 +14,7 @@ public class Player : MonoBehaviour {
 	public bool invincible = false;
 	public bool movement = true;
 	public bool dead = false;
-	ChangeHealth changeHealthScript;
+	public ChangeHealth changeHealthScript;
 	RoomSwitch cameraScript;
 	public GameObject boomerPrefab;
 	public GameObject bombPrefab;

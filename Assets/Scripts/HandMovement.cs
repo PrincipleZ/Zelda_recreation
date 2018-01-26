@@ -98,6 +98,7 @@ public class HandMovement : MonoBehaviour {
 			warpPlayer ();
 			grabbed = false;
 			Physics.IgnoreCollision(this.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
+            GetComponent<GetHurt>().enabled = false;
 		}
 
 		if (transform.position.y < 35f || transform.position.y > 42.3f)
@@ -116,6 +117,7 @@ public class HandMovement : MonoBehaviour {
 
 		transform.position = dest;
 		finished = true;
+        GetComponent<GetHurt>().enabled = true;
 	}
 
 	void OnCollisionEnter(Collision other){
@@ -130,9 +132,14 @@ public class HandMovement : MonoBehaviour {
 		}
 		if (other.gameObject.GetComponent<Player>())
 		{
-			Physics.IgnoreCollision(this.GetComponent<Collider>(), other.collider, true);
+            Physics.IgnoreCollision(this.GetComponent<Collider>(), other.collider, true);
 			if (!other.gameObject.GetComponent<Player>().invincible && other.gameObject.GetComponent<Player>().movement)
-				grabbed = true;
+            {
+                other.gameObject.GetComponent<playerSounds>().GotHit();
+                other.gameObject.GetComponent<Player>().currentHealth -= GetComponent<EnemyDamage>().damageAmount;
+                other.gameObject.GetComponent<Player>().changeHealthScript.change(other.gameObject.GetComponent<Player>().currentHealth);
+                grabbed = true;
+            }      
 			else{
 				Physics.IgnoreCollision(this.GetComponent<Collider>(), other.collider, false);
 			}
