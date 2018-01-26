@@ -13,15 +13,16 @@ public class GoriyaMovement : MonoBehaviour
     public float boomerangFrequency = .005f;
 	public GameObject boomerPrefab;
     public bool boomCanary = false;
+    public bool hasDied = false;
 
     bool validDestination = false;
-    bool throwing;
+    bool throwing = false;
     bool doneMoving = true;
     bool boomerSpawned;
 
     Vector3[] candidates = { Vector3.up, Vector3.right, Vector3.down, Vector3.left };
 
-
+    GameObject boomer;
     GetHurt hurtScript;
     Rigidbody rb;
 
@@ -33,8 +34,14 @@ public class GoriyaMovement : MonoBehaviour
 
     private void Update()
     {
+        if(!throwing && hasDied)
+        {
+            Destroy(boomer);
+            Destroy(this.gameObject);
+            Debug.Log("happenedhere");
+        }
 
-        if (hurtScript.movement && !throwing)
+        if (hurtScript.movement && !throwing && rb.isKinematic == false)
         {
             if (Vector3.Magnitude(new Vector3(Mathf.Abs(transform.position.x - destination.x), Mathf.Abs(transform.position.y - destination.y), 0)) > 1f)
                 doneMoving = true;
@@ -160,22 +167,37 @@ public class GoriyaMovement : MonoBehaviour
 
     IEnumerator ThrowBoomerang()
     {
-		GameObject boomer = (GameObject)Instantiate (boomerPrefab, transform.position + path, Quaternion.identity);
+        rb.isKinematic = true;
+		boomer = (GameObject)Instantiate (boomerPrefab, transform.position + path, Quaternion.identity);
 		boomer.GetComponent<BoomerEnemy> ().shoot (path, transform);
         while (!boomer.GetComponent<BoomerEnemy>().boomerCanary)
         {
+            if (hasDied)
+            {
+                Destroy(boomer);
+                Destroy(this.gameObject);
+                Debug.Log("happenedhere2");
+            }
+
             yield return null;
             if (boomer.GetComponent<BoomerEnemy>().back)
             {
                 if(Vector3.Distance(transform.position, boomer.transform.position) < .5f)
                 {
                     boomer.GetComponent<BoomerEnemy>().boomerCanary = true;
+                    if (hasDied)
+                    {
+                        Destroy(boomer);
+                        Destroy(this.gameObject);
+                        Debug.Log("happenedhere3");
+                    }
                 }
             }
         }
-        boomer.GetComponent<BoomerEnemy>().deleteObject = true;
+        Destroy(boomer);
         throwing = false;
         boomerSpawned = false;
+        rb.isKinematic = false;
     }
 
     IEnumerator TempIgnore(Collision collision)

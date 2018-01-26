@@ -442,6 +442,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: is_doing_action
     m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: horizontal_input
+    m_EventTreshold: 1
+  - m_ConditionMode: 3
+    m_ConditionEvent: horizontal_input
+    m_EventTreshold: -1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102329083831221926}
   m_Solo: 0
@@ -1090,6 +1096,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: is_doing_action
     m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: horizontal_input
+    m_EventTreshold: 1
+  - m_ConditionMode: 3
+    m_ConditionEvent: horizontal_input
+    m_EventTreshold: -1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102657390581148012}
   m_Solo: 0

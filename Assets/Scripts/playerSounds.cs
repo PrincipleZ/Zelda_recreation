@@ -5,13 +5,14 @@ using UnityEngine;
 public class playerSounds : MonoBehaviour {
     public AudioClip hurt;
     public AudioClip death;
-    public AudioClip lowHealth;
     public AudioClip counting;
     public AudioClip shootingArrow;
     public AudioClip placeBomb;
-    public AudioClip beam;
-    public AudioClip gotInvItem;
-    public AudioClip Fanfare;
+
+    public AudioSource beamSource;
+    public AudioSource InvItem;
+    public AudioSource fanfare;
+    public AudioSource healthIsLow;
 
     bool nextBeep = true;
 	
@@ -27,25 +28,25 @@ public class playerSounds : MonoBehaviour {
     IEnumerator LowHealthBeep()
     {
         nextBeep = false;
-        AudioSource.PlayClipAtPoint(lowHealth, Camera.main.transform.position);
+        healthIsLow.Play();
         yield return new WaitForSeconds(.3f);
         nextBeep = true;
     }
 
     public void GotNewWeapon()
     {
-        AudioSource.PlayClipAtPoint(gotInvItem, Camera.main.transform.position);
-        AudioSource.PlayClipAtPoint(Fanfare, Camera.main.transform.position);
+        InvItem.Play();
+        fanfare.Play();
     }
 
     public void GotNewWeapon2()
     {
-        AudioSource.PlayClipAtPoint(gotInvItem, Camera.main.transform.position);
+        InvItem.Play();
     }
 
     public void SwordBeam()
     {
-        AudioSource.PlayClipAtPoint(beam, Camera.main.transform.position);
+        beamSource.Play();
     }
 
     public void GotHit()

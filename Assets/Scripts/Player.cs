@@ -208,7 +208,7 @@ public class Player : MonoBehaviour {
 	void Die(){
         GetComponent<playerSounds>().DeathAudio();
 		dead = true;
-		rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY;
+		rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
 		anim.SetBool ("Dead", true);
 		anim.speed = 1;
 	}
