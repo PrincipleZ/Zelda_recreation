@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff09457517a134355b1f3b0e9ef45fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moving: 0
 --- !u!114 &114993664981500292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,12 +141,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc821c79d06e040b4afd29c00b14345e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hurtSound: {fileID: 0}
+  hurtSound: {fileID: 8300000, guid: 83aa10a7b9dbf5649bf3d9e07e796dcc, type: 3}
   damageTaken: 0
   damageAmount: 0
   movement: 1
   knockBackTime: 0.3
-  force: 200
+  force: 400
+  invincible: 0
 --- !u!212 &212358205596979262
 SpriteRenderer:
   m_ObjectHideFlags: 1

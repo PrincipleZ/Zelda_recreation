@@ -18,21 +18,25 @@ public class bomb : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (countDownOver){
-            AudioSource.PlayClipAtPoint(explosion, Camera.main.transform.position);
+		if (countDownOver) {
+			AudioSource.PlayClipAtPoint (explosion, Camera.main.transform.position);
 
-            for (int i = 0; i < 8; i++){
-				RaycastHit temp;
-				if (Physics.Raycast(transform.position, Quaternion.Euler(0, 0, i * 45) * Vector3.up, out temp, 1.5f)){
-
-					if (temp.collider.gameObject.tag == "enemy") {
-						GameObject tempSmoke = (GameObject)Instantiate (smokePrefab, temp.transform.position, Quaternion.identity);
-						Destroy (temp.collider.gameObject);
+			Collider[] hits;
+			hits = Physics.OverlapSphere (transform.position, 1.7f);
+			Debug.Log (hits.Length);
+			if (hits.Length > 0) {
+				for (int i = 0; i < hits.Length; i++) {
+					if (hits[i].gameObject.tag == "enemy") {
+						GameObject tempSmoke = (GameObject)Instantiate (smokePrefab, hits [i].gameObject.transform.position, Quaternion.identity);
+						if (hits [i].gameObject.GetComponent<AquamentusScript> () == null) {
+							Destroy (hits [i].gameObject);
+						}else{
+							hits [i].gameObject.GetComponent<EnemyHealth> ().currentHealth -= 4;
+						}
 						tempSmoke.GetComponent<SmokeDisappear> ().disappear ();
-					}
-					else if (temp.collider.gameObject.tag == "breakable wall"){
+					} else if (hits[i].gameObject.tag == "breakable wall") {
 						for (int j = 0; j < breakable_walls.Length; j++) {
-							if (breakable_walls [j] != null){
+							if (breakable_walls [j] != null) {
 								GameObject tempSmoke = (GameObject)Instantiate (smokePrefab, breakable_walls [j].transform.position, Quaternion.identity);
 								Destroy (breakable_walls [j]);
 								tempSmoke.GetComponent<SmokeDisappear> ().disappear ();
@@ -40,8 +44,9 @@ public class bomb : MonoBehaviour {
 						}
 					}
 				}
-					
 			}
+		
+
 			GetComponent<SpriteRenderer> ().enabled = false;
 			GameObject smoke = (GameObject)Instantiate (smokePrefab, transform.position, Quaternion.identity);
 			smoke.GetComponent<SmokeDisappear> ().disappear ();

@@ -128,7 +128,7 @@ public class GelMovement : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Player>())
         {
-            StartCoroutine(TempIgnore(collision));
+//            StartCoroutine(TempIgnore(collision));
         }
     }
 

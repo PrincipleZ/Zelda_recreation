@@ -10,6 +10,7 @@ public class GetHurt : MonoBehaviour {
 	public bool movement = true;
 	public float knockBackTime = 0.3f;
 	public float force = 300f;
+	public bool invincible = false;
 	Rigidbody rb;
 
 	bool isHoriz;
@@ -18,36 +19,32 @@ public class GetHurt : MonoBehaviour {
 		rb = GetComponent<Rigidbody> ();
 	}
 	public void OnHit(Collider other){
-		GameObject other_go = other.gameObject;
-		Debug.Log (other_go.tag);
+		if (!invincible) {
+			GameObject other_go = other.gameObject;
 
-		if(other_go.tag == "sword")
-		{
-			damageTaken = true;
-			damageAmount = 1;
-			StartCoroutine(KnockBack(other));
-		}else if(other_go.tag == "arrow")
-		{
-			damageTaken = true;
-			damageAmount = 2;
-			StartCoroutine(KnockBack(other));
-
-		}
-		else if (other_go.tag == "magicSword")
-		{
-			damageTaken = true;
-			damageAmount = 1;
-			StartCoroutine(KnockBack(other));
-		}
-		else if (other_go.tag == "boomerang"){
-
-			if (GetComponent<EnemyHealth>().maxHealth == 1){
+			if (other_go.tag == "sword") {
 				damageTaken = true;
 				damageAmount = 1;
-			} else{
-				StartCoroutine (Stun());
-                AudioSource.PlayClipAtPoint(hurtSound, Camera.main.transform.position);
-            }
+				StartCoroutine (KnockBack (other));
+			} else if (other_go.tag == "arrow") {
+				damageTaken = true;
+				damageAmount = 2;
+				StartCoroutine (KnockBack (other));
+
+			} else if (other_go.tag == "magicSword") {
+				damageTaken = true;
+				damageAmount = 1;
+				StartCoroutine (KnockBack (other));
+			} else if (other_go.tag == "boomerang") {
+
+				if (GetComponent<EnemyHealth> ().maxHealth == 1) {
+					damageTaken = true;
+					damageAmount = 1;
+				} else {
+					StartCoroutine (Stun ());
+					AudioSource.PlayClipAtPoint (hurtSound, Camera.main.transform.position);
+				}
+			}
 		}
 	}
 	IEnumerator Stun(){
@@ -58,6 +55,7 @@ public class GetHurt : MonoBehaviour {
 	}
 
 	IEnumerator KnockBack(Collider collider){
+		invincible = true;
 		movement = false;
 		Vector3 knockBackDir = (transform.position - collider.ClosestPointOnBounds(transform.position)).normalized;
 		//Normalize to only grid knockback
@@ -144,8 +142,10 @@ public class GetHurt : MonoBehaviour {
 			rb.velocity = Vector3.zero;
 			rb.AddForce (force * knockBackDir);
 			yield return new WaitForSeconds (knockBackTime);
+			rb.velocity = Vector3.zero;
 		}
 		movement = true;
+		invincible = false;
 	}
 
 }

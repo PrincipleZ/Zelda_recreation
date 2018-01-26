@@ -20,11 +20,14 @@ public class GodMode : MonoBehaviour {
                 GetComponent<Inventory>().AddKeys(GetComponent<Inventory>().max_count);
                 GetComponent<Inventory>().AddBombs(GetComponent<Inventory>().max_count);
                 GetComponent<Player>().invincible = true;
+				Physics.IgnoreLayerCollision (9, 12, true);
                 GodModeActive = true;
             }
             else
             {
                 GetComponent<Player>().invincible = false;
+				Physics.IgnoreLayerCollision (9, 12, false);
+
                 GodModeActive = false;
             }
         }

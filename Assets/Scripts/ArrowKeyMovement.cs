@@ -27,6 +27,7 @@ public class ArrowKeyMovement : MonoBehaviour
     {
 		Vector2 current_input = GetInput();
 		if (playerScript.movement && !playerScript.dead) {
+			Debug.Log (grid_adjust (current_input));
 			if (grid_adjust (current_input))
 				rb.velocity = Vector3.zero;
 			else

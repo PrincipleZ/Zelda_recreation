@@ -40,6 +40,7 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+
 		if (Input.GetButtonDown("Fire2")){
 			Vector3 dir = Vector3.zero;
 			switch (swordScript.directionFacingNESW) {
@@ -82,8 +83,10 @@ public class Player : MonoBehaviour {
 
 	}
 
-	void OnCollisionEnter(Collision collision){
-        if (collision.gameObject.GetComponent<EnemyDamage>())
+
+	void OnCollisionStay(Collision collision){
+
+		if (collision.gameObject.GetComponent<EnemyDamage>())
         {
             OnHit(collision);
         }
@@ -108,7 +111,7 @@ public class Player : MonoBehaviour {
 			}
 		}
 
-		else if (temp.CompareTag("entrance") && !cameraScript.switching) {
+		else if (temp.CompareTag("entrance") && !cameraScript.switching && movement) {
 			Vector3 dir = Vector3.zero;
 			switch (temp.name){
 			// switch to right
@@ -172,12 +175,15 @@ public class Player : MonoBehaviour {
 	IEnumerator waitForCamera(Vector3 direction){
 		Vector3 start = transform.position;
 		movement = false;
+
 		for (float t = 0f; t < cameraScript.cameraSwitchTime; t += Time.deltaTime){
-			transform.position = Vector3.Lerp (start, start + direction*2, t/cameraScript.cameraSwitchTime);
+			anim.SetFloat ("horizontal_input", direction.x);
+			anim.SetFloat ("vertical_input", direction.y);
+			rb.velocity = direction * 1.3f;
 			yield return null;
 		}
 		Debug.Log (transform.position);
-	
+		rb.velocity = Vector3.zero;
 
 		movement = true;
 	}
@@ -185,8 +191,10 @@ public class Player : MonoBehaviour {
 	IEnumerator Flash(){
 //		anim.SetTrigger ("Flash");
 		invincible = true;
+		Physics.IgnoreLayerCollision (9, 12, true);
 		yield return new WaitForSeconds (flashTime);
 		invincible = false;
+		Physics.IgnoreLayerCollision (9, 12, false);
 	}
 
 	IEnumerator KnockBack(Collision collision){

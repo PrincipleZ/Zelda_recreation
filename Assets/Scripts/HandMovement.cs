@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class HandMovement : MonoBehaviour {
 	GameObject player;
-	bool moving = false;
+	public bool moving = false;
 	float distance;
 	bool horizontal;
 	bool grabbed = false;
+	Vector3 initPos;
+	Coroutine move;
+	Coroutine submove;
+	GetHurt hurtScript;
+	bool finished = false;
+	Rigidbody rb;
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
@@ -15,6 +21,9 @@ public class HandMovement : MonoBehaviour {
 			horizontal = true;
 		else
 			horizontal = false;
+		initPos = transform.position;
+		hurtScript = GetComponent<GetHurt> ();
+		rb = GetComponent<Rigidbody> ();
 	}
 	
 	// Update is called once per frame
@@ -23,7 +32,19 @@ public class HandMovement : MonoBehaviour {
 			player.GetComponent<Player> ().movement = false;
 			player.transform.position = transform.position;
 		}
-		if (!moving){
+		if (!hurtScript.movement && moving){
+			if (move != null)
+				StopCoroutine (move);
+			if (submove != null)
+				StopCoroutine (submove);
+		}
+		if (hurtScript.movement && moving){
+			if (rb.velocity == Vector3.zero) {
+				move = StartCoroutine (backHome ());
+			}
+		}
+
+		if (!moving && hurtScript.movement){
 			if (Vector3.Distance(transform.position, player.transform.position) < 3f){
 				Vector3 direction = transform.position - player.transform.position;
 				Vector3 horizontal_direction = Vector3.zero;
@@ -39,9 +60,9 @@ public class HandMovement : MonoBehaviour {
 					vertical_direction = new Vector3 (0, 1, 0);
 				}
 				if (horizontal)
-					StartCoroutine (appear (transform.position, vertical_direction, horizontal_direction));
+					move = StartCoroutine(appear (transform.position, vertical_direction, horizontal_direction));
 				else
-					StartCoroutine (appear (transform.position, horizontal_direction, vertical_direction));
+					move = StartCoroutine(appear (transform.position, horizontal_direction, vertical_direction));
 				
 		}
 		
@@ -49,27 +70,29 @@ public class HandMovement : MonoBehaviour {
 	}
 
 	IEnumerator appear(Vector3 start, Vector3 firstDir, Vector3 secondDir){
+		bool interrupt = false;
 		moving = true;
 		Vector3 dest = start + firstDir * 2f;
-		for (float t = 0; t < 1f; t += Time.deltaTime){
-			transform.position = Vector3.Lerp (start, dest, t / 1f);
+		submove = StartCoroutine(movingPhase (start, dest, 1f));
+
+		while(!finished){
 			yield return null;
 		}
-		transform.position = dest;
+
 		start = dest;
 		dest = transform.position + secondDir * 3f;
-		for (float t = 0; t < 1.5f; t += Time.deltaTime){
-			transform.position = Vector3.Lerp (start, dest, t / 1.5f);
+		submove = StartCoroutine(movingPhase (start, dest, 1.5f));
+		while(!finished){
 			yield return null;
 		}
-		transform.position = dest;
+
 		start = dest;
 		dest = transform.position + -firstDir * 2f;
-		for (float t = 0; t < 1f; t += Time.deltaTime){
-			transform.position = Vector3.Lerp (start, dest, t / 1f);
+		submove = StartCoroutine(movingPhase (start, dest, 1f));
+		while(!finished){
 			yield return null;
 		}
-		transform.position = dest;
+
 		moving = false;
 		if (grabbed) {
 			warpPlayer ();
@@ -83,11 +106,32 @@ public class HandMovement : MonoBehaviour {
 			horizontal = false;
 	}
 
+	IEnumerator movingPhase(Vector3 start, Vector3 dest, float duration){
+		finished = false;
+		Vector3 dir = dest - start;
+		while (Mathf.Abs(Vector3.Distance(dest, transform.position)) > 0.1f){
+			rb.velocity = dir * 1f;
+			yield return new WaitForFixedUpdate ();
+		}
+
+		transform.position = dest;
+		finished = true;
+	}
+
 	void OnCollisionEnter(Collision other){
+		if (other.gameObject.GetComponent<BlockEnemies>()){
+			if (moving) {
+				StopAllCoroutines ();
+				moving = false;
+			}
+			transform.position = initPos;
+				
+
+		}
 		if (other.gameObject.GetComponent<Player>())
 		{
 			Physics.IgnoreCollision(this.GetComponent<Collider>(), other.collider, true);
-			if (!other.gameObject.GetComponent<Player>().invincible)
+			if (!other.gameObject.GetComponent<Player>().invincible && other.gameObject.GetComponent<Player>().movement)
 				grabbed = true;
 			else{
 				Physics.IgnoreCollision(this.GetComponent<Collider>(), other.collider, false);
@@ -95,9 +139,31 @@ public class HandMovement : MonoBehaviour {
 		}
 	}
 
+	IEnumerator backHome(){
+
+
+		while (transform.position != initPos) {
+			if (horizontal) {
+				if (transform.position.y - initPos.y > 0) {
+					rb.velocity = new Vector3 (0, -2, 0);
+				} else {
+					rb.velocity = new Vector3 (0, 2, 0);
+				}
+			} else {
+				if (transform.position.x - initPos.x > 0)
+					rb.velocity = new Vector3 (-2, 0, 0);
+				else
+					rb.velocity = new Vector3 (2, 0, 0);
+			}
+			yield return null;
+		}
+		moving = false;
+	}
+
 	void warpPlayer(){
 		player.transform.position = new Vector3 (39f, 6.5f, 0);
 		GameObject.FindGameObjectWithTag ("MainCamera").transform.position = new Vector3 (39.5f, 7.5f, -10);
+		player.GetComponent<Player> ().movement = true;
 	}
 
 }
