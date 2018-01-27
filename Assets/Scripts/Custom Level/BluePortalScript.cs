@@ -4,41 +4,108 @@ using UnityEngine;
 
 public class BluePortalScript : MonoBehaviour {
 
-	GameObject OrangePortal;
-	public Vector3 directionToEnter;
-	public string warpObject;
+	public Sprite north;
+	public Sprite east;
+	public Sprite south;
+	public Sprite west;
+	public float pushSpeed;
+	public string warpObject = null;
+	public GameObject sword;
+	public GameObject arrow;
 
-	Vector3 pushDir;
+	GameObject player;
+	GameObject OrangePortal;
+	public float swordRotationAmount;
+	public float arrowRotationAmount;
+
+	public Vector3 pushDir;
 
 	void Start () {
-		
+		player = GameObject.Find ("Player");
+		warpObject = null;
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		OrangePortal = GameObject.Find ("Orange Portal(Clone)");
 	}
-		
+
 
 	void OnTriggerEnter(Collider other){
-		warpObject = other.tag;
-		other.transform.position = OrangePortal.transform.position;
+		if (OrangePortal != null && OrangePortal.GetComponent<OrangePortalScript> ().warpObject == null) {
+			warpObject = other.gameObject.tag;
+		}
+
+		if (other.gameObject.tag == "Player") {
+			if (OrangePortal.GetComponent<OrangePortalScript> ().warpObject == "Player") {
+				StartCoroutine (Pause (other));
+				StartCoroutine (Push ());
+			} else {
+				other.transform.position = OrangePortal.transform.position;
+				warpObject = "Player";
+			}
+		} else if (other.gameObject.name == "Sword(Clone)") {
+			if (OrangePortal.GetComponent<OrangePortalScript> ().warpObject == "sword") {
+				StartCoroutine(Pause (other));
+			}
+			else{
+				Destroy(other.gameObject);
+				GameObject temp = Instantiate (sword, OrangePortal.transform.position , Quaternion.identity);
+				temp.transform.Rotate (0, 0, OrangePortal.GetComponent<OrangePortalScript> ().swordRotationAmount);
+				temp.transform.position += temp.transform.right * .5f;
+				temp.GetComponent<Rigidbody> ().velocity = temp.transform.right * 10;
+			}
+		} else if (other.gameObject.name == "Arrow(Clone)") {
+			if (OrangePortal.GetComponent<OrangePortalScript> ().warpObject == "arrow") {
+				StartCoroutine(Pause (other));
+			}
+			else{
+				Destroy(other.gameObject);
+				GameObject temp = Instantiate (arrow, OrangePortal.transform.position , Quaternion.identity);
+				temp.transform.Rotate (0, 0, OrangePortal.GetComponent<OrangePortalScript> ().arrowRotationAmount);
+				temp.transform.position += temp.transform.up * .5f;
+				temp.GetComponent<Rigidbody> ().velocity = temp.transform.up * 10;
+			}
+		}
 	}
 
 	public void PortalDirectionNESW(int direction){
 		switch (direction) {
 		case 0:
 			pushDir = Vector3.up;
+			transform.Rotate (0, 0, 180);
+			arrowRotationAmount = 0;
+			swordRotationAmount = 90f;
 			break;
 		case 1:
 			pushDir = Vector3.right;
+			transform.Rotate (0, 0, 90);
+			arrowRotationAmount = -90f;
+			swordRotationAmount = 0f;
 			break;
 		case 2:
 			pushDir = Vector3.down;
+			arrowRotationAmount = 180f;
+			swordRotationAmount = -90f;
 			break;
 		case 3:
 			pushDir = Vector3.left;
+			transform.Rotate (0, 0, -90);
+			arrowRotationAmount = 90f;
+			swordRotationAmount = 180f;
 			break;
 		}
+	}
+
+	IEnumerator Push(){
+		player.GetComponent<Player> ().movement = false;
+		player.GetComponent<Rigidbody> ().velocity = Vector3.zero;
+		player.GetComponent<Rigidbody> ().AddForce (200 * pushDir);
+		yield return new WaitForSeconds (.2f);
+		player.GetComponent<Player> ().movement = true;
+	}
+
+	IEnumerator Pause(Collider other){
+		yield return new WaitForSeconds (.01f);
+		OrangePortal.GetComponent<OrangePortalScript> ().warpObject = null;
 	}
 }

@@ -9,30 +9,64 @@ public class OrangePortalScript : MonoBehaviour {
 	public Sprite south;
 	public Sprite west;
 	public float pushSpeed;
+	public string warpObject = null;
+	public GameObject sword;
+	public GameObject arrow;
 
 	GameObject player;
 	GameObject BluePortal;
-	float swordRotationAmount;
-	float arrowRotationAmount;
+	public float swordRotationAmount;
+	public float arrowRotationAmount;
 
 	Vector3 pushDir;
 
 	void Start () {
-
+		player = GameObject.Find ("Player");
+		warpObject = null;
 	}
-
-	// Update is called once per frame
+		
 	void Update () {
 		BluePortal = GameObject.Find ("Blue Portal(Clone)");
 	}
 
 
 	void OnTriggerEnter(Collider other){
-		if (other.gameObject.tag == "Player"  && BluePortal.GetComponent<BluePortalScript> ().warpObject == "Player") {
-			BluePortal.GetComponent<BluePortalScript> ().warpObject = null;
-			player = other.gameObject;
+		if (BluePortal != null && BluePortal.GetComponent<BluePortalScript> ().warpObject == null) {
+			warpObject = other.tag;
 		}
-		//other.transform.position = BluePortal.transform.position;
+
+		if (other.gameObject.tag == "Player"){
+			if (BluePortal.GetComponent<BluePortalScript> ().warpObject == "Player") {
+				StartCoroutine (Pause (other));
+				StartCoroutine(Push ());
+			} 
+			else {
+				other.transform.position = BluePortal.transform.position;
+				warpObject = "Player";
+			}
+		}else if (other.gameObject.name == "Sword(Clone)") {
+			if (BluePortal.GetComponent<BluePortalScript> ().warpObject == "sword") {
+				StartCoroutine(Pause (other));
+			}
+			else{
+				Destroy(other.gameObject);
+				GameObject temp = Instantiate (sword, BluePortal.transform.position , Quaternion.identity);
+				temp.transform.Rotate (0, 0, BluePortal.GetComponent<BluePortalScript> ().swordRotationAmount);
+				temp.transform.position += temp.transform.right * .5f;
+				temp.GetComponent<Rigidbody> ().velocity = temp.transform.right * 10;
+			}
+		}else if (other.gameObject.name == "Arrow(Clone)") {
+			if (BluePortal.GetComponent<BluePortalScript> ().warpObject == "arrow") {
+				StartCoroutine(Pause (other));
+			}
+			else{
+				Destroy(other.gameObject);
+				GameObject temp = Instantiate (arrow, BluePortal.transform.position , Quaternion.identity);
+				temp.transform.Rotate (0, 0, BluePortal.GetComponent<BluePortalScript> ().arrowRotationAmount);
+				temp.transform.position += temp.transform.up * .5f;
+				temp.GetComponent<Rigidbody> ().velocity = temp.transform.up * 10;
+			}
+		}
 	}
 
 	public void PortalDirectionNESW(int direction){
@@ -41,33 +75,38 @@ public class OrangePortalScript : MonoBehaviour {
 			pushDir = Vector3.up;
 			transform.Rotate (0, 0, 180);
 			arrowRotationAmount = 0;
-			swordRotationAmount = -90f;
+			swordRotationAmount = 90f;
 			break;
 		case 1:
 			pushDir = Vector3.right;
 			transform.Rotate (0, 0, 90);
-			arrowRotationAmount = 90f;
-			swordRotationAmount = 0;
+			arrowRotationAmount = -90f;
+			swordRotationAmount = 0f;
 			break;
 		case 2:
 			pushDir = Vector3.down;
-			arrowRotationAmount = 180;
-			swordRotationAmount = 90f;
+			arrowRotationAmount = 180f;
+			swordRotationAmount = -90f;
 			break;
 		case 3:
 			pushDir = Vector3.left;
 			transform.Rotate (0, 0, -90);
-			arrowRotationAmount = -90;
+			arrowRotationAmount = 90f;
 			swordRotationAmount = 180f;
 			break;
 		}
 	}
 
-	void Push(){
+	IEnumerator Push(){
 		player.GetComponent<Player> ().movement = false;
-		for (float i = 0; i < 1f / pushSpeed; i += Time.deltaTime) {
-			player.GetComponent<Rigidbody> ().AddForce (100f, 0, 0);
-			//player.transform.Translate (pushDir * pushSpeed * Time.deltaTime);
-		}
+		player.GetComponent<Rigidbody> ().velocity = Vector3.zero;
+		player.GetComponent<Rigidbody> ().AddForce (200 * pushDir);
+		yield return new WaitForSeconds (.2f);
+		player.GetComponent<Player> ().movement = true;
+	}
+
+	IEnumerator Pause(Collider other){
+		yield return new WaitForSeconds (.01f);
+		BluePortal.GetComponent<BluePortalScript> ().warpObject = null;
 	}
 }

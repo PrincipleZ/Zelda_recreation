@@ -70,6 +70,11 @@ MonoBehaviour:
   south: {fileID: 0}
   west: {fileID: 0}
   pushSpeed: 0
+  warpObject: 
+  sword: {fileID: 1554906319689052, guid: bdd1c37efed7069489b10c07958990a8, type: 2}
+  arrow: {fileID: 1284930950723060, guid: 18694c1e80d232e4886bffd538f41bb4, type: 2}
+  swordRotationAmount: 0
+  arrowRotationAmount: 0
 --- !u!212 &212670219018644292
 SpriteRenderer:
   m_ObjectHideFlags: 1

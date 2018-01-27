@@ -9,6 +9,7 @@ public class BlueProjectileScript : MonoBehaviour {
 	public GameObject portal;
 	public GameObject player;
 
+	bool done = false;
 	float horizontal_input;
 	float vertical_input;
 
@@ -22,7 +23,7 @@ public class BlueProjectileScript : MonoBehaviour {
 		player.GetComponent<Bow> ().enabled = false;
 		player.GetComponent<SwordDirection> ().isSwingingSword = true;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -40,22 +41,45 @@ public class BlueProjectileScript : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		if (other.tag == "PWall") {
-			other.GetComponent<BoxCollider> ().enabled = false;
-			GameObject temp = GameObject.Find ("Blue Portal(Clone)");
-			if(temp != null)
-				temp.transform.parent.GetComponent<BoxCollider> ().enabled = true;
-			Destroy (temp);
-			other.GetComponent<PWallScript> ().SpawnPortal ("blue", 0);
-		} 
-		else {
-			player.GetComponent<ArrowKeyMovement> ().enabled = true;
-			player.GetComponent<Animator> ().enabled = true;
-			player.GetComponent<PortalGun> ().enabled = true;
-			player.GetComponent<Bow> ().enabled = true;
-			player.GetComponent<SwordDirection> ().isSwingingSword = false;
-			Destroy (this.gameObject);
+		if (!done) {
+			done = true;
+			if (other.tag == "wallU") {
+				OrientationNESW (2, other);
+			} else if (other.tag == "wallR") {
+				OrientationNESW (3, other);
+			} else if (other.tag == "wallD") {
+				OrientationNESW (0, other);
+			} else if (other.tag == "wallL") {
+				OrientationNESW (1, other);
+			}
+
+//				if (Mathf.Abs (portalDir.x) > Mathf.Abs (portalDir.y)) {
+//					if (portalDir.x > 0)
+//						other.GetComponent<PWallScript> ().SpawnPortal ("blue", 1);
+//					else
+//						other.GetComponent<PWallScript> ().SpawnPortal ("blue", 3);
+//				} 
+//				else {
+//					if (portalDir.y > 0)
+//						other.GetComponent<PWallScript> ().SpawnPortal ("blue", 0);
+//					else
+//						other.GetComponent<PWallScript> ().SpawnPortal ("blue", 2);
+//				}
+				player.GetComponent<ArrowKeyMovement> ().enabled = true;
+				player.GetComponent<Animator> ().enabled = true;
+				player.GetComponent<PortalGun> ().enabled = true;
+				player.GetComponent<Bow> ().enabled = true;
+				player.GetComponent<SwordDirection> ().isSwingingSword = false;
+				Destroy (this.gameObject);
 		}
 	}
-		
+
+	void OrientationNESW(int dir, Collider other){
+		other.GetComponent<BoxCollider> ().enabled = false;
+		GameObject temp = GameObject.Find ("Blue Portal(Clone)");
+		if(temp != null)
+			temp.transform.parent.GetComponent<BoxCollider> ().enabled = true;
+		Destroy (temp);
+		other.GetComponent<PWallScript> ().SpawnPortal ("blue", dir);
+	}
 }

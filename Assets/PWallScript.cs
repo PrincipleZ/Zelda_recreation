@@ -22,6 +22,7 @@ public class PWallScript : MonoBehaviour {
 	public void SpawnPortal(string color, int dir){
 		if (color == "blue") {
 			temp = Instantiate (bluePortal, transform.position, Quaternion.identity);
+			temp.GetComponent<BluePortalScript> ().PortalDirectionNESW (dir);
 		} 
 		else {
 			temp = Instantiate (orangePortal, transform.position, Quaternion.identity);

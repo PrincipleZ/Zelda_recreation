@@ -21,6 +21,10 @@ TagManager:
   - boomerWeapon
   - bombPickup
   - PWall
+  - wallU
+  - wallL
+  - wallD
+  - wallR
   layers:
   - Default
   - TransparentFX

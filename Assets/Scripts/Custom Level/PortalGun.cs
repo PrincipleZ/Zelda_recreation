@@ -36,7 +36,6 @@ public class PortalGun : MonoBehaviour {
 				break;
 			}
 			projectile = Instantiate (orangeProjectile, transform.position + dir, Quaternion.identity);
-			Debug.Log (swordScript.directionFacingNESW);
 			projectile.GetComponent<OrangeProjectileScript> ().direction = dir;
 		}
 		if (Input.GetButtonDown ("Fire2")) {
