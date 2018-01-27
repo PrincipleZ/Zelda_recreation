@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4984833071618112}
   - component: {fileID: 65282214170927782}
   - component: {fileID: 212670219018644292}
+  - component: {fileID: 114034067830426718}
   m_Layer: 0
   m_Name: Orange Portal
   m_TagString: Untagged
@@ -53,6 +54,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114034067830426718
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1636990200847796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cf78185f319845338300c13c26d6950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  north: {fileID: 0}
+  east: {fileID: 0}
+  south: {fileID: 0}
+  west: {fileID: 0}
+  pushSpeed: 0
 --- !u!212 &212670219018644292
 SpriteRenderer:
   m_ObjectHideFlags: 1

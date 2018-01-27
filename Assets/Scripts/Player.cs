@@ -39,8 +39,7 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-
+		
 		if (Input.GetButtonDown("Fire2")){
 			Vector3 dir = Vector3.zero;
 			switch (swordScript.directionFacingNESW) {

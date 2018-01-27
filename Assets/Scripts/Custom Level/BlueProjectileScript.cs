@@ -20,7 +20,7 @@ public class BlueProjectileScript : MonoBehaviour {
 		player.GetComponent<Animator> ().enabled = false;
 		player.GetComponent<PortalGun> ().enabled = false;
 		player.GetComponent<Bow> ().enabled = false;
-		player.GetComponent<SwordDirection> ().enabled = false;
+		player.GetComponent<SwordDirection> ().isSwingingSword = true;
 	}
 	
 	// Update is called once per frame
@@ -41,16 +41,19 @@ public class BlueProjectileScript : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		if (other.tag == "PWall") {
-			GameObject temp = GameObject.Find ("Blue Portal");
+			other.GetComponent<BoxCollider> ().enabled = false;
+			GameObject temp = GameObject.Find ("Blue Portal(Clone)");
+			if(temp != null)
+				temp.transform.parent.GetComponent<BoxCollider> ().enabled = true;
 			Destroy (temp);
-			Instantiate (portal, other.transform.position, Quaternion.identity);
+			other.GetComponent<PWallScript> ().SpawnPortal ("blue");
 		} 
 		else {
 			player.GetComponent<ArrowKeyMovement> ().enabled = true;
 			player.GetComponent<Animator> ().enabled = true;
 			player.GetComponent<PortalGun> ().enabled = true;
 			player.GetComponent<Bow> ().enabled = true;
-			player.GetComponent<SwordDirection> ().enabled = true;
+			player.GetComponent<SwordDirection> ().isSwingingSword = false;
 			Destroy (this.gameObject);
 		}
 	}

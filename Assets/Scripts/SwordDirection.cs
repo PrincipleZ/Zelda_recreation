@@ -14,7 +14,7 @@ public class SwordDirection : MonoBehaviour {
     public bool swordHitEnemy;
     public AudioClip swordSoundClip;
 
-    bool canSwing = true;
+    public bool canSwing = true;
     bool magicSwordActive = false;
     GameObject activeSword;
     Animator animScript;
