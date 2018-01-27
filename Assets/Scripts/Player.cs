@@ -14,8 +14,9 @@ public class Player : MonoBehaviour {
 	public bool invincible = false;
 	public bool movement = true;
 	public bool dead = false;
+
 	public GameObject GameOverScreen;
-	ChangeHealth changeHealthScript;
+	public ChangeHealth changeHealthScript;
 	RoomSwitch cameraScript;
 	public GameObject boomerPrefab;
 	public GameObject bombPrefab;
@@ -41,8 +42,7 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-
+		
 		if (Input.GetButtonDown("Fire2")){
 			Vector3 dir = Vector3.zero;
 			switch (swordScript.directionFacingNESW) {
