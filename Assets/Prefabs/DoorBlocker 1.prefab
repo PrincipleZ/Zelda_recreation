@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 65152564684467406}
   - component: {fileID: 114997134561289820}
   m_Layer: 2
-  m_Name: HandBlocker
+  m_Name: DoorBlocker 1
   m_TagString: door(wall)
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

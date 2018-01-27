@@ -14,7 +14,7 @@ public class SwordDirection : MonoBehaviour {
     public bool swordHitEnemy;
     public AudioClip swordSoundClip;
 
-    bool canSwing = true;
+    public bool canSwing = true;
     bool magicSwordActive = false;
     GameObject activeSword;
     Animator animScript;
@@ -45,27 +45,34 @@ public class SwordDirection : MonoBehaviour {
         }
 
         //Which direction is Link facing
-		if (movementScript.direction.y == 1)
+        if (!isSwingingSword)
         {
-            directionFacingNESW = 0;
-            swordCollider.transform.localPosition = new Vector3(-.097f, 0.919f, 0);
-            swordCollider.transform.localScale = new Vector3(.25f, .69f, 1);
-		} else if (movementScript.direction.y == -1)
-        {
-            directionFacingNESW = 2;
-            swordCollider.transform.localPosition = new Vector3(.032f, -0.89f, 0);
-            swordCollider.transform.localScale = new Vector3(.25f, .69f, 1);
-		} else if (movementScript.direction.x == 1)
-        {
-            directionFacingNESW = 1;
-            swordCollider.transform.localPosition = new Vector3(.85f, -0.05f, 0);
-            swordCollider.transform.localScale = new Vector3(.75f, .2f, 1);
-		} else if (movementScript.direction.x == -1)
-        {
-            directionFacingNESW = 3;
-            swordCollider.transform.localPosition = new Vector3(-.871f, -0.058f, 0);
-            swordCollider.transform.localScale = new Vector3(.75f, .2f, 1);
+            if (movementScript.direction.y == 1)
+            {
+                directionFacingNESW = 0;
+                swordCollider.transform.localPosition = new Vector3(-.097f, 0.919f, 0);
+                swordCollider.transform.localScale = new Vector3(.25f, .69f, 1);
+            }
+            else if (movementScript.direction.y == -1)
+            {
+                directionFacingNESW = 2;
+                swordCollider.transform.localPosition = new Vector3(.032f, -0.89f, 0);
+                swordCollider.transform.localScale = new Vector3(.25f, .69f, 1);
+            }
+            else if (movementScript.direction.x == 1)
+            {
+                directionFacingNESW = 1;
+                swordCollider.transform.localPosition = new Vector3(.85f, -0.05f, 0);
+                swordCollider.transform.localScale = new Vector3(.75f, .2f, 1);
+            }
+            else if (movementScript.direction.x == -1)
+            {
+                directionFacingNESW = 3;
+                swordCollider.transform.localPosition = new Vector3(-.871f, -0.058f, 0);
+                swordCollider.transform.localScale = new Vector3(.75f, .2f, 1);
+            }
         }
+		
 
         if (Input.GetButtonDown("Fire1"))
         {

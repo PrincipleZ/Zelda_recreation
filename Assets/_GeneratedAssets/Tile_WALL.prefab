@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4911461708291306}
   - component: {fileID: 212055211599667712}
   - component: {fileID: 65013490145611590}
+  - component: {fileID: 114246618847234840}
   m_Layer: 8
   m_Name: Tile_WALL
   m_TagString: wall
@@ -53,6 +54,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114246618847234840
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1585455075175012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79de9ae4c27904722b1f39b14ffe51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bluePortal: {fileID: 1555814847340436, guid: d845b6b1619ab481f8121310a4b8a00f, type: 2}
+  orangePortal: {fileID: 1636990200847796, guid: 5f3ebc3c65d1748be86a548ec8bc37a2,
+    type: 2}
 --- !u!212 &212055211599667712
 SpriteRenderer:
   m_ObjectHideFlags: 1
