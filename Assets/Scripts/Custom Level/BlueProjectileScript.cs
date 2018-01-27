@@ -1,0 +1,58 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BlueProjectileScript : MonoBehaviour {
+
+	public Vector3 direction;
+	public float moveSpeed = 3;
+	public GameObject portal;
+	public GameObject player;
+
+	float horizontal_input;
+	float vertical_input;
+
+	// Use this for initialization
+	void Start () {
+		player = GameObject.Find ("Player");
+		player.GetComponent<Rigidbody> ().velocity = Vector3.zero;
+		player.GetComponent<ArrowKeyMovement> ().enabled = false;
+		player.GetComponent<Animator> ().enabled = false;
+		player.GetComponent<PortalGun> ().enabled = false;
+		player.GetComponent<Bow> ().enabled = false;
+		player.GetComponent<SwordDirection> ().enabled = false;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+
+		horizontal_input = Input.GetAxisRaw("Horizontal");
+		vertical_input = Input.GetAxisRaw("Vertical");
+
+		if (horizontal_input != 0 && direction.y != 0) {
+			direction = new Vector3(horizontal_input, 0f, 0f);
+		}
+		else if(vertical_input != 0 && direction.x != 0){
+			direction = new Vector3(0f, vertical_input, 0f);
+		}
+
+		transform.Translate (direction * moveSpeed * Time.deltaTime);
+	}
+
+	void OnTriggerEnter(Collider other){
+		if (other.tag == "PWall") {
+			GameObject temp = GameObject.Find ("Blue Portal");
+			Destroy (temp);
+			Instantiate (portal, other.transform.position, Quaternion.identity);
+		} 
+		else {
+			player.GetComponent<ArrowKeyMovement> ().enabled = true;
+			player.GetComponent<Animator> ().enabled = true;
+			player.GetComponent<PortalGun> ().enabled = true;
+			player.GetComponent<Bow> ().enabled = true;
+			player.GetComponent<SwordDirection> ().enabled = true;
+			Destroy (this.gameObject);
+		}
+	}
+		
+}
