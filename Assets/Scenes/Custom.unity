@@ -5037,7 +5037,7 @@ Prefab:
     - target: {fileID: 224391350615112956, guid: a2f0de0af41adf6479a704c18d0b3c1d,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224391350615112956, guid: a2f0de0af41adf6479a704c18d0b3c1d,
         type: 2}
@@ -13195,7 +13195,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4566752756718864, guid: 42582c2f0c733c243afe195aa0562a8c, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1585381483243180, guid: 42582c2f0c733c243afe195aa0562a8c, type: 2}
       propertyPath: m_Layer
@@ -14569,7 +14569,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4741662850896710, guid: 97b0eeef1df5b44168d968afbc3a55c6, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 97b0eeef1df5b44168d968afbc3a55c6, type: 2}
@@ -16477,21 +16477,6 @@ MonoBehaviour:
   InvItem: {fileID: 589392755}
   fanfare: {fileID: 771040801}
   healthIsLow: {fileID: 98349207}
---- !u!114 &1725499394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1725499380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7b90580e16394d2f9d94ddc66632bf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bluePortal: {fileID: 0}
-  orangePortal: {fileID: 0}
-  blueProjectile: {fileID: 0}
-  orangeProjectile: {fileID: 0}
 --- !u!1001 &1731126493
 Prefab:
   m_ObjectHideFlags: 0

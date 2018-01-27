@@ -46,7 +46,20 @@ public class OrangeProjectileScript : MonoBehaviour {
 			if(temp != null)
 				temp.transform.parent.GetComponent<BoxCollider> ().enabled = true;
 			Destroy (temp);
-			other.GetComponent<PWallScript> ().SpawnPortal ("orange");
+			Vector3 portalDir = (transform.position - other.ClosestPointOnBounds(transform.position)).normalized;
+
+			if (Mathf.Abs (portalDir.x) > Mathf.Abs (portalDir.y)) {
+				if (portalDir.x > 0)
+					other.GetComponent<PWallScript> ().SpawnPortal ("orange", 1);
+				else
+					other.GetComponent<PWallScript> ().SpawnPortal ("orange", 3);
+			} 
+			else {
+				if (portalDir.y > 0)
+					other.GetComponent<PWallScript> ().SpawnPortal ("orange", 0);
+				else
+					other.GetComponent<PWallScript> ().SpawnPortal ("orange", 2);
+			}
 		} 
 		else {
 			player.GetComponent<ArrowKeyMovement> ().enabled = true;

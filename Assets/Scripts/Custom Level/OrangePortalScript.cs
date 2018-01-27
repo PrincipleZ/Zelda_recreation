@@ -31,7 +31,6 @@ public class OrangePortalScript : MonoBehaviour {
 		if (other.gameObject.tag == "Player"  && BluePortal.GetComponent<BluePortalScript> ().warpObject == "Player") {
 			BluePortal.GetComponent<BluePortalScript> ().warpObject = null;
 			player = other.gameObject;
-			Debug.Log ("oknow");
 		}
 		//other.transform.position = BluePortal.transform.position;
 	}
@@ -40,11 +39,13 @@ public class OrangePortalScript : MonoBehaviour {
 		switch (direction) {
 		case 0:
 			pushDir = Vector3.up;
+			transform.Rotate (0, 0, 180);
 			arrowRotationAmount = 0;
 			swordRotationAmount = -90f;
 			break;
 		case 1:
 			pushDir = Vector3.right;
+			transform.Rotate (0, 0, 90);
 			arrowRotationAmount = 90f;
 			swordRotationAmount = 0;
 			break;
@@ -55,6 +56,7 @@ public class OrangePortalScript : MonoBehaviour {
 			break;
 		case 3:
 			pushDir = Vector3.left;
+			transform.Rotate (0, 0, -90);
 			arrowRotationAmount = -90;
 			swordRotationAmount = 180f;
 			break;

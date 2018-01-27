@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 65613090944325982}
   - component: {fileID: 114700748553648624}
   - component: {fileID: 212691649290758024}
+  - component: {fileID: 114427240669890632}
   m_Layer: 0
   m_Name: Blue Portal
   m_TagString: Untagged
@@ -54,6 +55,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114427240669890632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1555814847340436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7707be10cda415187237ef75ab8c8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  directionToEnter: {x: 0, y: 0, z: 0}
+  warpObject: 
 --- !u!114 &114700748553648624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -65,8 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e7707be10cda415187237ef75ab8c8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OrangePortal: {fileID: 0}
   directionToEnter: {x: 0, y: 0, z: 0}
+  warpObject: 
 --- !u!212 &212691649290758024
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -101,7 +115,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300286, guid: 45afd34443b96473598b76e2b1778b4e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7a26377079d3b494d8b736822e96b0b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

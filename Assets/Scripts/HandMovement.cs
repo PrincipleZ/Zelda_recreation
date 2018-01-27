@@ -98,7 +98,6 @@ public class HandMovement : MonoBehaviour {
 			warpPlayer ();
 			grabbed = false;
 			Physics.IgnoreCollision(this.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
-            GetComponent<GetHurt>().enabled = false;
 		}
 
 		if (transform.position.y < 35f || transform.position.y > 42.3f)
@@ -139,6 +138,7 @@ public class HandMovement : MonoBehaviour {
                 other.gameObject.GetComponent<Player>().currentHealth -= GetComponent<EnemyDamage>().damageAmount;
                 other.gameObject.GetComponent<Player>().changeHealthScript.change(other.gameObject.GetComponent<Player>().currentHealth);
                 grabbed = true;
+				GetComponent<GetHurt>().enabled = false;
             }      
 			else{
 				Physics.IgnoreCollision(this.GetComponent<Collider>(), other.collider, false);

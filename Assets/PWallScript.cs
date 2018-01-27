@@ -19,13 +19,13 @@ public class PWallScript : MonoBehaviour {
 		
 	}
 
-	public void SpawnPortal(string color){
+	public void SpawnPortal(string color, int dir){
 		if (color == "blue") {
 			temp = Instantiate (bluePortal, transform.position, Quaternion.identity);
 		} 
 		else {
 			temp = Instantiate (orangePortal, transform.position, Quaternion.identity);
-			temp.GetComponent<OrangePortalScript> ().PortalDirectionNESW (1);
+			temp.GetComponent<OrangePortalScript> ().PortalDirectionNESW (dir);
 		}
 		temp.transform.parent = gameObject.transform;
 	}

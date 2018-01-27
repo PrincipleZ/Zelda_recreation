@@ -46,7 +46,7 @@ public class BlueProjectileScript : MonoBehaviour {
 			if(temp != null)
 				temp.transform.parent.GetComponent<BoxCollider> ().enabled = true;
 			Destroy (temp);
-			other.GetComponent<PWallScript> ().SpawnPortal ("blue");
+			other.GetComponent<PWallScript> ().SpawnPortal ("blue", 0);
 		} 
 		else {
 			player.GetComponent<ArrowKeyMovement> ().enabled = true;
