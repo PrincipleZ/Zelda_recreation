@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1555814847340436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.845144, y: 4.869375, z: 0}
+  m_LocalPosition: {x: 55.48536, y: -5.544792, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -67,7 +67,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.62, y: 0.35, z: 1}
+  m_Size: {x: 0.62, y: 0.69, z: 1}
   m_Center: {x: 0, y: -0.03, z: 0}
 --- !u!65 &65847030918674742
 BoxCollider:
@@ -112,6 +112,9 @@ MonoBehaviour:
   warpObject: 
   sword: {fileID: 1554906319689052, guid: bdd1c37efed7069489b10c07958990a8, type: 2}
   arrow: {fileID: 1284930950723060, guid: 18694c1e80d232e4886bffd538f41bb4, type: 2}
+  terrain:
+    serializedVersion: 2
+    m_Bits: 256
   swordRotationAmount: 0
   arrowRotationAmount: 0
   pushDir: {x: 0, y: 0, z: 0}

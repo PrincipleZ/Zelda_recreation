@@ -12,6 +12,7 @@ public class OrangePortalScript : MonoBehaviour {
 	public string warpObject = null;
 	public GameObject sword;
 	public GameObject arrow;
+	public LayerMask terrain;
 
 	GameObject player;
 	GameObject BluePortal;
@@ -23,6 +24,10 @@ public class OrangePortalScript : MonoBehaviour {
 	void Start () {
 		player = GameObject.Find ("Player");
 		warpObject = null;
+		if (Physics.Raycast (transform.position, pushDir, 0.6f, terrain)) {
+			this.transform.parent.GetComponent<Collider> ().enabled = true;
+			Destroy (this.gameObject);
+		}
 	}
 		
 	void Update () {
@@ -44,10 +49,10 @@ public class OrangePortalScript : MonoBehaviour {
 		if (other.gameObject.tag == "Player"){
 			if (BluePortal.GetComponent<BluePortalScript> ().warpObject == "Player") {
 				StartCoroutine (Pause (other));
-				StartCoroutine(Push ());
+				StartCoroutine (Push());
 			} 
 			else {
-				other.transform.position = BluePortal.transform.position;
+				other.transform.position = BluePortal.transform.position + (BluePortal.GetComponent<BluePortalScript>().pushDir/10f);
                 other.GetComponent<playerSounds>().PortalTravel();
                 warpObject = "Player";
 				if (GetComponent<cameraWarp>() != null)
@@ -111,9 +116,10 @@ public class OrangePortalScript : MonoBehaviour {
 		}
 	}
 
-	IEnumerator Push(){
+	public IEnumerator Push(){
 		player.GetComponent<Player> ().movement = false;
 		player.GetComponent<Rigidbody> ().velocity = Vector3.zero;
+		Debug.Log (pushDir);
 		player.GetComponent<Rigidbody> ().AddForce (200 * pushDir);
 		yield return new WaitForSeconds (.2f);
 		player.GetComponent<Player> ().movement = true;

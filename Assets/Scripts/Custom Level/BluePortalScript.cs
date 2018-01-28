@@ -12,6 +12,7 @@ public class BluePortalScript : MonoBehaviour {
 	public string warpObject = null;
 	public GameObject sword;
 	public GameObject arrow;
+	public LayerMask terrain;
 
 	GameObject player;
 	GameObject OrangePortal;
@@ -23,6 +24,10 @@ public class BluePortalScript : MonoBehaviour {
 	void Start () {
 		player = GameObject.Find ("Player");
 		warpObject = null;
+		if (Physics.Raycast (transform.position, pushDir, 0.6f, terrain)) {
+			this.transform.parent.GetComponent<Collider> ().enabled = true;
+			Destroy (this.gameObject);
+		}
 	}
 
 	void Update () {
@@ -45,8 +50,8 @@ public class BluePortalScript : MonoBehaviour {
 					StartCoroutine (Pause (other));
 					StartCoroutine (Push ());
 				} else {
-					other.transform.position = OrangePortal.transform.position;
-                    other.GetComponent<playerSounds>().PortalTravel();
+					other.transform.position = OrangePortal.transform.position + (OrangePortal.GetComponent<OrangePortalScript>().pushDir/10f);
+					other.GetComponent<playerSounds>().PortalTravel();
 					warpObject = "Player";
 					if (GetComponent<cameraWarp> () != null)
 						GetComponent<cameraWarp> ().warpCamera ();
@@ -111,7 +116,7 @@ public class BluePortalScript : MonoBehaviour {
 		}
 	}
 
-	IEnumerator Push(){
+	public IEnumerator Push(){
 		player.GetComponent<Player> ().movement = false;
 		player.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		player.GetComponent<Rigidbody> ().AddForce (200 * pushDir);
