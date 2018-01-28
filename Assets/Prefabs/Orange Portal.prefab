@@ -22,6 +22,9 @@ GameObject:
   - component: {fileID: 65282214170927782}
   - component: {fileID: 212670219018644292}
   - component: {fileID: 114034067830426718}
+  - component: {fileID: 65621021622296962}
+  - component: {fileID: 65166937364100416}
+  - component: {fileID: 65697120335791474}
   m_Layer: 0
   m_Name: Orange Portal
   m_TagString: OrangePortal
@@ -42,6 +45,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65166937364100416
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1636990200847796}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 1, z: 0.2}
+  m_Center: {x: -0.5, y: 0, z: 0}
 --- !u!65 &65282214170927782
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -52,8 +67,32 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.62, y: 0.69, z: 1}
+  m_Center: {x: 0, y: -0.03, z: 0}
+--- !u!65 &65621021622296962
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1636990200847796}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.2, z: 0.2}
+  m_Center: {x: 0, y: 0.4, z: 0}
+--- !u!65 &65697120335791474
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1636990200847796}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 1, z: 0.2}
+  m_Center: {x: 0.5, y: 0, z: 0}
 --- !u!114 &114034067830426718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -73,8 +112,12 @@ MonoBehaviour:
   warpObject: 
   sword: {fileID: 1554906319689052, guid: bdd1c37efed7069489b10c07958990a8, type: 2}
   arrow: {fileID: 1284930950723060, guid: 18694c1e80d232e4886bffd538f41bb4, type: 2}
+  terrain:
+    serializedVersion: 2
+    m_Bits: 256
   swordRotationAmount: 0
   arrowRotationAmount: 0
+  pushDir: {x: 0, y: 0, z: 0}
 --- !u!212 &212670219018644292
 SpriteRenderer:
   m_ObjectHideFlags: 1

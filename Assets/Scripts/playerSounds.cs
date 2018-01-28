@@ -13,6 +13,9 @@ public class playerSounds : MonoBehaviour {
     public AudioSource InvItem;
     public AudioSource fanfare;
     public AudioSource healthIsLow;
+    public AudioSource portalShot;
+    public AudioSource portalTravel1;
+    public AudioSource portalTravel2;
 
     bool nextBeep = true;
 	
@@ -31,6 +34,24 @@ public class playerSounds : MonoBehaviour {
         healthIsLow.Play();
         yield return new WaitForSeconds(.3f);
         nextBeep = true;
+    }
+
+    public void PortalTravel()
+    {
+        if(Random.Range(0f, 1f) > .5f)
+        {
+            portalTravel1.Play();
+        }
+        else
+        {
+            portalTravel2.Play();
+        }
+        
+    }
+
+    public void PortalShot()
+    {
+        portalShot.Play();
     }
 
     public void GotNewWeapon()

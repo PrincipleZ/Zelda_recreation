@@ -15,7 +15,16 @@ public class RoomSwitch : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (switching) {
+			GameObject temp = GameObject.Find ("Blue Portal(Clone)");
+			if (temp != null) {
+				Destroy (temp);
+			}
+			temp = GameObject.Find ("Orange Portal(Clone)");
+			if (temp != null) {
+				Destroy (temp);
+			}
+		}
 			
 	}
 		

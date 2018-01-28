@@ -21,6 +21,7 @@ public class PortalGun : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.C)) {
 			Vector3 dir = Vector3.zero;
+            GetComponent<playerSounds>().PortalShot();
 			switch (swordScript.directionFacingNESW) {
 			case 0:
 				dir = new Vector3 (0, 1, 0);
@@ -41,7 +42,8 @@ public class PortalGun : MonoBehaviour {
 		}
 		if (Input.GetButtonDown ("Fire2")) {
 			Vector3 dir = Vector3.zero;
-			switch (swordScript.directionFacingNESW) {
+            GetComponent<playerSounds>().PortalShot();
+            switch (swordScript.directionFacingNESW) {
 			case 0:
 				dir = new Vector3 (0, 1, 0);
 				break;

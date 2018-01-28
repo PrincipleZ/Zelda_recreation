@@ -20,6 +20,13 @@ public class PickUpGun : MonoBehaviour {
 			other.gameObject.GetComponent<PortalGun> ().enabled = true;
 			offhand.SetActive (true);
 			Destroy (this.gameObject);
-		}
+            other.GetComponent<playerSounds>().GotNewWeapon();
+            GameObject temp = GameObject.Find("Orange Portal(Clone)");
+            temp.transform.parent.GetComponent<BoxCollider>().enabled = true;
+            Destroy(temp);
+            temp = GameObject.Find("Blue Portal(Clone)");
+            temp.transform.parent.GetComponent<BoxCollider>().enabled = true;
+            Destroy(temp);
+        }
 	}
 }

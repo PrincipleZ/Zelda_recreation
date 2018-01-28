@@ -28,6 +28,7 @@ TagManager:
   - BluePortal
   - OrangePortal
   - lava
+  - bullet
   layers:
   - Default
   - TransparentFX

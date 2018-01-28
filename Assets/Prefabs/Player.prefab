@@ -213,6 +213,7 @@ MonoBehaviour:
   invincible: 0
   movement: 1
   dead: 0
+  GameOverScreen: {fileID: 0}
   changeHealthScript: {fileID: 0}
   boomerPrefab: {fileID: 1506644227932580, guid: ad49290c0082e441c86925d1eb5aba21,
     type: 2}
