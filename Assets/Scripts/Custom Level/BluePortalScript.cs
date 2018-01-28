@@ -73,8 +73,14 @@ public class BluePortalScript : MonoBehaviour {
 					temp.transform.position += temp.transform.up * .5f;
 					temp.GetComponent<Rigidbody> ().velocity = temp.transform.up * 10;
 				}
+			} else if (other.gameObject.tag == "enemy") {
+				other.gameObject.transform.position = OrangePortal.transform.position + OrangePortal.GetComponent<OrangePortalScript> ().pushDir;
 			}
 		}
+	}
+
+	void OnTriggerEnter(Collision other){
+
 	}
 
 	public void PortalDirectionNESW(int direction){
