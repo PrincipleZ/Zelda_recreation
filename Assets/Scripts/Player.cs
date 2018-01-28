@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour {
 	public bool movement = true;
 	public bool dead = false;
 
+
 	public GameObject GameOverScreen;
 	public ChangeHealth changeHealthScript;
 	RoomSwitch cameraScript;
@@ -27,8 +29,10 @@ public class Player : MonoBehaviour {
 	Bow bowScript;
     boomerang boomerScript;
 
+
 	// Use this for initialization
 	void Start () {
+
 		rb = GetComponent<Rigidbody> ();
 		currentHealth = maxHealth;
 		changeHealthScript = GameObject.Find ("HeartManager").GetComponent<ChangeHealth> ();
@@ -42,7 +46,11 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (currentHealth == 0) {
+			changeHealthScript.change (currentHealth);
+			movement = false;
+			Die ();
+		}
 		if (Input.GetButtonDown("Fire2")){
 			Vector3 dir = Vector3.zero;
 			switch (swordScript.directionFacingNESW) {
@@ -221,11 +229,19 @@ public class Player : MonoBehaviour {
 		rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
 		anim.SetBool ("Dead", true);
 		anim.speed = 1;
-		StartCoroutine (showBlackScreen ());
+		if (SceneManager.GetActiveScene ().name == "Dungeon")
+			StartCoroutine (showBlackScreen ());
+		else
+			StartCoroutine (backToCheckPoint ());
 	}
 
 	IEnumerator showBlackScreen(){
 		yield return new WaitForSeconds (3f);
 		GameOverScreen.SetActive (true);
+	}
+
+	IEnumerator backToCheckPoint(){
+		yield return new WaitForSeconds (3f);
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
 	}
 }

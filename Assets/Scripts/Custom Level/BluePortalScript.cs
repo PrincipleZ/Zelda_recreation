@@ -31,7 +31,6 @@ public class BluePortalScript : MonoBehaviour {
 
 
 	void OnTriggerEnter(Collider other){
-		Debug.Log (other);
 		if (OrangePortal != null && OrangePortal.GetComponent<OrangePortalScript> ().warpObject == null) {
 			warpObject = other.gameObject.tag;
 		}
@@ -43,6 +42,7 @@ public class BluePortalScript : MonoBehaviour {
 				} else {
 					other.transform.position = OrangePortal.transform.position;
 					warpObject = "Player";
+					GetComponent<cameraWarp> ().warpCamera ();
 				}
 			} else if (other.gameObject.name == "Sword(Clone)") {
 				if (OrangePortal.GetComponent<OrangePortalScript> ().warpObject == "sword") {
@@ -105,7 +105,25 @@ public class BluePortalScript : MonoBehaviour {
 	}
 
 	IEnumerator Pause(Collider other){
+		cameraWarp cameraScript = GetComponent<cameraWarp>();
+		if (cameraScript != null){
+			cameraScript.enabled = false;
+		}
 		yield return new WaitForSeconds (.01f);
 		OrangePortal.GetComponent<OrangePortalScript> ().warpObject = null;
+		yield return new WaitForSeconds (1f);
+		if (cameraScript != null){
+			cameraScript.enabled = true;
+		}
+	}
+	IEnumerator PauseCamera(){
+		cameraWarp cameraScript = OrangePortal.GetComponent<cameraWarp>();
+		if (cameraScript != null){
+			cameraScript.enabled = false;
+		}
+		yield return new WaitForSeconds (2f);
+		if (cameraScript != null){
+			cameraScript.enabled = true;
+		}
 	}
 }

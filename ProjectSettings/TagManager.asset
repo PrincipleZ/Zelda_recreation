@@ -27,6 +27,7 @@ TagManager:
   - wallR
   - BluePortal
   - OrangePortal
+  - lava
   layers:
   - Default
   - TransparentFX
