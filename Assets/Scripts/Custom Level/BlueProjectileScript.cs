@@ -22,6 +22,10 @@ public class BlueProjectileScript : MonoBehaviour {
 		player.GetComponent<PortalGun> ().enabled = false;
 		player.GetComponent<Bow> ().enabled = false;
 		player.GetComponent<SwordDirection> ().isSwingingSword = true;
+		GameObject temp = GameObject.FindWithTag ("BluePortal");
+		if(temp != null)
+			temp.transform.parent.GetComponent<BoxCollider> ().enabled = true;
+		Destroy (temp);
 	}
 
 	// Update is called once per frame
@@ -51,6 +55,43 @@ public class BlueProjectileScript : MonoBehaviour {
 				OrientationNESW (0, other);
 			} else if (other.tag == "wallL") {
 				OrientationNESW (1, other);
+			} else if (other.tag == "obstacle"){
+				// reuse of knockback script to determine collider direction
+				bool isHoriz = false;
+				Vector3 knockBackDir = (transform.position - other.ClosestPointOnBounds(transform.position)).normalized;
+				if(Mathf.Abs(knockBackDir.x) > Mathf.Abs(knockBackDir.y))
+				{
+					isHoriz = true;
+				}
+				else
+				{
+					isHoriz = false;
+				}
+
+				if (isHoriz){
+					knockBackDir.y = 0;
+					if (knockBackDir.x < 0)
+					{
+						OrientationNESW (3, other);
+					}
+					else
+					{
+						OrientationNESW (1, other);
+
+					}
+				} else{
+					knockBackDir.x = 0;
+					if (knockBackDir.y < 0)
+					{
+						OrientationNESW (2, other);
+					}
+					else
+					{
+						OrientationNESW (0, other);
+					}
+
+
+				}
 			}
 
 //				if (Mathf.Abs (portalDir.x) > Mathf.Abs (portalDir.y)) {
@@ -76,10 +117,7 @@ public class BlueProjectileScript : MonoBehaviour {
 
 	void OrientationNESW(int dir, Collider other){
 		other.GetComponent<BoxCollider> ().enabled = false;
-		GameObject temp = GameObject.Find ("Blue Portal(Clone)");
-		if(temp != null)
-			temp.transform.parent.GetComponent<BoxCollider> ().enabled = true;
-		Destroy (temp);
+
 		other.GetComponent<PWallScript> ().SpawnPortal ("blue", dir);
 	}
 }

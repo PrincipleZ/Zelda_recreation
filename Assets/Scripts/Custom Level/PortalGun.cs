@@ -37,6 +37,7 @@ public class PortalGun : MonoBehaviour {
 			}
 			projectile = Instantiate (orangeProjectile, transform.position + dir, Quaternion.identity);
 			projectile.GetComponent<OrangeProjectileScript> ().direction = dir;
+
 		}
 		if (Input.GetButtonDown ("Fire2")) {
 			Vector3 dir = Vector3.zero;
@@ -56,6 +57,7 @@ public class PortalGun : MonoBehaviour {
 			}
 			projectile = Instantiate (blueProjectile, transform.position + dir, Quaternion.identity);
 			projectile.GetComponent<BlueProjectileScript> ().direction = dir;
+
 		}
 
 	}

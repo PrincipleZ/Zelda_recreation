@@ -26,44 +26,44 @@ public class BluePortalScript : MonoBehaviour {
 	}
 
 	void Update () {
-		OrangePortal = GameObject.Find ("Orange Portal(Clone)");
+		OrangePortal = GameObject.FindWithTag ("OrangePortal");
 	}
 
 
 	void OnTriggerEnter(Collider other){
+		Debug.Log (other);
 		if (OrangePortal != null && OrangePortal.GetComponent<OrangePortalScript> ().warpObject == null) {
 			warpObject = other.gameObject.tag;
 		}
-
-		if (other.gameObject.tag == "Player") {
-			if (OrangePortal.GetComponent<OrangePortalScript> ().warpObject == "Player") {
-				StartCoroutine (Pause (other));
-				StartCoroutine (Push ());
-			} else {
-				other.transform.position = OrangePortal.transform.position;
-				warpObject = "Player";
-			}
-		} else if (other.gameObject.name == "Sword(Clone)") {
-			if (OrangePortal.GetComponent<OrangePortalScript> ().warpObject == "sword") {
-				StartCoroutine(Pause (other));
-			}
-			else{
-				Destroy(other.gameObject);
-				GameObject temp = Instantiate (sword, OrangePortal.transform.position , Quaternion.identity);
-				temp.transform.Rotate (0, 0, OrangePortal.GetComponent<OrangePortalScript> ().swordRotationAmount);
-				temp.transform.position += temp.transform.right * .5f;
-				temp.GetComponent<Rigidbody> ().velocity = temp.transform.right * 10;
-			}
-		} else if (other.gameObject.name == "Arrow(Clone)") {
-			if (OrangePortal.GetComponent<OrangePortalScript> ().warpObject == "arrow") {
-				StartCoroutine(Pause (other));
-			}
-			else{
-				Destroy(other.gameObject);
-				GameObject temp = Instantiate (arrow, OrangePortal.transform.position , Quaternion.identity);
-				temp.transform.Rotate (0, 0, OrangePortal.GetComponent<OrangePortalScript> ().arrowRotationAmount);
-				temp.transform.position += temp.transform.up * .5f;
-				temp.GetComponent<Rigidbody> ().velocity = temp.transform.up * 10;
+		if (OrangePortal != null) {
+			if (other.gameObject.tag == "Player") {
+				if (OrangePortal.GetComponent<OrangePortalScript> ().warpObject == "Player") {
+					StartCoroutine (Pause (other));
+					StartCoroutine (Push ());
+				} else {
+					other.transform.position = OrangePortal.transform.position;
+					warpObject = "Player";
+				}
+			} else if (other.gameObject.name == "Sword(Clone)") {
+				if (OrangePortal.GetComponent<OrangePortalScript> ().warpObject == "sword") {
+					StartCoroutine (Pause (other));
+				} else {
+					Destroy (other.gameObject);
+					GameObject temp = Instantiate (sword, OrangePortal.transform.position, Quaternion.identity);
+					temp.transform.Rotate (0, 0, OrangePortal.GetComponent<OrangePortalScript> ().swordRotationAmount);
+					temp.transform.position += temp.transform.right * .5f;
+					temp.GetComponent<Rigidbody> ().velocity = temp.transform.right * 10;
+				}
+			} else if (other.gameObject.name == "Arrow(Clone)") {
+				if (OrangePortal.GetComponent<OrangePortalScript> ().warpObject == "arrow") {
+					StartCoroutine (Pause (other));
+				} else {
+					Destroy (other.gameObject);
+					GameObject temp = Instantiate (arrow, OrangePortal.transform.position, Quaternion.identity);
+					temp.transform.Rotate (0, 0, OrangePortal.GetComponent<OrangePortalScript> ().arrowRotationAmount);
+					temp.transform.position += temp.transform.up * .5f;
+					temp.GetComponent<Rigidbody> ().velocity = temp.transform.up * 10;
+				}
 			}
 		}
 	}

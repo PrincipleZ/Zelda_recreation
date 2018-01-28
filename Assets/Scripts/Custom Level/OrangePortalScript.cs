@@ -26,7 +26,7 @@ public class OrangePortalScript : MonoBehaviour {
 	}
 		
 	void Update () {
-		BluePortal = GameObject.Find ("Blue Portal(Clone)");
+		BluePortal = GameObject.FindWithTag ("BluePortal");
 	}
 
 

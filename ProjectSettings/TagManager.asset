@@ -25,6 +25,8 @@ TagManager:
   - wallL
   - wallD
   - wallR
+  - BluePortal
+  - OrangePortal
   layers:
   - Default
   - TransparentFX
