@@ -27,6 +27,11 @@ public class BluePortalScript : MonoBehaviour {
 
 	void Update () {
 		OrangePortal = GameObject.FindWithTag ("OrangePortal");
+		if (OrangePortal == null) {
+			transform.parent.GetComponent<Collider> ().enabled = true;
+		} else {
+			transform.parent.GetComponent<Collider> ().enabled = false;
+		}
 	}
 
 

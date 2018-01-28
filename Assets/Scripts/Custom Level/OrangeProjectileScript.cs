@@ -51,7 +51,10 @@ public class OrangeProjectileScript : MonoBehaviour {
             if (!done)
             {
                 done = true;
-                if (other.tag == "wallU")
+				if (other.transform.childCount > 0) {
+
+				}
+				else if (other.tag == "wallU")
                 {
                     OrientationNESW(2, other);
                 }
