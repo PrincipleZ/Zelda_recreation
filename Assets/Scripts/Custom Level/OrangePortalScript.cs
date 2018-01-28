@@ -43,8 +43,10 @@ public class OrangePortalScript : MonoBehaviour {
 			} 
 			else {
 				other.transform.position = BluePortal.transform.position;
-				GetComponent<cameraWarp> ().warpCamera ();
 				warpObject = "Player";
+				if (GetComponent<cameraWarp>() != null)
+					GetComponent<cameraWarp> ().warpCamera ();
+				
 			}
 		}else if (other.gameObject.name == "Sword(Clone)") {
 			if (BluePortal.GetComponent<BluePortalScript> ().warpObject == "sword") {

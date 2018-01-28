@@ -190,7 +190,7 @@ public class BladeTrapMovement : MonoBehaviour
         }
         else if (collision.gameObject.GetComponent<Player>())
         {
-            StartCoroutine(TempIgnore(collision.gameObject));
+//            StartCoroutine(TempIgnore(collision.gameObject));
         }
     }
 
