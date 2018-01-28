@@ -43,7 +43,8 @@ public class OrangePortalScript : MonoBehaviour {
 			} 
 			else {
 				other.transform.position = BluePortal.transform.position;
-				warpObject = "Player";
+                other.GetComponent<playerSounds>().PortalTravel();
+                warpObject = "Player";
 				if (GetComponent<cameraWarp>() != null)
 					GetComponent<cameraWarp> ().warpCamera ();
 				
@@ -53,7 +54,8 @@ public class OrangePortalScript : MonoBehaviour {
 				StartCoroutine(Pause (other));
 			}
 			else{
-				Destroy(other.gameObject);
+                GameObject.Find("Player").GetComponent<playerSounds>().PortalTravel();
+                Destroy(other.gameObject);
 				GameObject temp = Instantiate (sword, BluePortal.transform.position , Quaternion.identity);
 				temp.transform.Rotate (0, 0, BluePortal.GetComponent<BluePortalScript> ().swordRotationAmount);
 				temp.transform.position += temp.transform.right * .5f;
@@ -64,7 +66,8 @@ public class OrangePortalScript : MonoBehaviour {
 				StartCoroutine(Pause (other));
 			}
 			else{
-				Destroy(other.gameObject);
+                GameObject.Find("Player").GetComponent<playerSounds>().PortalTravel();
+                Destroy(other.gameObject);
 				GameObject temp = Instantiate (arrow, BluePortal.transform.position , Quaternion.identity);
 				temp.transform.Rotate (0, 0, BluePortal.GetComponent<BluePortalScript> ().arrowRotationAmount);
 				temp.transform.position += temp.transform.up * .5f;

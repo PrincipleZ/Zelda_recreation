@@ -45,74 +45,93 @@ public class BlueProjectileScript : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		if (!done) {
-			done = true;
-			if (other.tag == "wallU") {
-				OrientationNESW (2, other);
-			} else if (other.tag == "wallR") {
-				OrientationNESW (3, other);
-			} else if (other.tag == "wallD") {
-				OrientationNESW (0, other);
-			} else if (other.tag == "wallL") {
-				OrientationNESW (1, other);
-			} else if (other.tag == "obstacle"){
-				// reuse of knockback script to determine collider direction
-				bool isHoriz = false;
-				Vector3 knockBackDir = (transform.position - other.ClosestPointOnBounds(transform.position)).normalized;
-				if(Mathf.Abs(knockBackDir.x) > Mathf.Abs(knockBackDir.y))
-				{
-					isHoriz = true;
-				}
-				else
-				{
-					isHoriz = false;
-				}
 
-				if (isHoriz){
-					knockBackDir.y = 0;
-					if (knockBackDir.x < 0)
-					{
-						OrientationNESW (3, other);
-					}
-					else
-					{
-						OrientationNESW (1, other);
+        if (other.tag != "lava")
+        {
+            if (!done)
+            {
+                done = true;
+                if (other.tag == "wallU")
+                {
+                    OrientationNESW(2, other);
+                }
+                else if (other.tag == "wallR")
+                {
+                    OrientationNESW(3, other);
+                }
+                else if (other.tag == "wallD")
+                {
+                    OrientationNESW(0, other);
+                }
+                else if (other.tag == "wallL")
+                {
+                    OrientationNESW(1, other);
+                }
+                else if (other.tag == "obstacle")
+                {
+                    // reuse of knockback script to determine collider direction
+                    bool isHoriz = false;
+                    Vector3 knockBackDir = (transform.position - other.ClosestPointOnBounds(transform.position)).normalized;
+                    if (Mathf.Abs(knockBackDir.x) > Mathf.Abs(knockBackDir.y))
+                    {
+                        isHoriz = true;
+                    }
+                    else
+                    {
+                        isHoriz = false;
+                    }
 
-					}
-				} else{
-					knockBackDir.x = 0;
-					if (knockBackDir.y < 0)
-					{
-						OrientationNESW (2, other);
-					}
-					else
-					{
-						OrientationNESW (0, other);
-					}
+                    if (isHoriz)
+                    {
+                        knockBackDir.y = 0;
+                        if (knockBackDir.x < 0)
+                        {
+                            OrientationNESW(3, other);
+                        }
+                        else
+                        {
+                            OrientationNESW(1, other);
+
+                        }
+                    }
+                    else
+                    {
+                        knockBackDir.x = 0;
+                        if (knockBackDir.y < 0)
+                        {
+                            OrientationNESW(2, other);
+                        }
+                        else
+                        {
+                            OrientationNESW(0, other);
+                        }
 
 
-				}
-			}
+                    }
+                }
 
-//				if (Mathf.Abs (portalDir.x) > Mathf.Abs (portalDir.y)) {
-//					if (portalDir.x > 0)
-//						other.GetComponent<PWallScript> ().SpawnPortal ("blue", 1);
-//					else
-//						other.GetComponent<PWallScript> ().SpawnPortal ("blue", 3);
-//				} 
-//				else {
-//					if (portalDir.y > 0)
-//						other.GetComponent<PWallScript> ().SpawnPortal ("blue", 0);
-//					else
-//						other.GetComponent<PWallScript> ().SpawnPortal ("blue", 2);
-//				}
-				player.GetComponent<ArrowKeyMovement> ().enabled = true;
-				player.GetComponent<Animator> ().enabled = true;
-				player.GetComponent<PortalGun> ().enabled = true;
-				player.GetComponent<Bow> ().enabled = true;
-				player.GetComponent<SwordDirection> ().isSwingingSword = false;
-				Destroy (this.gameObject);
-		}
+                //				if (Mathf.Abs (portalDir.x) > Mathf.Abs (portalDir.y)) {
+                //					if (portalDir.x > 0)
+                //						other.GetComponent<PWallScript> ().SpawnPortal ("blue", 1);
+                //					else
+                //						other.GetComponent<PWallScript> ().SpawnPortal ("blue", 3);
+                //				} 
+                //				else {
+                //					if (portalDir.y > 0)
+                //						other.GetComponent<PWallScript> ().SpawnPortal ("blue", 0);
+                //					else
+                //						other.GetComponent<PWallScript> ().SpawnPortal ("blue", 2);
+                //				}
+                player.GetComponent<ArrowKeyMovement>().enabled = true;
+                player.GetComponent<Animator>().enabled = true;
+                player.GetComponent<PortalGun>().enabled = true;
+                player.GetComponent<Bow>().enabled = true;
+                player.GetComponent<SwordDirection>().isSwingingSword = false;
+                Destroy(this.gameObject);
+
+            }
+        }
+           
 	}
 
 	void OrientationNESW(int dir, Collider other){

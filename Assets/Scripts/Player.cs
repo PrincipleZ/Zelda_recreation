@@ -46,7 +46,7 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (currentHealth == 0) {
+		if (currentHealth == 0 && !dead) {
 			changeHealthScript.change (currentHealth);
 			movement = false;
 			Die ();

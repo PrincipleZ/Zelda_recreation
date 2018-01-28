@@ -41,6 +41,7 @@ public class BluePortalScript : MonoBehaviour {
 					StartCoroutine (Push ());
 				} else {
 					other.transform.position = OrangePortal.transform.position;
+                    other.GetComponent<playerSounds>().PortalTravel();
 					warpObject = "Player";
 					if (GetComponent<cameraWarp> () != null)
 						GetComponent<cameraWarp> ().warpCamera ();
@@ -49,7 +50,8 @@ public class BluePortalScript : MonoBehaviour {
 				if (OrangePortal.GetComponent<OrangePortalScript> ().warpObject == "sword") {
 					StartCoroutine (Pause (other));
 				} else {
-					Destroy (other.gameObject);
+                    GameObject.Find("Player").GetComponent<playerSounds>().PortalTravel();
+                    Destroy (other.gameObject);
 					GameObject temp = Instantiate (sword, OrangePortal.transform.position, Quaternion.identity);
 					temp.transform.Rotate (0, 0, OrangePortal.GetComponent<OrangePortalScript> ().swordRotationAmount);
 					temp.transform.position += temp.transform.right * .5f;
@@ -59,7 +61,8 @@ public class BluePortalScript : MonoBehaviour {
 				if (OrangePortal.GetComponent<OrangePortalScript> ().warpObject == "arrow") {
 					StartCoroutine (Pause (other));
 				} else {
-					Destroy (other.gameObject);
+                    GameObject.Find("Player").GetComponent<playerSounds>().PortalTravel();
+                    Destroy (other.gameObject);
 					GameObject temp = Instantiate (arrow, OrangePortal.transform.position, Quaternion.identity);
 					temp.transform.Rotate (0, 0, OrangePortal.GetComponent<OrangePortalScript> ().arrowRotationAmount);
 					temp.transform.position += temp.transform.up * .5f;
