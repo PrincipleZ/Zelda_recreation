@@ -83,7 +83,7 @@ public class ArrowKeyMovement : MonoBehaviour
 		Vector2 prevPos = transform.position;
 		if (Mathf.Abs(current_input.x) > 0f){
 			float newY = Mathf.Round (prevPos.y * 2) / 2f + link_y_offset;
-			Debug.Log (newY);
+//			Debug.Log (newY);
 			if (prevPos.y == newY)
 				return false;
 			transform.position = new Vector2 (prevPos.x, newY);

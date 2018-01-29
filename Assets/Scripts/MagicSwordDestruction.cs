@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MagicSwordDestruction : MonoBehaviour {
 
@@ -19,6 +20,9 @@ public class MagicSwordDestruction : MonoBehaviour {
 		} else if (other.gameObject.tag == "wall" || other.gameObject.tag == "door(wall)" || other.gameObject.tag == "enemy") {
 			Destroy (this.gameObject);
 		} 
+		else if (SceneManager.GetActiveScene().name == "Custom" && other.gameObject.tag == "obstacle"){
+			Destroy (this.gameObject);
+		}
     }
 
 

@@ -83,7 +83,7 @@ public class OrangePortalScript : MonoBehaviour {
 				temp.transform.position += temp.transform.up * .5f;
 				temp.GetComponent<Rigidbody> ().velocity = temp.transform.up * 10;
 			}
-		} else if (other.gameObject.tag == "enemy") {
+		} else if (other.gameObject.tag == "enemy" || other.gameObject.GetComponent<CustomPushableBlock>() != null) {
 			other.gameObject.transform.position = BluePortal.transform.position + BluePortal.GetComponent<BluePortalScript> ().pushDir;
 		}
 	}

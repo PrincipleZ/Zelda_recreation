@@ -29,6 +29,7 @@ TagManager:
   - OrangePortal
   - lava
   - bullet
+  - Pushable
   layers:
   - Default
   - TransparentFX
@@ -53,7 +54,7 @@ TagManager:
   - RoomChecker
   - Lava
   - Bullet
-  - 
+  - collectable
   - 
   - 
   - 

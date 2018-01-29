@@ -123,6 +123,9 @@ MonoBehaviour:
   terrain_layer:
     serializedVersion: 2
     m_Bits: 256
+  lava_layer:
+    serializedVersion: 2
+    m_Bits: 2097152
   movementSpeed: 1.5
 --- !u!114 &114348982029249828
 MonoBehaviour:
@@ -156,6 +159,7 @@ MonoBehaviour:
   movement: 1
   knockBackTime: 0.3
   force: 300
+  invincible: 0
 --- !u!114 &114857651414251528
 MonoBehaviour:
   m_ObjectHideFlags: 1

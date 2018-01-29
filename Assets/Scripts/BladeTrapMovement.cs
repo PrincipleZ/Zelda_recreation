@@ -30,7 +30,8 @@ public class BladeTrapMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {	
+		
 
         if (!attacking && !returning)
         {
@@ -59,7 +60,12 @@ public class BladeTrapMovement : MonoBehaviour
                 attacking = true;
             }
         }
+		Debug.Log (Physics.Raycast (transform.position, direction, 1f, 10));
+		if (Physics.Raycast(transform.position, direction, 1f, 10)){
+				attacking = false;
+				returning = true;
 
+		}
         if (attacking)
         {
             MoveToDestination();
@@ -72,6 +78,7 @@ public class BladeTrapMovement : MonoBehaviour
 
     void MoveToDestination()
     {
+		
         if(direction.x > 0)
         {
             if(transform.position.x > destination.x)
@@ -131,7 +138,8 @@ public class BladeTrapMovement : MonoBehaviour
     }
 
     void MoveToOrigin()
-    {
+    {	
+		
         if (direction.x > 0)
         {
             if (transform.position.x > startingPos.x)
@@ -184,6 +192,7 @@ public class BladeTrapMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+		Debug.Log (collision.gameObject);
         if (collision.gameObject.GetComponent<BladeTrapMovement>())
         {
             Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
@@ -192,7 +201,24 @@ public class BladeTrapMovement : MonoBehaviour
         {
 //            StartCoroutine(TempIgnore(collision.gameObject));
         }
+		else if (collision.gameObject.GetComponent<CustomPushableBlock>()){
+			attacking = false;
+			returning = true;
+		}
     }
+
+	void OnTriggerEnter(Collider other){
+		if (other.gameObject.tag == "Pushable"){
+			attacking = false;
+			returning = true; 
+		}
+	}
+	private void OnCollisionStay(Collision collision){
+		if (collision.gameObject.GetComponent<CustomPushableBlock>()){
+			attacking = false;
+			returning = true;
+		}
+	}
 
     IEnumerator TempIgnore(GameObject player)
     {

@@ -41,6 +41,7 @@ public class BluePortalScript : MonoBehaviour {
 
 
 	void OnTriggerEnter(Collider other){
+		Debug.Log (other);
 		if (OrangePortal != null && OrangePortal.GetComponent<OrangePortalScript> ().warpObject == null) {
 			warpObject = other.gameObject.tag;
 		}
@@ -50,8 +51,8 @@ public class BluePortalScript : MonoBehaviour {
 					StartCoroutine (Pause (other));
 					StartCoroutine (Push ());
 				} else {
-					other.transform.position = OrangePortal.transform.position + (OrangePortal.GetComponent<OrangePortalScript>().pushDir/10f);
-					other.GetComponent<playerSounds>().PortalTravel();
+					other.transform.position = OrangePortal.transform.position + (OrangePortal.GetComponent<OrangePortalScript> ().pushDir / 10f);
+					other.GetComponent<playerSounds> ().PortalTravel ();
 					warpObject = "Player";
 					if (GetComponent<cameraWarp> () != null)
 						GetComponent<cameraWarp> ().warpCamera ();
@@ -60,8 +61,8 @@ public class BluePortalScript : MonoBehaviour {
 				if (OrangePortal.GetComponent<OrangePortalScript> ().warpObject == "sword") {
 					StartCoroutine (Pause (other));
 				} else {
-                    GameObject.Find("Player").GetComponent<playerSounds>().PortalTravel();
-                    Destroy (other.gameObject);
+					GameObject.Find ("Player").GetComponent<playerSounds> ().PortalTravel ();
+					Destroy (other.gameObject);
 					GameObject temp = Instantiate (sword, OrangePortal.transform.position, Quaternion.identity);
 					temp.transform.Rotate (0, 0, OrangePortal.GetComponent<OrangePortalScript> ().swordRotationAmount);
 					temp.transform.position += temp.transform.right * .5f;
@@ -71,22 +72,20 @@ public class BluePortalScript : MonoBehaviour {
 				if (OrangePortal.GetComponent<OrangePortalScript> ().warpObject == "arrow") {
 					StartCoroutine (Pause (other));
 				} else {
-                    GameObject.Find("Player").GetComponent<playerSounds>().PortalTravel();
-                    Destroy (other.gameObject);
+					GameObject.Find ("Player").GetComponent<playerSounds> ().PortalTravel ();
+					Destroy (other.gameObject);
 					GameObject temp = Instantiate (arrow, OrangePortal.transform.position, Quaternion.identity);
 					temp.transform.Rotate (0, 0, OrangePortal.GetComponent<OrangePortalScript> ().arrowRotationAmount);
 					temp.transform.position += temp.transform.up * .5f;
 					temp.GetComponent<Rigidbody> ().velocity = temp.transform.up * 10;
 				}
-			} else if (other.gameObject.tag == "enemy") {
+			} else if (other.gameObject.tag == "enemy" || other.gameObject.GetComponent<CustomPushableBlock> () != null) {
 				other.gameObject.transform.position = OrangePortal.transform.position + OrangePortal.GetComponent<OrangePortalScript> ().pushDir;
 			}
 		}
 	}
 
-	void OnTriggerEnter(Collision other){
 
-	}
 
 	public void PortalDirectionNESW(int direction){
 		switch (direction) {

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 95132699672926470}
   - component: {fileID: 65765518566060096}
   - component: {fileID: 114833650388119762}
-  m_Layer: 8
+  m_Layer: 21
   m_Name: Tile_LAVA
   m_TagString: lava
   m_Icon: {fileID: 0}

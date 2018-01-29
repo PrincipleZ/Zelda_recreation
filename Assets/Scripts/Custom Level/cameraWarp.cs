@@ -11,7 +11,7 @@ public class cameraWarp : MonoBehaviour {
 	}
 
 	void Update(){
-		Debug.Log (mainCamera.transform.position);
+//		Debug.Log (mainCamera.transform.position);
 	}
 	public void warpCamera(){
 		Debug.Log (this.gameObject);

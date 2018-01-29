@@ -5,6 +5,7 @@ using UnityEngine;
 public class GelMovement : MonoBehaviour
 {
     public LayerMask terrain_layer;
+	public LayerMask lava_layer;
     public float movementSpeed = 3f;
     public Vector3 path;
     public Vector3 destination;
@@ -17,12 +18,13 @@ public class GelMovement : MonoBehaviour
     public bool timeToMove = true;
 
     Vector3[] candidates = { Vector3.up, Vector3.right, Vector3.down, Vector3.left };
-
+	LayerMask finalMask;
     Rigidbody rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+		finalMask = terrain_layer | lava_layer;
     }
 
     private void Update()
@@ -49,22 +51,22 @@ public class GelMovement : MonoBehaviour
 
             path = candidates[Random.Range(0, 4)];
 
-            if (path == Vector3.right && !Physics.Raycast(transform.position, transform.right, 1f, terrain_layer))
+			if (path == Vector3.right && !Physics.Raycast(transform.position, transform.right, 0.8f, finalMask))
             {
                 validDestination = true;
             }
 
-            else if (path == Vector3.up && !Physics.Raycast(transform.position, transform.up, 1f, terrain_layer))
+			else if (path == Vector3.up && !Physics.Raycast(transform.position, transform.up, 0.8f, finalMask))
             {
                 validDestination = true;
             }
 
-            else if (path == Vector3.down && !Physics.Raycast(transform.position, -transform.up, 1f, terrain_layer))
+			else if (path == Vector3.down && !Physics.Raycast(transform.position, -transform.up, 0.8f, finalMask))
             {
                 validDestination = true;
             }
 
-            else if (path == Vector3.left && !Physics.Raycast(transform.position, -transform.right, 1f, terrain_layer))
+			else if (path == Vector3.left && !Physics.Raycast(transform.position, -transform.right, 0.8f, finalMask))
             {
                 validDestination = true;
             }
