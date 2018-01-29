@@ -16,6 +16,7 @@ public class Player : MonoBehaviour {
 	public bool movement = true;
 	public bool dead = false;
 
+	
 
 	public GameObject GameOverScreen;
 	public ChangeHealth changeHealthScript;
@@ -32,7 +33,7 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		
 		rb = GetComponent<Rigidbody> ();
 		currentHealth = maxHealth;
 		changeHealthScript = GameObject.Find ("HeartManager").GetComponent<ChangeHealth> ();
@@ -46,6 +47,7 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		if (currentHealth == 0 && !dead) {
 			changeHealthScript.change (currentHealth);
 			movement = false;

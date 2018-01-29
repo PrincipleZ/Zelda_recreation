@@ -12,8 +12,10 @@ public class CheckPoint : MonoBehaviour {
 	
 	void OnTriggerStay(Collider other){
 		if (other.gameObject.tag == "Player"){
-			checkPointScript.checkPoint = this.gameObject;
 			cameraPosition = GameObject.FindGameObjectWithTag ("MainCamera").transform.position;
+			checkPointScript.setCheckPoint (this);
 		}
 	}
+
+
 }
